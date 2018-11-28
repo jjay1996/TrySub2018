@@ -21,7 +21,8 @@
         <activity android:name=".PlayActivity" />
         <activity android:name=".HighScoreActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".SelectGameActivity"></activity>
+        <activity android:name=".SelectGameActivity" />
+        <activity android:name=".Create_Login.login"></activity>
     </application>
 
 </manifest>

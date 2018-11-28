@@ -10,7 +10,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.egco428.trysub.DataSourse
 import com.egco428.trysub.R
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_create.*
 import java.io.FileNotFoundException
 import java.io.IOException
@@ -21,10 +23,41 @@ class Create : AppCompatActivity() {
     private var T_gender = ""
     private val REQUEST_CODE = 1
     private var bitmap: Bitmap?= null
+    lateinit var database: DatabaseReference
+    var check = true
+    var name = ""
+    var username = ""
+    var pass =""
+    var pass2 = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create)
+
+
+       var database = FirebaseDatabase.getInstance().getReference("User")
+        database.addValueEventListener(object  : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot?) {
+
+                for (i in p0!!.children){
+                    Log.d("data","I'm Here !!: ${i} !! : ${p0.children}")
+                    val message = i.getValue(DataSourse::class.java)
+                    Log.d("data","I'm Here  2 !!: ${message}")
+
+                    if (username == message!!.username.toString() ){
+                        Log.d("data","I'm Here  3 !!: ${message.username}")
+                        check = false
+                    }
+
+                }
+
+            }
+        })
+
 
 
 
@@ -48,12 +81,47 @@ class Create : AppCompatActivity() {
 
         confirmBtn.setOnClickListener {
             Toast.makeText(applicationContext,"gender : $T_gender ",Toast.LENGTH_SHORT).show()
+            name = editText.text.toString()
+            username = editText2.text.toString()
+            pass =passCreTextpla.text.toString()
+            pass2 = passCreCheckTextpla.text.toString()
+
+            val messageId = database.push().key
+
+            //check
+            // Pohibit " ' , . (เว้นวรรค)
+            if (check==false){ Toast.makeText(applicationContext,"Pleases Change Username",Toast.LENGTH_SHORT).show() }
+            if (pass != pass2){Toast.makeText(applicationContext,"Password Mismatch",Toast.LENGTH_SHORT).show() ; check=false}
+
+
+            //End check
+
+            if (check==true) {
+
+                val user = FirebaseDatabase.getInstance().getReference("User/$messageId/username")
+                user.setValue("${username}");
+
+                val namee = FirebaseDatabase.getInstance().getReference("User/$messageId/name")
+                namee.setValue("${name}");
+
+                val password = FirebaseDatabase.getInstance().getReference("User/$messageId/password")
+                password.setValue("${pass}");
+
+                val sex = FirebaseDatabase.getInstance().getReference("User/$messageId/gender")
+                sex.setValue("${gender}");
+
+                val picture = FirebaseDatabase.getInstance().getReference("User/$messageId/picture")
+                picture.setValue("${username}");
+
+            }
+
         }
 
         CancelBtn.setOnClickListener {
 
             finish()
         }
+
     }
 
     // Take Photo
