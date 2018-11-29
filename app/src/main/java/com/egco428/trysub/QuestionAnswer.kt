@@ -6,40 +6,250 @@ class QuestionAnswer {
 
     public var MyQuestion = arrayOf(
             //ข้อ1
-            arrayOf("1. Question"),
+            arrayOf(
+                //ข้อ1
+                arrayOf("1. Ant"),
+                //ข้อ2
+                arrayOf("2. Bee"),
+                //ข้อ3
+                arrayOf("3. Cat"),
+                //ข้อ4
+                arrayOf("4. Dog"),
+                //ข้อ5
+                arrayOf("5. Flower"),
+                //ข้อ6
+                arrayOf("6. Ear"),
+                //ข้อ7
+                arrayOf("7. Mouth"),
+                //ข้อ8
+                arrayOf("8. Leg"),
+                //ข้อ9
+                arrayOf("9. Yellow"),
+                //ข้อ10
+                arrayOf("10. Zoo")
+            ),
             //ข้อ2
-            arrayOf("2. Question"),
+            arrayOf(
+                    //ข้อ1
+                    arrayOf("1. Ant"),
+                    //ข้อ2
+                    arrayOf("2. Bee"),
+                    //ข้อ3
+                    arrayOf("3. Cat"),
+                    //ข้อ4
+                    arrayOf("4. Dog"),
+                    //ข้อ5
+                    arrayOf("5. Flower"),
+                    //ข้อ6
+                    arrayOf("6. Ear"),
+                    //ข้อ7
+                    arrayOf("7. Mouth"),
+                    //ข้อ8
+                    arrayOf("8. Leg"),
+                    //ข้อ9
+                    arrayOf("9. Yellow"),
+                    //ข้อ10
+                    arrayOf("10. Zoo")
+            ),
             //ข้อ3
-            arrayOf("3. Question"),
+            arrayOf(
+                    //ข้อ1
+                    arrayOf("1. Ant"),
+                    //ข้อ2
+                    arrayOf("2. Bee"),
+                    //ข้อ3
+                    arrayOf("3. Cat"),
+                    //ข้อ4
+                    arrayOf("4. Dog"),
+                    //ข้อ5
+                    arrayOf("5. Flower"),
+                    //ข้อ6
+                    arrayOf("6. Ear"),
+                    //ข้อ7
+                    arrayOf("7. Mouth"),
+                    //ข้อ8
+                    arrayOf("8. Leg"),
+                    //ข้อ9
+                    arrayOf("9. Yellow"),
+                    //ข้อ10
+                    arrayOf("10. Zoo")
+            ),
             //ข้อ4
-            arrayOf("4. Question"),
+            arrayOf(
+                    //ข้อ1
+                    arrayOf("1. Ant"),
+                    //ข้อ2
+                    arrayOf("2. Bee"),
+                    //ข้อ3
+                    arrayOf("3. Cat"),
+                    //ข้อ4
+                    arrayOf("4. Dog"),
+                    //ข้อ5
+                    arrayOf("5. Flower"),
+                    //ข้อ6
+                    arrayOf("6. Ear"),
+                    //ข้อ7
+                    arrayOf("7. Mouth"),
+                    //ข้อ8
+                    arrayOf("8. Leg"),
+                    //ข้อ9
+                    arrayOf("9. Yellow"),
+                    //ข้อ10
+                    arrayOf("10. Zoo")
+            ),
             //ข้อ5
-            arrayOf("5. Question"),
+            arrayOf(
+                    //ข้อ1
+                    arrayOf("1. Ant"),
+                    //ข้อ2
+                    arrayOf("2. Bee"),
+                    //ข้อ3
+                    arrayOf("3. Cat"),
+                    //ข้อ4
+                    arrayOf("4. Dog"),
+                    //ข้อ5
+                    arrayOf("5. Flower"),
+                    //ข้อ6
+                    arrayOf("6. Ear"),
+                    //ข้อ7
+                    arrayOf("7. Mouth"),
+                    //ข้อ8
+                    arrayOf("8. Leg"),
+                    //ข้อ9
+                    arrayOf("9. Yellow"),
+                    //ข้อ10
+                    arrayOf("10. Zoo")
+            ),
             //ข้อ6
-            arrayOf("6. Question"),
+            arrayOf(
+                    //ข้อ1
+                    arrayOf("1. Ant"),
+                    //ข้อ2
+                    arrayOf("2. Bee"),
+                    //ข้อ3
+                    arrayOf("3. Cat"),
+                    //ข้อ4
+                    arrayOf("4. Dog"),
+                    //ข้อ5
+                    arrayOf("5. Flower"),
+                    //ข้อ6
+                    arrayOf("6. Ear"),
+                    //ข้อ7
+                    arrayOf("7. Mouth"),
+                    //ข้อ8
+                    arrayOf("8. Leg"),
+                    //ข้อ9
+                    arrayOf("9. Yellow"),
+                    //ข้อ10
+                    arrayOf("10. Zoo")
+            ),
             //ข้อ7
-            arrayOf("7. Question"),
+            arrayOf(
+                    //ข้อ1
+                    arrayOf("1. Ant"),
+                    //ข้อ2
+                    arrayOf("2. Bee"),
+                    //ข้อ3
+                    arrayOf("3. Cat"),
+                    //ข้อ4
+                    arrayOf("4. Dog"),
+                    //ข้อ5
+                    arrayOf("5. Flower"),
+                    //ข้อ6
+                    arrayOf("6. Ear"),
+                    //ข้อ7
+                    arrayOf("7. Mouth"),
+                    //ข้อ8
+                    arrayOf("8. Leg"),
+                    //ข้อ9
+                    arrayOf("9. Yellow"),
+                    //ข้อ10
+                    arrayOf("10. Zoo")
+            ),
             //ข้อ8
-            arrayOf("8. Question"),
+            arrayOf(
+                    //ข้อ1
+                    arrayOf("1. Ant"),
+                    //ข้อ2
+                    arrayOf("2. Bee"),
+                    //ข้อ3
+                    arrayOf("3. Cat"),
+                    //ข้อ4
+                    arrayOf("4. Dog"),
+                    //ข้อ5
+                    arrayOf("5. Flower"),
+                    //ข้อ6
+                    arrayOf("6. Ear"),
+                    //ข้อ7
+                    arrayOf("7. Mouth"),
+                    //ข้อ8
+                    arrayOf("8. Leg"),
+                    //ข้อ9
+                    arrayOf("9. Yellow"),
+                    //ข้อ10
+                    arrayOf("10. Zoo")
+            ),
             //ข้อ9
-            arrayOf("9. Question"),
+            arrayOf(
+                    //ข้อ1
+                    arrayOf("1. Ant"),
+                    //ข้อ2
+                    arrayOf("2. Bee"),
+                    //ข้อ3
+                    arrayOf("3. Cat"),
+                    //ข้อ4
+                    arrayOf("4. Dog"),
+                    //ข้อ5
+                    arrayOf("5. Flower"),
+                    //ข้อ6
+                    arrayOf("6. Ear"),
+                    //ข้อ7
+                    arrayOf("7. Mouth"),
+                    //ข้อ8
+                    arrayOf("8. Leg"),
+                    //ข้อ9
+                    arrayOf("9. Yellow"),
+                    //ข้อ10
+                    arrayOf("10. Zoo")
+            ),
             //ข้อ10
-            arrayOf("10. Question")
+            arrayOf(
+                    //ข้อ1
+                    arrayOf("1. Ant"),
+                    //ข้อ2
+                    arrayOf("2. Bee"),
+                    //ข้อ3
+                    arrayOf("3. Cat"),
+                    //ข้อ4
+                    arrayOf("4. Dog"),
+                    //ข้อ5
+                    arrayOf("5. Flower"),
+                    //ข้อ6
+                    arrayOf("6. Ear"),
+                    //ข้อ7
+                    arrayOf("7. Mouth"),
+                    //ข้อ8
+                    arrayOf("8. Leg"),
+                    //ข้อ9
+                    arrayOf("9. Yellow"),
+                    //ข้อ10
+                    arrayOf("10. Zoo")
+            )
     )
 
   public val MyChoice = arrayOf(
           //ข้อ1
           arrayOf(
-                  arrayOf("1.1","1.1","1.1"), //1
-                  arrayOf("1.2","1.2","1.2"), //2
-                  arrayOf("1.3","1.3","1.3"), //3
-                  arrayOf("1.4","1.4","1.4"), //4
-                  arrayOf("1.5","1.5","1.5"), //5
-                  arrayOf("1.6","1.6","1.6"), //6
-                  arrayOf("1.7","1.7","1.7"), //7
-                  arrayOf("1.8","8.2","1.3"), //8
-                  arrayOf("1.9","1.9","1.9"), //9
-                  arrayOf("1.10","1.10","1.10") //10
+                  arrayOf("มด","ปาก","ฟัน"), //1
+                  arrayOf("แขน","มด","ผึ้ง"), //2
+                  arrayOf("ขา","แมว","เสือ"), //3
+                  arrayOf("สุนัข","มด","สีแดง"), //4
+                  arrayOf("หู","ดอกไม้","ข้าว"), //5
+                  arrayOf("ปาก","ตา","หู"), //6
+                  arrayOf("ผม","ปาก","ไก่"), //7
+                  arrayOf("แขน","มือ","ขา"), //8
+                  arrayOf("สีฟ้า","สีแดง","สีเหลือง"), //9
+                  arrayOf("สวนสัตว์","บ้าน","โรงแรม") //10
           ),
           //ข้อ2
           arrayOf(
@@ -161,25 +371,234 @@ class QuestionAnswer {
   )
 
     public val CorrectAnswer = arrayOf(
-            //ข้อ1
-            arrayOf("1.1"),
+            arrayOf(
+                //ข้อ1
+                arrayOf("มด"),
+                //ข้อ2
+                arrayOf("ผึ้ง"),
+                //ข้อ3
+                arrayOf("แมว"),
+                //ข้อ4
+                arrayOf("สุนัข"),
+                //ข้อ5
+                arrayOf("ดอกไม้"),
+                //ข้อ6
+                arrayOf("หู"),
+                //ข้อ7
+                arrayOf("ปาก"),
+                //ข้อ8
+                arrayOf("ขา"),
+                //ข้อ9
+                arrayOf("สีเหลือง"),
+                //ข้อ10
+                arrayOf("สวนสัตว์")
+            ),
             //ข้อ2
-            arrayOf("2.1"),
+            arrayOf(
+                    //ข้อ1
+                    arrayOf("1.1"),
+                    //ข้อ2
+                    arrayOf("2.1"),
+                    //ข้อ3
+                    arrayOf("3.1"),
+                    //ข้อ4
+                    arrayOf("4.1"),
+                    //ข้อ5
+                    arrayOf("5.1"),
+                    //ข้อ6
+                    arrayOf("6.1"),
+                    //ข้อ7
+                    arrayOf("7.1"),
+                    //ข้อ8
+                    arrayOf("8.1"),
+                    //ข้อ9
+                    arrayOf("9.1"),
+                    //ข้อ10
+                    arrayOf("10.1")
+            ),
             //ข้อ3
-            arrayOf("3.1"),
+            arrayOf(
+                    //ข้อ1
+                    arrayOf("1.1"),
+                    //ข้อ2
+                    arrayOf("2.1"),
+                    //ข้อ3
+                    arrayOf("3.1"),
+                    //ข้อ4
+                    arrayOf("4.1"),
+                    //ข้อ5
+                    arrayOf("5.1"),
+                    //ข้อ6
+                    arrayOf("6.1"),
+                    //ข้อ7
+                    arrayOf("7.1"),
+                    //ข้อ8
+                    arrayOf("8.1"),
+                    //ข้อ9
+                    arrayOf("9.1"),
+                    //ข้อ10
+                    arrayOf("10.1")
+            ),
             //ข้อ4
-            arrayOf("4.1"),
+            arrayOf(
+                    //ข้อ1
+                    arrayOf("1.1"),
+                    //ข้อ2
+                    arrayOf("2.1"),
+                    //ข้อ3
+                    arrayOf("3.1"),
+                    //ข้อ4
+                    arrayOf("4.1"),
+                    //ข้อ5
+                    arrayOf("5.1"),
+                    //ข้อ6
+                    arrayOf("6.1"),
+                    //ข้อ7
+                    arrayOf("7.1"),
+                    //ข้อ8
+                    arrayOf("8.1"),
+                    //ข้อ9
+                    arrayOf("9.1"),
+                    //ข้อ10
+                    arrayOf("10.1")
+            ),
             //ข้อ5
-            arrayOf("5.1"),
+            arrayOf(
+                    //ข้อ1
+                    arrayOf("1.1"),
+                    //ข้อ2
+                    arrayOf("2.1"),
+                    //ข้อ3
+                    arrayOf("3.1"),
+                    //ข้อ4
+                    arrayOf("4.1"),
+                    //ข้อ5
+                    arrayOf("5.1"),
+                    //ข้อ6
+                    arrayOf("6.1"),
+                    //ข้อ7
+                    arrayOf("7.1"),
+                    //ข้อ8
+                    arrayOf("8.1"),
+                    //ข้อ9
+                    arrayOf("9.1"),
+                    //ข้อ10
+                    arrayOf("10.1")
+            ),
             //ข้อ6
-            arrayOf("6.1"),
+            arrayOf(
+                    //ข้อ1
+                    arrayOf("1.1"),
+                    //ข้อ2
+                    arrayOf("2.1"),
+                    //ข้อ3
+                    arrayOf("3.1"),
+                    //ข้อ4
+                    arrayOf("4.1"),
+                    //ข้อ5
+                    arrayOf("5.1"),
+                    //ข้อ6
+                    arrayOf("6.1"),
+                    //ข้อ7
+                    arrayOf("7.1"),
+                    //ข้อ8
+                    arrayOf("8.1"),
+                    //ข้อ9
+                    arrayOf("9.1"),
+                    //ข้อ10
+                    arrayOf("10.1")
+            ),
             //ข้อ7
-            arrayOf("7.1"),
+            arrayOf(
+                    //ข้อ1
+                    arrayOf("1.1"),
+                    //ข้อ2
+                    arrayOf("2.1"),
+                    //ข้อ3
+                    arrayOf("3.1"),
+                    //ข้อ4
+                    arrayOf("4.1"),
+                    //ข้อ5
+                    arrayOf("5.1"),
+                    //ข้อ6
+                    arrayOf("6.1"),
+                    //ข้อ7
+                    arrayOf("7.1"),
+                    //ข้อ8
+                    arrayOf("8.1"),
+                    //ข้อ9
+                    arrayOf("9.1"),
+                    //ข้อ10
+                    arrayOf("10.1")
+            ),
             //ข้อ8
-            arrayOf("8.1"),
+            arrayOf(
+                    //ข้อ1
+                    arrayOf("1.1"),
+                    //ข้อ2
+                    arrayOf("2.1"),
+                    //ข้อ3
+                    arrayOf("3.1"),
+                    //ข้อ4
+                    arrayOf("4.1"),
+                    //ข้อ5
+                    arrayOf("5.1"),
+                    //ข้อ6
+                    arrayOf("6.1"),
+                    //ข้อ7
+                    arrayOf("7.1"),
+                    //ข้อ8
+                    arrayOf("8.1"),
+                    //ข้อ9
+                    arrayOf("9.1"),
+                    //ข้อ10
+                    arrayOf("10.1")
+            ),
             //ข้อ9
-            arrayOf("9.1"),
+            arrayOf(
+                    //ข้อ1
+                    arrayOf("1.1"),
+                    //ข้อ2
+                    arrayOf("2.1"),
+                    //ข้อ3
+                    arrayOf("3.1"),
+                    //ข้อ4
+                    arrayOf("4.1"),
+                    //ข้อ5
+                    arrayOf("5.1"),
+                    //ข้อ6
+                    arrayOf("6.1"),
+                    //ข้อ7
+                    arrayOf("7.1"),
+                    //ข้อ8
+                    arrayOf("8.1"),
+                    //ข้อ9
+                    arrayOf("9.1"),
+                    //ข้อ10
+                    arrayOf("10.1")
+            ),
             //ข้อ10
-            arrayOf("10.1")
+            arrayOf(
+                    //ข้อ1
+                    arrayOf("1.1"),
+                    //ข้อ2
+                    arrayOf("2.1"),
+                    //ข้อ3
+                    arrayOf("3.1"),
+                    //ข้อ4
+                    arrayOf("4.1"),
+                    //ข้อ5
+                    arrayOf("5.1"),
+                    //ข้อ6
+                    arrayOf("6.1"),
+                    //ข้อ7
+                    arrayOf("7.1"),
+                    //ข้อ8
+                    arrayOf("8.1"),
+                    //ข้อ9
+                    arrayOf("9.1"),
+                    //ข้อ10
+                    arrayOf("10.1")
+            )
     )
 }
