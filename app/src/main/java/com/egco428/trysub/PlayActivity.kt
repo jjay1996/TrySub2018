@@ -3,13 +3,41 @@ package com.egco428.trysub
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_play.*
 
 class PlayActivity : AppCompatActivity() {
-
+    var LockId :DataSourse? = null //User Now
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_play)
+
+        //User Test
+        var database = FirebaseDatabase.getInstance().getReference("User")
+        database.addValueEventListener(object  : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot?) {
+
+                for (i in p0!!.children){
+                    val message = i.getValue(DataSourse::class.java)
+                    if ("poryou11" == message!!.username.toString() ){
+                        LockId = message
+                        textView10.text = "Name  :  ${LockId!!.name}"
+                        break
+                    }
+
+                }
+
+            }
+        })
+        //End User Test
+
 
         setTitle("                               Try-Sub")
 
