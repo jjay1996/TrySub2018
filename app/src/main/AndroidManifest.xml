@@ -16,11 +16,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Create_Login.choose" />
+        <activity android:name=".Create_Login.Create" />
         <activity android:name=".PlayActivity" />
         <activity android:name=".HighScoreActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".SelectGameActivity" />
+<<<<<<< HEAD
         <activity android:name=".QuestionAnswerActivity"></activity>
+=======
+        <activity android:name=".Create_Login.login" />
+>>>>>>> f1f1e8b38c09177bcab6ed0fb22deaca438f2273
     </application>
 
 </manifest>
