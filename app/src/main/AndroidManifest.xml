@@ -19,7 +19,8 @@
         <activity android:name=".PlayActivity" />
         <activity android:name=".HighScoreActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".SelectGameActivity"></activity>
+        <activity android:name=".SelectGameActivity" />
+        <activity android:name=".Mini_Game.minigame"></activity>
     </application>
 
 </manifest>
