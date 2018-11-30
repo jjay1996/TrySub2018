@@ -18,6 +18,7 @@ class SelectGameActivity : AppCompatActivity() {
 
         level1Btn.setOnClickListener{
             val intent = Intent(this@SelectGameActivity,QuestionAnswerActivity::class.java)
+            intent.putExtra("Level","0")
             startActivity(intent)
         }
     }

@@ -18,18 +18,20 @@ class QuestionAnswerActivity : AppCompatActivity() {
     var objects:QuestionAnswer = QuestionAnswer()
     var score:Int = 0 // คะแนน
     var noQuestion:Int = 0 // ข้อที่ทำอยู่
-
+    var noLevel:Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question_answer)
+
+        noLevel = intent.getStringExtra("Level").toInt()
 
         noQATextView.text = ("Question " + (noQuestion+1) + "Score :" + score)
         updateQuestion(noQuestion)
 
         //ปุ่มคำตอบ1
         answ1btn.setOnClickListener {
-            if(answ1btn.text.toString() == objects.CorrectAnswer[0][noQuestion][0]){
+            if(answ1btn.text.toString() == objects.CorrectAnswer[noLevel][noQuestion][0]){
                 // ตอบถูก
                 answ1btn.setBackgroundColor(Color.GREEN)
                 score++
@@ -41,7 +43,6 @@ class QuestionAnswerActivity : AppCompatActivity() {
             }else{
                 // ตอบผิด
                 answ1btn.setBackgroundColor(Color.RED)
-                answerText.text = objects.CorrectAnswer[0][noQuestion][0]
 
                 // ล็อคปุ่มไม่ให้กด
                 answ1btn.isEnabled = false
@@ -52,17 +53,20 @@ class QuestionAnswerActivity : AppCompatActivity() {
                 noQuestion++
                 if(noQuestion>9){
                     Toast.makeText(this,"End Your score $score",Toast.LENGTH_SHORT).show()
-                    val intentToSelectLevel = Intent(this@QuestionAnswerActivity,SelectGameActivity::class.java)
+                    val intentToSelectLevel = Intent(this@QuestionAnswerActivity,ConcludeScoreActivity::class.java)
+                    intentToSelectLevel.putExtra("Score", score.toString())
                     startActivity(intentToSelectLevel)
+                }else if(noQuestion<=9) {
+
+                    updateQuestion(noQuestion)
                 }
-                updateQuestion(noQuestion)
             }
         }
         //ปุ่มคำตอบ2
         answ2btn.setOnClickListener {
-            if(answ2btn.text.toString() == objects.CorrectAnswer[0][noQuestion][0]){
+            if(answ2btn.text.toString() == objects.CorrectAnswer[noLevel][noQuestion][0]){
                 //ตอบถูก
-                answ1btn.setBackgroundColor(Color.GREEN)
+                answ2btn.setBackgroundColor(Color.GREEN)
                 score++
 
                 // ล็อคปุ่มไม่ให้กด
@@ -72,7 +76,6 @@ class QuestionAnswerActivity : AppCompatActivity() {
             }else {
                 //ตอบผิด
                 answ2btn.setBackgroundColor(Color.RED)
-                answerText.text = objects.CorrectAnswer[0][noQuestion][0]
 
                 // ล็อคปุ่มไม่ให้กด
                 answ1btn.isEnabled = false
@@ -83,15 +86,17 @@ class QuestionAnswerActivity : AppCompatActivity() {
                 noQuestion++
                 if(noQuestion>9){
                     Toast.makeText(this,"End Your score $score",Toast.LENGTH_SHORT).show()
-                    val intentToSelectLevel = Intent(this@QuestionAnswerActivity,SelectGameActivity::class.java)
+                    val intentToSelectLevel = Intent(this@QuestionAnswerActivity,ConcludeScoreActivity::class.java)
+                    intentToSelectLevel.putExtra("Score", score.toString())
                     startActivity(intentToSelectLevel)
+                }else if(noQuestion<=9) {
+                    updateQuestion(noQuestion)
                 }
-                updateQuestion(noQuestion)
             }
         }
         //ปุ่มคำตอบ3
         answ3btn.setOnClickListener {
-            if(answ3btn.text.toString() == objects.CorrectAnswer[0][noQuestion][0]){
+            if(answ3btn.text.toString() == objects.CorrectAnswer[noLevel][noQuestion][0]){
                 //ตอบถูก
                 answ3btn.setBackgroundColor(Color.GREEN)
                 score++
@@ -102,8 +107,7 @@ class QuestionAnswerActivity : AppCompatActivity() {
                 answ3btn.isEnabled = false
             }else {
                 //ตอบผิด
-                answ1btn.setBackgroundColor(Color.RED)
-                answerText.text = objects.CorrectAnswer[0][noQuestion][0]
+                answ3btn.setBackgroundColor(Color.RED)
 
                 // ล็อคปุ่มไม่ให้กด
                 answ1btn.isEnabled = false
@@ -114,20 +118,24 @@ class QuestionAnswerActivity : AppCompatActivity() {
                 noQuestion++
                 if(noQuestion>9){
                     Toast.makeText(this,"End Your score $score",Toast.LENGTH_SHORT).show()
-                    val intentToSelectLevel = Intent(this@QuestionAnswerActivity,SelectGameActivity::class.java)
+                    val intentToSelectLevel = Intent(this@QuestionAnswerActivity,ConcludeScoreActivity::class.java)
+                    intentToSelectLevel.putExtra("Score", score.toString())
                     startActivity(intentToSelectLevel)
+                }else if(noQuestion<=9) {
+                    updateQuestion(noQuestion)
                 }
-                updateQuestion(noQuestion)
             }
         }
     }
 
     fun updateQuestion(a:Int){
+
         noQATextView.text = ("Question ${a+1} Score : $score")
-        questionTextView.text = objects.MyQuestion[0][a][0]
-        answ1btn.text = objects.MyChoice[0][a][0].toString()
-        answ2btn.text = objects.MyChoice[0][a][1].toString()
-        answ3btn.text = objects.MyChoice[0][a][2].toString()
+
+        questionTextView.text = objects.MyQuestion[noLevel][a][0]
+        answ1btn.text = objects.MyChoice[noLevel][a][0].toString()
+        answ2btn.text = objects.MyChoice[noLevel][a][1].toString()
+        answ3btn.text = objects.MyChoice[noLevel][a][2].toString()
 
         answ1btn.setBackgroundColor(Color.LTGRAY)
         answ2btn.setBackgroundColor(Color.LTGRAY)
