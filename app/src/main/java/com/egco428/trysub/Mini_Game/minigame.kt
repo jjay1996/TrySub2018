@@ -29,17 +29,24 @@ class minigame : AppCompatActivity(),SensorEventListener {
     private var stopShake = false
 
     private var animate:Animation? = null
-    private var egg:ImageView? = null
+    private var animate2:Animation? = null
+    private var animate3:Animation? = null
+    private var animate4:Animation? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_minigame)
 
-        //do animation on egg
-        egg = findViewById(R.id.miniEgg)
-        animate = AnimationUtils.loadAnimation(this,R.anim.frombutton)
-        egg!!.animation = animate
+        //do animation
+        animate = AnimationUtils.loadAnimation(this,R.anim.fromleft)
+        animate2 = AnimationUtils.loadAnimation(this,R.anim.fromright)
+        animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
+        animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
+        miniDice1!!.animation = animate
+        miniDice2!!.animation = animate2
+        miniTitle!!.animation = animate3
+        miniShake!!.animation = animate4
 
         //set variable for sensor accelerometer system
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -53,6 +60,10 @@ class minigame : AppCompatActivity(),SensorEventListener {
         if(event!!.sensor.type == Sensor.TYPE_ACCELEROMETER){
             getAccelerometer(event)
         }
+    }
+
+    private fun randomDiceValue():Int{
+        return Random().nextInt(6)+1
     }
 
     private fun getAccelerometer(event: SensorEvent?){
@@ -77,7 +88,7 @@ class minigame : AppCompatActivity(),SensorEventListener {
                                 if(!isStop){
                                     count+=1
                                     var randomScore: Int = Random().nextInt(10 + 1)
-                                    miniScore.text = "Score : " + randomScore.toString()
+                                    miniShake.text = "Score : " + randomScore.toString()
                                     if(count==20) {
                                         sleepTime=300
                                     } else if(count==30) {
@@ -101,32 +112,6 @@ class minigame : AppCompatActivity(),SensorEventListener {
         }
     }
 
-    private fun shake(){
-        /*if(isShake) {
-            var stopTime:Long = 0
-            var seed = 0
-            //var lastTime = System.currentTimeMillis()
-            //var actualTime = null
-            while(true) {
-                Random().setSeed(0)
-                seed = ((seed+1)%10)
-                //Log.d("test","seed : "+seed)
-                var randomScore: Int = Random().nextInt(10 + 1)
-                miniScore.text = "Score : " + randomScore.toString()
-                SystemClock.sleep(1000);
-                Log.d("test",randomScore.toString())
-                //Log.d("test",System.currentTimeMillis().toString())
-                stopTime = System.currentTimeMillis()
-                if(stopTime-startShake >=3000) {
-                    //var randomScore: Int = Random().nextInt((10 + 1))
-                    //miniScore.text = "Score : " + randomScore.toString()
-                    Log.d("test","ok")
-                    break
-                }
-            }
-        }*/
-
-    }
     override fun onPause() {
         super.onPause()
         sensorManager!!.unregisterListener(this)

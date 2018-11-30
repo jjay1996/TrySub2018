@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
         setTitle("                               Try-Sub")
         startBtn.setOnClickListener {
-            val t = Intent(this,PlayActivity::class.java)
+            val t = Intent(this,minigame::class.java)
             //val t = Intent(this,choose::class.java)
             startActivity(t)
         }
