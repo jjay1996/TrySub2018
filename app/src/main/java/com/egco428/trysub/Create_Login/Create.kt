@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
-import com.egco428.trysub.DataSourse
 import com.egco428.trysub.PlayActivity
 import com.egco428.trysub.R
 import com.google.firebase.database.*
