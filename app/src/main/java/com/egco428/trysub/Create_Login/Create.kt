@@ -216,6 +216,8 @@ class Create : AppCompatActivity() {
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK){
             val extras = data!!.extras
             val photo = extras.get("data") as Bitmap
+            var phot =MediaStore.Images.Media.getContentUri(photo.toString())
+            Log.d("Qa","$phot")
 
             //photoImageView.setImageBitmap(photo)
 

@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        LockId=test()
+        test()
 
 
         setTitle("                               Try-Sub")
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    @Synchronized fun test(): DataSourse{
+    fun test(){
         var LockIdTest:DataSourse? = null
         var database = FirebaseDatabase.getInstance().getReference("User")
         database.addValueEventListener(object  : ValueEventListener {
@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
         //End User Test
-    return LockIdTest!!
+
     }
 
     fun sendToFirebase(){
