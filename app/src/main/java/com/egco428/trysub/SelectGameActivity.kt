@@ -14,7 +14,7 @@ class SelectGameActivity : AppCompatActivity() {
         setContentView(R.layout.activity_select_game)
 
         setTitle("                   Try-Sub")
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
 
         level1Btn.setOnClickListener{
             val intent = Intent(this@SelectGameActivity,QuestionAnswerActivity::class.java)
@@ -23,19 +23,4 @@ class SelectGameActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.select_game_menu,menu)
-        return true
-    }
-
-    //คล้ายๆonClick
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        val id = item!!.getItemId()
-
-        if(id == android.R.id.home){
-            finish()
-        }
-        return super.onOptionsItemSelected(item)
-
-    }
 }

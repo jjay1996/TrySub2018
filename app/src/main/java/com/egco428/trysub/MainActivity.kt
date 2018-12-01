@@ -4,6 +4,7 @@ package com.egco428.trysub
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.egco428.trysub.Mini_Game.minigame
 import android.util.Log
 import com.egco428.trysub.Create_Login.choose
 import com.google.firebase.database.DataSnapshot
