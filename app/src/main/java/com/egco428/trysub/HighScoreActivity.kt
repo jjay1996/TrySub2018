@@ -4,11 +4,17 @@ import android.content.Context
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.BaseAdapter
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.activity_high_score.*
 import kotlinx.android.synthetic.main.row_high_score.view.*
 
 class HighScoreActivity : AppCompatActivity() {
@@ -19,6 +25,27 @@ class HighScoreActivity : AppCompatActivity() {
 
         setTitle("                    Try-Sub")
         //supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        backFromHSBtn.setOnClickListener {
+            finish()
+        }
+
+
+        var database = FirebaseDatabase.getInstance().getReference("User/-LScPrxbemODH7AsIJ86")
+        database.addValueEventListener(object  : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot?) {
+                Log.d("test",p0.toString())
+                /*for (i in p0!!.children){
+                    Log.d("test",i.child("username").value.toString())
+                    Log.d("test",i.child("user_mission").child("unlock_level").value.toString())
+                }*/
+            }
+        })
+
 
         val listView = findViewById<ListView>(R.id.highscoreList)
 
@@ -54,8 +81,6 @@ class HighScoreActivity : AppCompatActivity() {
         }
 
         override fun getView(position: Int, convertView: View?, viewGroup: ViewGroup?): View {
-            val whiteColor = Color.parseColor("#FFFFFF")
-            val greyColor = Color.parseColor("#E0E0E0")
             val rowMain: View
             if(convertView == null){
                 val layoutInflator = LayoutInflater.from(viewGroup!!.context)
