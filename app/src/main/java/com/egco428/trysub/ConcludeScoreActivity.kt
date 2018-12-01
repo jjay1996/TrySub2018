@@ -13,37 +13,21 @@ import kotlinx.android.synthetic.main.activity_conclude_score.*
 class ConcludeScoreActivity : AppCompatActivity() {
 
     var LockId :DataSourse? = null //User Now
-
+    var score = 0
+    var Nowlevel = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conclude_score)
 
-        var score = intent.getStringExtra("Score").toInt()
+        //เรียกFB
+        test()
+
+        score = intent.getStringExtra("Score").toInt()
+        Nowlevel = intent.getStringExtra("nLevel").toInt()
         concludeScoreTextView.text = score.toString()
-        val Nowlevel = intent.getStringExtra("nLevel").toInt()
 
-        //Upload to Firebase
-        var database = FirebaseDatabase.getInstance().getReference("User")
-        database.addValueEventListener(object  : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError?) {
 
-            }
 
-            override fun onDataChange(p0: DataSnapshot?) {
-                if (LockId == null) {
-                    for (i in p0!!.children) {
-                        val message = i.getValue(DataSourse::class.java)
-
-                        if ("poryou11" == message!!.username.toString()) {
-                            LockId = message
-                            ConcludeScoreAndNowLevel(score, Nowlevel)
-                            break
-                        }
-                    }
-                }
-            }
-        })
-        //End User Test
 
         //คะแนนน้อยกว่า8ห้ามเล่นMiniGameกับกดปุ่่มnextLevelBtn
         if(score<8){
@@ -83,21 +67,82 @@ class ConcludeScoreActivity : AppCompatActivity() {
     }
 
     fun ConcludeScoreAndNowLevel(score:Int,Nowlevel:Int){
+
         if(LockId!=null) {
-            var level = FirebaseDatabase.getInstance().getReference("User/${LockId!!.id}/user_mission/mission/level${Nowlevel + 1}/score")
-            level.setValue(score.toString());
+            //pushคะแนนขึ้นFireBase
+            Log.d("check old value","${LockId!!.score[Nowlevel]}")
+            if(score > LockId!!.score[Nowlevel]) {
+                var scoreToFB = FirebaseDatabase.getInstance().getReference("User/${LockId!!.id}/user_mission/mission/${LockId!!.mission_id[Nowlevel]}/score")
+                scoreToFB.setValue(score.toString())
+            }
         }
 
+        //เช็คunlock mission
         if(score>=8){
             if(Nowlevel<=8) {
+                Log.d("check FB","get 2")
                 val unlock = FirebaseDatabase.getInstance().getReference("User/${LockId!!.id}/user_mission/unlock_level")
                 unlock.setValue((Nowlevel + 2).toString())
             }
             if(Nowlevel==9){
+                Log.d("check FB","get 2")
                 val unlock = FirebaseDatabase.getInstance().getReference("User/${LockId!!.id}/user_mission/unlock_level")
                 unlock.setValue((Nowlevel + 1).toString())
             }
         }
 
     }
+
+    fun test(){
+
+        var database = FirebaseDatabase.getInstance().getReference("User")
+        database.addValueEventListener(object  : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+            }
+            override fun onDataChange(p0: DataSnapshot?) {
+                if (LockId == null){
+                    for (i in p0!!.children) {
+
+                        val message = i.getValue(DataSourse::class.java)
+                        if ("poryou12" == message!!.username.toString()) {
+                            LockId = message
+                            var check=1
+
+                            var databasetest = FirebaseDatabase.getInstance().getReference("User/${LockId!!.id}/user_mission/mission")
+                            databasetest.addValueEventListener(object : ValueEventListener {
+                                override fun onCancelled(p0: DatabaseError?) {}
+
+                                override fun onDataChange(p0: DataSnapshot?) {
+                                    if(check <=10){
+                                        for (i in p0!!.children) {
+                                            val message: DataSourceSupport? = i.getValue(DataSourceSupport::class.java)
+
+                                            if ("poryou12" == LockId!!.username.toString()) {
+                                                LockId!!.score[message!!.level.toInt() - 1] = message!!.score.toInt()
+                                                LockId!!.mini_score[message!!.level.toInt() - 1] = message!!.mini_score.toInt()
+                                                LockId!!.total[message!!.level.toInt() - 1] = message!!.total.toInt()
+                                                LockId!!.mission_id[message!!.level.toInt() - 1] = message!!.id
+                                                check++
+                                            }
+                                        }
+                                    }
+                                    ConcludeScoreAndNowLevel(score,Nowlevel)
+
+                                }
+
+                            })
+                            break
+                        }
+
+                    }
+                }
+
+            }
+        })
+        //End User Test
+
+
+
+    }
+
 }

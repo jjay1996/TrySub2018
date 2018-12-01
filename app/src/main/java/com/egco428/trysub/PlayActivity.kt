@@ -48,6 +48,11 @@ class PlayActivity : AppCompatActivity() {
 
         setTitle("                               Try-Sub")
 
+        learnBtn.setOnClickListener {
+            val intenToLearn = Intent(this,LearnWordActivity::class.java)
+            startActivity(intenToLearn)
+        }
+
         startGameBtn.setOnClickListener {
             val intentToSelectGame = Intent(this,SelectGameActivity::class.java)
             startActivity(intentToSelectGame)
