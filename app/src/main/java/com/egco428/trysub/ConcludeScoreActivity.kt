@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.egco428.trysub.Mini_Game.minigame
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -19,15 +20,12 @@ class ConcludeScoreActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conclude_score)
 
-        //เรียกFB
+        //get data from FireBase
         test()
 
         score = intent.getStringExtra("Score").toInt()
         Nowlevel = intent.getStringExtra("nLevel").toInt()
         concludeScoreTextView.text = score.toString()
-
-
-
 
         //คะแนนน้อยกว่า8ห้ามเล่นMiniGameกับกดปุ่่มnextLevelBtn
         if(score<8){
@@ -45,7 +43,8 @@ class ConcludeScoreActivity : AppCompatActivity() {
 
         //กดไปเล่น MiniGame
         mininGameImage.setOnClickListener {
-
+            val intent = Intent(this@ConcludeScoreActivity,minigame::class.java)
+            startActivity(intent)
         }
 
         backToSelectLevelBtn.setOnClickListener {
@@ -90,7 +89,6 @@ class ConcludeScoreActivity : AppCompatActivity() {
                 unlock.setValue((Nowlevel + 1).toString())
             }
         }
-
     }
 
     fun test(){
@@ -127,22 +125,15 @@ class ConcludeScoreActivity : AppCompatActivity() {
                                         }
                                     }
                                     ConcludeScoreAndNowLevel(score,Nowlevel)
-
                                 }
-
                             })
                             break
                         }
-
                     }
                 }
-
             }
         })
         //End User Test
-
-
-
     }
 
 }
