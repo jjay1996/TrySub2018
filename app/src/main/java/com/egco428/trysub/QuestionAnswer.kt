@@ -8,233 +8,233 @@ class QuestionAnswer {
             //ข้อ1
             arrayOf(
                 //ข้อ1
-                arrayOf("1. Ant"),
+                "1. Ant",
                 //ข้อ2
-                arrayOf("2. Bee"),
+                "2. Bee",
                 //ข้อ3
-                arrayOf("3. Cat"),
+                "3. Cat",
                 //ข้อ4
-                arrayOf("4. Dog"),
+                "4. Dog",
                 //ข้อ5
-                arrayOf("5. Flower"),
+                "5. Flower",
                 //ข้อ6
-                arrayOf("6. Ear"),
+                "6. Ear",
                 //ข้อ7
-                arrayOf("7. Mouth"),
+                "7. Mouth",
                 //ข้อ8
-                arrayOf("8. Leg"),
+                "8. Leg",
                 //ข้อ9
-                arrayOf("9. Yellow"),
+                "9. Yellow",
                 //ข้อ10
-                arrayOf("10. Zoo")
+                "10. Zoo"
             ),
             //ข้อ2
             arrayOf(
                     //ข้อ1
-                    arrayOf("1. Answer"),
+                    "1. Answer",
                     //ข้อ2
-                    arrayOf("2. Back"),
+                    "2. Back",
                     //ข้อ3
-                    arrayOf("3. Because"),
+                    "3. Because",
                     //ข้อ4
-                    arrayOf("4. Earth"),
+                    "4. Earth",
                     //ข้อ5
-                    arrayOf("5. Money"),
+                    "5. Money",
                     //ข้อ6
-                    arrayOf("6. Center"),
+                    "6. Center",
                     //ข้อ7
-                    arrayOf("7. Live"),
+                    "7. Live",
                     //ข้อ8
-                    arrayOf("8. Paper"),
+                    "8. Paper",
                     //ข้อ9
-                    arrayOf("9. Ready"),
+                    "9. Ready",
                     //ข้อ10
-                    arrayOf("10. Table")
+                    "10. Table"
             ),
             //ข้อ3
             arrayOf(
                     //ข้อ1
-                    arrayOf("1. Air"),
+                    "1. Air",
                     //ข้อ2
-                    arrayOf("2. Best"),
+                    "2. Best",
                     //ข้อ3
-                    arrayOf("3. Complete"),
+                    "3. Complete",
                     //ข้อ4
-                    arrayOf("4. During"),
+                    "4. During",
                     //ข้อ5
-                    arrayOf("5. Enough"),
+                    "5. Enough",
                     //ข้อ6
-                    arrayOf("6. Family"),
+                    "6. Family",
                     //ข้อ7
-                    arrayOf("7. Happen"),
+                    "7. Happen",
                     //ข้อ8
-                    arrayOf("8. Remember"),
+                    "8. Remember",
                     //ข้อ9
-                    arrayOf("9. Without"),
+                    "9. Without",
                     //ข้อ10
-                    arrayOf("10. Together")
+                    "10. Together"
             ),
             //ข้อ4
             arrayOf(
                     //ข้อ1
-                    arrayOf("1. Build"),
+                    "1. Build",
                     //ข้อ2
-                    arrayOf("2. Differ"),
+                    "2. Differ",
                     //ข้อ3
-                    arrayOf("3. Even"),
+                    "3. Even",
                     //ข้อ4
-                    arrayOf("4. Govern"),
+                    "4. Govern",
                     //ข้อ5
-                    arrayOf("5. Letter"),
+                    "5. Letter",
                     //ข้อ6
-                    arrayOf("6. Measure"),
+                    "6. Measure",
                     //ข้อ7
-                    arrayOf("7. Mountain"),
+                    "7. Mountain",
                     //ข้อ8
-                    arrayOf("8. Often"),
+                    "8. Often",
                     //ข้อ9
-                    arrayOf("9. Pattern"),
+                    "9. Pattern",
                     //ข้อ10
-                    arrayOf("10. Product")
+                    "10. Product"
             ),
             //ข้อ5
             arrayOf(
                     //ข้อ1
-                    arrayOf("1. About"),
+                    "1. About",
                     //ข้อ2
-                    arrayOf("2. Hate"),
+                    "2. Hate",
                     //ข้อ3
-                    arrayOf("3. Little"),
+                    "3. Little",
                     //ข้อ4
-                    arrayOf("4. Through"),
+                    "4. Through",
                     //ข้อ5
-                    arrayOf("5. Complain"),
+                    "5. Complain",
                     //ข้อ6
-                    arrayOf("6. Department"),
+                    "6. Department",
                     //ข้อ7
-                    arrayOf("7. Frequent"),
+                    "7. Frequent",
                     //ข้อ8
-                    arrayOf("8. Geography"),
+                    "8. Geography",
                     //ข้อ9
-                    arrayOf("9. Immediate"),
+                    "9. Immediate",
                     //ข้อ10
-                    arrayOf("10. Medicine")
+                    "10. Medicine"
             ),
             //ข้อ6
             arrayOf(
                     //ข้อ1
-                    arrayOf("1. Assist"),
+                    "1. Assist",
                     //ข้อ2
-                    arrayOf("2. Biograph"),
+                    "2. Biograph",
                     //ข้อ3
-                    arrayOf("3. Boycott"),
+                    "3. Boycott",
                     //ข้อ4
-                    arrayOf("4. Candidate"),
+                    "4. Candidate",
                     //ข้อ5
-                    arrayOf("5. Decorate"),
+                    "5. Decorate",
                     //ข้อ6
-                    arrayOf("6. Empire"),
+                    "6. Empire",
                     //ข้อ7
-                    arrayOf("7. Finance"),
+                    "7. Finance",
                     //ข้อ8
-                    arrayOf("8. Garbage"),
+                    "8. Garbage",
                     //ข้อ9
-                    arrayOf("9. Independent"),
+                    "9. Independent",
                     //ข้อ10
-                    arrayOf("10. Massage")
+                    "10. Massage"
             ),
             //ข้อ7
             arrayOf(
                     //ข้อ1
-                    arrayOf("1. complicate"),
+                    "1. complicate",
                     //ข้อ2
-                    arrayOf("2. cooperate"),
+                    "2. cooperate",
                     //ข้อ3
-                    arrayOf("3. economic"),
+                    "3. economic",
                     //ข้อ4
-                    arrayOf("4. hesitate"),
+                    "4. hesitate",
                     //ข้อ5
-                    arrayOf("5. handle"),
+                    "5. handle",
                     //ข้อ6
-                    arrayOf("6. hostage"),
+                    "6. hostage",
                     //ข้อ7
-                    arrayOf("7. hut"),
+                    "7. hut",
                     //ข้อ8
-                    arrayOf("8. insecure"),
+                    "8. insecure",
                     //ข้อ9
-                    arrayOf("9. intercept"),
+                    "9. intercept",
                     //ข้อ10
-                    arrayOf("10. investigate")
+                    "10. investigate"
 
             ),
             //ข้อ8
             arrayOf(
                     //ข้อ1
-                    arrayOf("1. Evaluate"),
+                    "1. Evaluate",
                     //ข้อ2
-                    arrayOf("2. Fatigue"),
+                    "2. Fatigue",
                     //ข้อ3
-                    arrayOf("3. Glance"),
+                    "3. Glance",
                     //ข้อ4
-                    arrayOf("4. Helmet"),
+                    "4. Helmet",
                     //ข้อ5
-                    arrayOf("5. Humor"),
+                    "5. Humor",
                     //ข้อ6
-                    arrayOf("6. Instinct "),
+                    "6. Instinct ",
                     //ข้อ7
-                    arrayOf("7. Phenomenon"),
+                    "7. Phenomenon",
                     //ข้อ8
-                    arrayOf("8. Prototype"),
+                    "8. Prototype",
                     //ข้อ9
-                    arrayOf("9. Rampage"),
+                    "9. Rampage",
                     //ข้อ10
-                    arrayOf("10. Scandal")
+                    "10. Scandal"
             ),
             //ข้อ9
             arrayOf(
                     //ข้อ1
-                    arrayOf("1. Rectangle"),
+                    "1. Rectangle",
                     //ข้อ2
-                    arrayOf("2. Paramount"),
+                    "2. Paramount",
                     //ข้อ3
-                    arrayOf("3. Nominee"),
+                    "3. Nominee",
                     //ข้อ4
-                    arrayOf("4. Mortgage"),
+                    "4. Mortgage",
                     //ข้อ5
-                    arrayOf("5. Lightning"),
+                    "5. Lightning",
                     //ข้อ6
-                    arrayOf("6. Insufficient"),
+                    "6. Insufficient",
                     //ข้อ7
-                    arrayOf("7. Illustrate"),
+                    "7. Illustrate",
                     //ข้อ8
-                    arrayOf("8. Harass"),
+                    "8. Harass",
                     //ข้อ9
-                    arrayOf("9. Surround"),
+                    "9. Surround",
                     //ข้อ10
-                    arrayOf("10. Suppress")
+                    "10. Suppress"
             ),
             //ข้อ10
             arrayOf(
                     //ข้อ1
-                    arrayOf("1. Rational"),
+                    "1. Rational",
                     //ข้อ2
-                    arrayOf("2. Prostitute"),
+                    "2. Prostitute",
                     //ข้อ3
-                    arrayOf("3. Prejudice"),
+                    "3. Prejudice",
                     //ข้อ4
-                    arrayOf("4. Pandemic"),
+                    "4. Pandemic",
                     //ข้อ5
-                    arrayOf("5. Naughty"),
+                    "5. Naughty",
                     //ข้อ6
-                    arrayOf("6. Mandate"),
+                    "6. Mandate",
                     //ข้อ7
-                    arrayOf("7. Jeopardy"),
+                    "7. Jeopardy",
                     //ข้อ8
-                    arrayOf("8. Self-employed"),
+                    "8. Self-employed",
                     //ข้อ9
-                    arrayOf("9. Military service"),
+                    "9. Military service",
                     //ข้อ10
-                    arrayOf("10. Entrepreneur")
+                    "10. Entrepreneur"
             )
     )
 
@@ -375,232 +375,232 @@ class QuestionAnswer {
     public val CorrectAnswer = arrayOf(
             arrayOf(
                 //ข้อ1
-                arrayOf("มด"),
+                "มด",
                 //ข้อ2
-                arrayOf("ผึ้ง"),
+                "ผึ้ง",
                 //ข้อ3
-                arrayOf("แมว"),
+                "แมว",
                 //ข้อ4
-                arrayOf("สุนัข"),
+                "สุนัข",
                 //ข้อ5
-                arrayOf("ดอกไม้"),
+                "ดอกไม้",
                 //ข้อ6
-                arrayOf("หู"),
+                "หู",
                 //ข้อ7
-                arrayOf("ปาก"),
+                "ปาก",
                 //ข้อ8
-                arrayOf("ขา"),
+                "ขา",
                 //ข้อ9
-                arrayOf("สีเหลือง"),
+                "สีเหลือง",
                 //ข้อ10
-                arrayOf("สวนสัตว์")
+                "สวนสัตว์"
             ),
             //ข้อ2
             arrayOf(
                     //ข้อ1
-                    arrayOf("คำตอบ"),
+                    "คำตอบ",
                     //ข้อ2
-                    arrayOf("กลับ"),
+                    "กลับ",
                     //ข้อ3
-                    arrayOf("เพราะว่า"),
+                    "เพราะว่า",
                     //ข้อ4
-                    arrayOf("โลก"),
+                    "โลก",
                     //ข้อ5
-                    arrayOf("เงิน"),
+                    "เงิน",
                     //ข้อ6
-                    arrayOf("ตรงกลาง"),
+                    "ตรงกลาง",
                     //ข้อ7
-                    arrayOf("อาศัย"),
+                    "อาศัย",
                     //ข้อ8
-                    arrayOf("กระดาษ"),
+                    "กระดาษ",
                     //ข้อ9
-                    arrayOf("พร้อม"),
+                    "พร้อม",
                     //ข้อ10
-                    arrayOf("โต๊ะ")
+                    "โต๊ะ"
             ),
             //ข้อ3
             arrayOf(
                     //ข้อ1
-                    arrayOf("อากาศ"),
+                    "อากาศ",
                     //ข้อ2
-                    arrayOf("ดีที่สุด"),
+                    "ดีที่สุด",
                     //ข้อ3
-                    arrayOf("สมบูรณ์"),
+                    "สมบูรณ์",
                     //ข้อ4
-                    arrayOf("ช่วงระหว่าง"),
+                    "ช่วงระหว่าง",
                     //ข้อ5
-                    arrayOf("เพียงพอ"),
+                    "เพียงพอ",
                     //ข้อ6
-                    arrayOf("ครอบครัว"),
+                    "ครอบครัว",
                     //ข้อ7
-                    arrayOf("เกิดขึ้น"),
+                    "เกิดขึ้น",
                     //ข้อ8
-                    arrayOf("จดจำ"),
+                    "จดจำ",
                     //ข้อ9
-                    arrayOf("ปราศจาก"),
+                    "ปราศจาก",
                     //ข้อ10
-                    arrayOf("ด้วยกัน")
+                    "ด้วยกัน"
             ),
             //ข้อ4
             arrayOf(
                     //ข้อ1
-                    arrayOf("สร้าง"),
+                    "สร้าง",
                     //ข้อ2
-                    arrayOf("แตกต่าง"),
+                    "แตกต่าง",
                     //ข้อ3
-                    arrayOf("แม้ว่า"),
+                    "แม้ว่า",
                     //ข้อ4
-                    arrayOf("ปกครอง"),
+                    "ปกครอง",
                     //ข้อ5
-                    arrayOf("จดหมาย"),
+                    "จดหมาย",
                     //ข้อ6
-                    arrayOf("วัด"),
+                    "วัด",
                     //ข้อ7
-                    arrayOf("ภูเขา"),
+                    "ภูเขา",
                     //ข้อ8
-                    arrayOf("บ่อยครั้ง"),
+                    "บ่อยครั้ง",
                     //ข้อ9
-                    arrayOf("รูปแบบ"),
+                    "รูปแบบ",
                     //ข้อ10
-                    arrayOf("ผลผลิต")
+                    "ผลผลิต"
             ),
             //ข้อ5
             arrayOf(
                     //ข้อ1
-                    arrayOf("เกี่ยวกับ"),
+                    "เกี่ยวกับ",
                     //ข้อ2
-                    arrayOf("เกลียด"),
+                    "เกลียด",
                     //ข้อ3
-                    arrayOf("เล็กน้อย"),
+                    "เล็กน้อย",
                     //ข้อ4
-                    arrayOf("ผ่าน"),
+                    "ผ่าน",
                     //ข้อ5
-                    arrayOf("บ่น"),
+                    "บ่น",
                     //ข้อ6
-                    arrayOf("แผนก"),
+                    "แผนก",
                     //ข้อ7
-                    arrayOf("ความถี่"),
+                    "ความถี่",
                     //ข้อ8
-                    arrayOf("ภูมิศาสตร์"),
+                    "ภูมิศาสตร์",
                     //ข้อ9
-                    arrayOf("ทันที"),
+                    "ทันที",
                     //ข้อ10
-                    arrayOf("ยา")
+                    "ยา"
             ),
             //ข้อ6
             arrayOf(
                     //ข้อ1
-                    arrayOf("ช่วยเหลือ"),
+                    "ช่วยเหลือ",
                     //ข้อ2
-                    arrayOf("ประวัติบุคคล"),
+                    "ประวัติบุคคล",
                     //ข้อ3
-                    arrayOf("คว่ำบาตร"),
+                    "คว่ำบาตร",
                     //ข้อ4
-                    arrayOf("คู่แข่ง"),
+                    "คู่แข่ง",
                     //ข้อ5
-                    arrayOf("ตกแต่ง"),
+                    "ตกแต่ง",
                     //ข้อ6
-                    arrayOf("อาณาจักร"),
+                    "อาณาจักร",
                     //ข้อ7
-                    arrayOf("การเงิน"),
+                    "การเงิน",
                     //ข้อ8
-                    arrayOf("ขยะ"),
+                    "ขยะ",
                     //ข้อ9
-                    arrayOf("อิสระ"),
+                    "อิสระ",
                     //ข้อ10
-                    arrayOf("นวด")
+                    "นวด"
             ),
             //ข้อ7
             arrayOf(
                     //ข้อ1
-                    arrayOf("ซับซ้อน"),
+                    "ซับซ้อน",
                     //ข้อ2
-                    arrayOf("ร่วมมือ"),
+                    "ร่วมมือ",
                     //ข้อ3
-                    arrayOf("เศรษฐกิจ"),
+                    "เศรษฐกิจ",
                     //ข้อ4
-                    arrayOf("ลังเล"),
+                    "ลังเล",
                     //ข้อ5
-                    arrayOf("ควบคุม"),
+                    "ควบคุม",
                     //ข้อ6
-                    arrayOf("ตัวประกัน"),
+                    "ตัวประกัน",
                     //ข้อ7
-                    arrayOf("กระท่อม"),
+                    "กระท่อม",
                     //ข้อ8
-                    arrayOf("ไม่มั่นคง"),
+                    "ไม่มั่นคง",
                     //ข้อ9
-                    arrayOf("ขวางกั้น"),
+                    "ขวางกั้น",
                     //ข้อ10
-                    arrayOf("สืบสวน")
+                    "สืบสวน"
             ),
             //ข้อ8
             arrayOf(
                     //ข้อ1
-                    arrayOf("ประเมิน"),
+                    "ประเมิน",
                     //ข้อ2
-                    arrayOf("เหนื่อยล้า"),
+                    "เหนื่อยล้า",
                     //ข้อ3
-                    arrayOf("ชำเลือง"),
+                    "ชำเลือง",
                     //ข้อ4
-                    arrayOf("หมวกกันน็อค"),
+                    "หมวกกันน็อค",
                     //ข้อ5
-                    arrayOf("อารมณ์ขัน"),
+                    "อารมณ์ขัน",
                     //ข้อ6
-                    arrayOf("สัญชาตญาณ"),
+                    "สัญชาตญาณ",
                     //ข้อ7
-                    arrayOf("ปรากฏการณ์"),
+                    "ปรากฏการณ์",
                     //ข้อ8
-                    arrayOf("ต้นแบบ"),
+                    "ต้นแบบ",
                     //ข้อ9
-                    arrayOf("เกรี้ยวกราด"),
+                    "เกรี้ยวกราด",
                     //ข้อ10
-                    arrayOf("1ื้อฉาว")
+                    "1ื้อฉาว"
             ),
             //ข้อ9
             arrayOf(
                     //ข้อ1
-                    arrayOf("สี่เหลี่ยมผืนผ้า"),
+                    "สี่เหลี่ยมผืนผ้า",
                     //ข้อ2
-                    arrayOf("ยิ่งใหญ่"),
+                    "ยิ่งใหญ่",
                     //ข้อ3
-                    arrayOf("หุ่นเชิด"),
+                    "หุ่นเชิด",
                     //ข้อ4
-                    arrayOf("จำนอง"),
+                    "จำนอง",
                     //ข้อ5
-                    arrayOf("สายฟ้า"),
+                    "สายฟ้า",
                     //ข้อ6
-                    arrayOf("ไม่เพียงพอ"),
+                    "ไม่เพียงพอ",
                     //ข้อ7
-                    arrayOf("อธิบาย"),
+                    "อธิบาย",
                     //ข้อ8
-                    arrayOf("กวนใจ"),
+                    "กวนใจ",
                     //ข้อ9
-                    arrayOf("ล้อมรอบ"),
+                    "ล้อมรอบ",
                     //ข้อ10
-                    arrayOf("ระงับ")
+                    "ระงับ"
             ),
             //ข้อ10
             arrayOf(
                     //ข้อ1
-                    arrayOf("ความมีเหตุผล"),
+                    "ความมีเหตุผล",
                     //ข้อ2
-                    arrayOf("โสเภณี"),
+                    "โสเภณี",
                     //ข้อ3
-                    arrayOf("อคติ"),
+                    "อคติ",
                     //ข้อ4
-                    arrayOf("โรคระบาด"),
+                    "โรคระบาด",
                     //ข้อ5
-                    arrayOf("ซุกซน"),
+                    "ซุกซน",
                     //ข้อ6
-                    arrayOf("คำสั่ง"),
+                    "คำสั่ง",
                     //ข้อ7
-                    arrayOf("อันตราย"),
+                    "อันตราย",
                     //ข้อ8
-                    arrayOf("ทำธุรกิจส่วนตัว"),
+                    "ทำธุรกิจส่วนตัว",
                     //ข้อ9
-                    arrayOf("การเกณฑ์ทหาร"),
+                    "การเกณฑ์ทหาร",
                     //ข้อ10
-                    arrayOf("ผู้ประกอบการ")
+                    "ผู้ประกอบการ"
             )
     )
 }
