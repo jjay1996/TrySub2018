@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        test()
+        LockId=test()
 
 
         setTitle("                               Try-Sub")
@@ -30,12 +30,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(t)
         }
 
-            val unlock = FirebaseDatabase.getInstance().getReference("User/${LockId!!.id}/user_mission/unlock_level")
-            unlock.setValue("1");
+//            val unlock = FirebaseDatabase.getInstance().getReference("User/${LockId!!.id}/user_mission/unlock_level")
+//            unlock.setValue("1");
 
     }
 
-    fun test(){
+    @Synchronized fun test(): DataSourse{
         var LockIdTest:DataSourse? = null
         var database = FirebaseDatabase.getInstance().getReference("User")
         database.addValueEventListener(object  : ValueEventListener {
@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                                             for (i in p0!!.children) {
                                                 /*Log.d("adsf", " !!:  ${i}")
                                                 Log.d("adsf", " !!!: ${p0} ")*/
-                                                val message2: DataSourseSupport? = i.getValue(DataSourseSupport::class.java)
+                                                val message2: DataSourceSupport? = i.getValue(DataSourceSupport::class.java)
 
                                                 if ("poryou12" == LockIdTest!!.username.toString()) {
                                                     LockIdTest!!.score[message2!!.level.toInt() - 1] = message2!!.score.toInt()
@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
         //End User Test
-
+    return LockIdTest!!
     }
 
     fun sendToFirebase(){

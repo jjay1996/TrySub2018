@@ -1,6 +1,6 @@
 package com.egco428.trysub
 
-class DataSourseSupport {
+class DataSourceSupport {
     var id=""
     var level = ""
     var score = ""
