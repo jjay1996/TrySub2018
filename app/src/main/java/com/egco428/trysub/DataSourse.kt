@@ -12,14 +12,9 @@ class DataSourse {
     var name = ""
     var unlock_level = 1
     var total_score =0
-    var score = Array(9,{i -> 0})
-    var mini_score = Array(9,{i -> 0})
-    var total =  Array(9,{i -> 0})
+    var score = Array(10,{i -> 0})
+    var mini_score = Array(10,{i -> 0})
+    var total =  Array(10,{i -> 0})
+    var mission_id= Array(10,{i -> ""})
 
-
-
-
-    init {
-
-    }
 }
