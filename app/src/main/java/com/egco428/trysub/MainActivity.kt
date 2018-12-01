@@ -12,16 +12,9 @@ import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
-    var LockId :DataSourse? = null //User Now
-    var Thread :Thread? = java.lang.Thread.currentThread()
-
    @Synchronized override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        test()
-
 
         setTitle("                               Try-Sub")
         startBtn.setOnClickListener {
@@ -29,82 +22,8 @@ class MainActivity : AppCompatActivity() {
             val t = Intent(this,choose::class.java)
             startActivity(t)
         }
-
-//            val unlock = FirebaseDatabase.getInstance().getReference("User/${LockId!!.id}/user_mission/unlock_level")
-//            unlock.setValue("1");
-
     }
 
-    fun test(){
-        var LockIdTest:DataSourse? = null
-        var database = FirebaseDatabase.getInstance().getReference("User")
-        database.addValueEventListener(object  : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError?) {
-            }
-            override fun onDataChange(p0: DataSnapshot?) {
-                if (LockIdTest == null){
-                    for (i in p0!!.children) {
-                        Log.d("adsf", " !!:  ${i}")
-                        Log.d("adsf", " !!!: ${p0} ")
-                        val message = i.getValue(DataSourse::class.java)
-                        if ("poryou12" == message!!.username.toString()) {
-                            LockIdTest = message
-                            var check=1
-                            var databasetest = FirebaseDatabase.getInstance().getReference("User/${LockIdTest!!.id}/user_mission/mission")
-                             databasetest.addValueEventListener(object : ValueEventListener {
-                                 override fun onCancelled(p0: DatabaseError?) {}
-
-                                 override fun onDataChange(p0: DataSnapshot?) {
-                                            if(check <=10){
-                                            for (i in p0!!.children) {
-                                                /*Log.d("adsf", " !!:  ${i}")
-                                                Log.d("adsf", " !!!: ${p0} ")*/
-                                                val message2: DataSourceSupport? = i.getValue(DataSourceSupport::class.java)
-
-                                                if ("poryou12" == LockIdTest!!.username.toString()) {
-                                                    LockIdTest!!.score[message2!!.level.toInt() - 1] = message2!!.score.toInt()
-                                                    LockIdTest!!.score[message2!!.level.toInt() - 1] = message2!!.mini_score.toInt()
-                                                    LockIdTest!!.score[message2!!.level.toInt() - 1] = message2!!.total.toInt()
-                                                    LockIdTest!!.mission_id[message2!!.level.toInt() - 1] = message2!!.id
-                                                    Log.d("adsf", " !!:  ${LockIdTest!!.score[message2!!.level.toInt() - 1]}")
-                                                    Log.d("adsf", " !!!: ${ LockIdTest!!.score[message2!!.level.toInt() - 1]} ")
-                                                    Log.d("adsf", " !!:  ${LockIdTest!!.score[message2!!.level.toInt() - 1]}")
-                                                    Log.d("adsf", " !!!: ${ LockIdTest!!.mission_id[message2!!.level.toInt() - 1] } ")
-                                                    Log.d("adsf", " !!!: ${ LockIdTest!!.unlock_level } ")
-
-                                                   check++
-                                                }
-                                            }
-                                            }
-                                     LockId = LockIdTest
-
-
-                                        }
-
-                             })
-
-                            break
-                        }
-
-                    }
-                }
-
-            }
-        })
-        //End User Test
-
-    }
-
-    fun sendToFirebase(){
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-
-
-    }
 
 
 }
