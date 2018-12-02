@@ -19,12 +19,14 @@ class QuestionAnswerActivity : AppCompatActivity() {
     var score:Int = 0 // คะแนน
     var noQuestion:Int = 0 // ข้อที่ทำอยู่
     var noLevel:Int = 0
+    var userId:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question_answer)
 
         noLevel = intent.getStringExtra("Level").toInt()
+        userId = intent.getStringExtra("keyPath")
 
         noQATextView.text = ("Question " + (noQuestion+1) + "Score :" + score)
         updateQuestion(noQuestion)
@@ -64,10 +66,11 @@ class QuestionAnswerActivity : AppCompatActivity() {
                 if(noQuestion>9){
                     //ทำครบ10ข้อ
                     Toast.makeText(this,"End Your score $score",Toast.LENGTH_SHORT).show()
-                    val intentToSelectLevel = Intent(this@QuestionAnswerActivity,ConcludeScoreActivity::class.java)
-                    intentToSelectLevel.putExtra("Score", score.toString())
-                    intentToSelectLevel.putExtra("nLevel",noLevel.toString())
-                    startActivity(intentToSelectLevel)
+                    val intentToConclude = Intent(this@QuestionAnswerActivity,ConcludeScoreActivity::class.java)
+                    intentToConclude.putExtra("Score", score.toString())
+                    intentToConclude.putExtra("nLevel",noLevel.toString())
+                    intentToConclude.putExtra("keyPath",userId)
+                    startActivity(intentToConclude)
                     finish()
                 }else if(noQuestion<=9) {
                     updateQuestion(noQuestion)
@@ -109,10 +112,11 @@ class QuestionAnswerActivity : AppCompatActivity() {
                 if(noQuestion>9){
                     //ทำครบ10ข้อ
                     Toast.makeText(this,"End Your score $score",Toast.LENGTH_SHORT).show()
-                    val intentToSelectLevel = Intent(this@QuestionAnswerActivity,ConcludeScoreActivity::class.java)
-                    intentToSelectLevel.putExtra("Score", score.toString())
-                    intentToSelectLevel.putExtra("nLevel",noLevel.toString())
-                    startActivity(intentToSelectLevel)
+                    val intentToConclude = Intent(this@QuestionAnswerActivity,ConcludeScoreActivity::class.java)
+                    intentToConclude.putExtra("Score", score.toString())
+                    intentToConclude.putExtra("nLevel",noLevel.toString())
+                    intentToConclude.putExtra("keyPath",userId)
+                    startActivity(intentToConclude)
                     finish()
                 }else if(noQuestion<=9) {
                     updateQuestion(noQuestion)
@@ -154,10 +158,11 @@ class QuestionAnswerActivity : AppCompatActivity() {
                 if(noQuestion>9){
                     //ทำครบ10ข้อ
                     Toast.makeText(this,"End Your score $score",Toast.LENGTH_SHORT).show()
-                    val intentToSelectLevel = Intent(this@QuestionAnswerActivity,ConcludeScoreActivity::class.java)
-                    intentToSelectLevel.putExtra("Score", score.toString())
-                    intentToSelectLevel.putExtra("nLevel",noLevel.toString())
-                    startActivity(intentToSelectLevel)
+                    val intentToConclude = Intent(this@QuestionAnswerActivity,ConcludeScoreActivity::class.java)
+                    intentToConclude.putExtra("Score", score.toString())
+                    intentToConclude.putExtra("nLevel",noLevel.toString())
+                    intentToConclude.putExtra("keyPath",userId)
+                    startActivity(intentToConclude)
                     finish()
                 }else if(noQuestion<=9) {
                     updateQuestion(noQuestion)

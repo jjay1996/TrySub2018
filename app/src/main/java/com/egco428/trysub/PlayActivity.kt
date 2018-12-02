@@ -4,49 +4,48 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
+
 import android.support.v4.app.ActivityCompat.finishAffinity
 import android.support.v4.content.ContextCompat.startActivity
+import android.util.Log
 import com.egco428.trysub.R.id.*
-
-
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.activity_create.*
 
 import kotlinx.android.synthetic.main.activity_play.*
 
 class PlayActivity : AppCompatActivity() {
-    var LockId :DataSourse? = null //User Now
+    var keyPath:String = ""
+    var dataSnapshot:DataSnapshot? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_play)
+        val bundle = intent.extras //รับมาจากหน้าแรกแต่ยังไม่เลือดค่า
+        if(bundle!=null) {
+            keyPath = bundle.getString("keyPath").toString()
+        }
+        Log.d(this.toString(),"keyPath : $keyPath")
+        setTitle("                               Try-Sub")
 
-        //User Test
         var database = FirebaseDatabase.getInstance().getReference("User")
         database.addValueEventListener(object  : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError?) {
-
-            }
-
+            override fun onCancelled(p0: DatabaseError?) {}
             override fun onDataChange(p0: DataSnapshot?) {
-
-                for (i in p0!!.children){
-                    val message = i.getValue(DataSourse::class.java)
-                    if ("poryou11" == message!!.username.toString() ){
-                        LockId = message
-                        textView10.text = "Name  :  ${LockId!!.name}"
+                dataSnapshot = p0
+                for (i in dataSnapshot!!.children){
+                    dataSnapshot=i
+                    Log.d("check old value","${dataSnapshot!!.child("name").value.toString()}")
+                    if (keyPath == i.key.toString()){
+                        textView10.text = dataSnapshot!!.child("name").value.toString()
                         break
                     }
 
                 }
-
             }
         })
-        //End User Test
-
-
-        setTitle("                               Try-Sub")
 
         learnBtn.setOnClickListener {
             val intenToLearn = Intent(this,SelectLearnActivity::class.java)
@@ -55,11 +54,13 @@ class PlayActivity : AppCompatActivity() {
 
         startGameBtn.setOnClickListener {
             val intentToSelectGame = Intent(this,SelectGameActivity::class.java)
+            intentToSelectGame.putExtra("keyPath",keyPath)
             startActivity(intentToSelectGame)
         }
 
         profileBtn.setOnClickListener {
             val intentToProfile = Intent(this,ProfileActivity::class.java)
+            intentToProfile.putExtra("keyPath",keyPath)
             startActivity(intentToProfile)
         }
 

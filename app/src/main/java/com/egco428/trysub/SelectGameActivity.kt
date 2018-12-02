@@ -15,13 +15,15 @@ import kotlinx.android.synthetic.main.activity_select_game.*
 
 class SelectGameActivity : AppCompatActivity() {
 
-    var LockId :DataSourse? = null
+    var userId :String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_game)
 
         setTitle("                   Try-Sub")
+
+        userId = intent.getStringExtra("keyPath")
 
         level2Btn.isEnabled = false
         level3Btn.isEnabled = false
@@ -33,83 +35,89 @@ class SelectGameActivity : AppCompatActivity() {
         level9Btn.isEnabled = false
         level10Btn.isEnabled = false
 
-        test()
+        getdatafromFB()
         level1Btn.setOnClickListener {
             val intent = Intent(this@SelectGameActivity,QuestionAnswerActivity::class.java)
             intent.putExtra("Level","0")
+            intent.putExtra("keyPath",userId)
             startActivity(intent)
         }
 
         level2Btn.setOnClickListener {
             val intent = Intent(this@SelectGameActivity,QuestionAnswerActivity::class.java)
             intent.putExtra("Level","1")
+            intent.putExtra("keyPath",userId)
             startActivity(intent)
         }
 
         level3Btn.setOnClickListener {
             val intent = Intent(this@SelectGameActivity,QuestionAnswerActivity::class.java)
             intent.putExtra("Level","2")
+            intent.putExtra("keyPath",userId)
             startActivity(intent)
         }
 
         level4Btn.setOnClickListener {
             val intent = Intent(this@SelectGameActivity,QuestionAnswerActivity::class.java)
             intent.putExtra("Level","3")
+            intent.putExtra("keyPath",userId)
             startActivity(intent)
         }
 
         level5Btn.setOnClickListener {
             val intent = Intent(this@SelectGameActivity,QuestionAnswerActivity::class.java)
             intent.putExtra("Level","4")
+            intent.putExtra("keyPath",userId)
             startActivity(intent)
         }
 
         level6Btn.setOnClickListener {
             val intent = Intent(this@SelectGameActivity,QuestionAnswerActivity::class.java)
             intent.putExtra("Level","5")
+            intent.putExtra("keyPath",userId)
             startActivity(intent)
         }
 
         level7Btn.setOnClickListener {
             val intent = Intent(this@SelectGameActivity,QuestionAnswerActivity::class.java)
             intent.putExtra("Level","6")
+            intent.putExtra("keyPath",userId)
             startActivity(intent)
         }
 
         level8Btn.setOnClickListener {
             val intent = Intent(this@SelectGameActivity,QuestionAnswerActivity::class.java)
             intent.putExtra("Level","7")
+            intent.putExtra("keyPath",userId)
             startActivity(intent)
         }
 
         level9Btn.setOnClickListener {
             val intent = Intent(this@SelectGameActivity,QuestionAnswerActivity::class.java)
             intent.putExtra("Level","8")
+            intent.putExtra("keyPath",userId)
             startActivity(intent)
         }
 
         level10Btn.setOnClickListener {
             val intent = Intent(this@SelectGameActivity,QuestionAnswerActivity::class.java)
             intent.putExtra("Level","9")
+            intent.putExtra("keyPath",userId)
             startActivity(intent)
         }
 
     }
 
-    fun test(){
+    fun getdatafromFB(){
 
-        var database = FirebaseDatabase.getInstance().getReference("User/mankey/")
+        var database = FirebaseDatabase.getInstance().getReference("User/${userId}")
         database.addValueEventListener(object  : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
             }
             override fun onDataChange(p0: DataSnapshot?) {
-                if (LockId == null){
-                    for (i in p0!!.children) {
-                        Log.d("check value LockId","${i.child("user_mission").child("unlock_level").value.toString()}")
-                        var checkBtn = i.child("user_mission").child("unlock_level").value.toString().toInt()
-                        checkBtn(checkBtn)
-                    }
-                }
+                    //Log.d("check value LockId","${p0.child("user_mission").child("unlock_level").value.toString()}")
+                    var checkBtn = p0!!.child("user_mission").child("unlock_level").value.toString().toInt()
+                    checkBtn(checkBtn)
             }
         })
         //End User Test

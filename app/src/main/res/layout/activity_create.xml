@@ -21,15 +21,11 @@
 
     <Button
         android:id="@+id/takePicBtn"
-        android:layout_width="147dp"
+        android:layout_width="82dp"
         android:layout_height="38dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="75dp"
-        android:onClick="onClick"
-        android:text="take picture"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="72dp"
+        android:text="take "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createText" />
 
@@ -87,7 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/userCreate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
@@ -109,7 +105,7 @@
         android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/userCreate" />
 
     <EditText
         android:id="@+id/passCreCheckTextpla"
@@ -156,5 +152,15 @@
         app:layout_constraintStart_toEndOf="@+id/imageButton"
         app:layout_constraintTop_toBottomOf="@+id/editText"
         app:srcCompat="@drawable/male" />
+
+    <Button
+        android:id="@+id/chooseBtn"
+        android:layout_width="82dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="72dp"
+        android:text="CHOOSE"
+        app:layout_constraintStart_toEndOf="@+id/takePicBtn"
+        app:layout_constraintTop_toBottomOf="@+id/createText" />
 
 </android.support.constraint.ConstraintLayout>
