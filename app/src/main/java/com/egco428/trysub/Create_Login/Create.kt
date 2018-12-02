@@ -1,12 +1,15 @@
 package com.egco428.trysub.Create_Login
 
+import android.Manifest
 import android.app.Activity
+import android.content.ContentValues
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.widget.Toast
 import com.egco428.trysub.PlayActivity
@@ -15,7 +18,13 @@ import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_create.*
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import java.io.*
+import java.util.regex.Pattern
 
 class Create : AppCompatActivity() {
     private var gender = 0
@@ -24,7 +33,7 @@ class Create : AppCompatActivity() {
     private var bitmap: Bitmap?= null
     private val REQUEST_IMAGE_CAPTURE = 1
     private val IMAGE_REQUEST = 1234
-    private var filePath: Uri? = null
+    var fileUri: Uri? = null
     lateinit var database: DatabaseReference
     private  var storage:FirebaseStorage? = null
     private var storageReference: StorageReference? = null
@@ -43,7 +52,7 @@ class Create : AppCompatActivity() {
 
 
         storage = FirebaseStorage.getInstance()
-        storageReference = storage!!.reference
+        storageReference = storage!!.getReferenceFromUrl("gs://trysup2018.appspot.com")
 
        var database = FirebaseDatabase.getInstance().getReference("User")
         database.addValueEventListener(object  : ValueEventListener {
@@ -82,7 +91,7 @@ class Create : AppCompatActivity() {
             username = userCreate.text.toString().trim()
             pass =passCreTextpla.text.toString().trim()
             pass2 = passCreCheckTextpla.text.toString().trim()
-
+            var checkName : String = ""
 
             val messageId = database.push().key
 
@@ -92,17 +101,36 @@ class Create : AppCompatActivity() {
                 var user = i.child("username").value.toString()
                 if (userCreate.text.toString().trim()== user ){
                     checkUser= user
+                    checkName = i.child("name").value.toString()
                     break
                 }
 
             }
 
+            // Password should contain at least one special character
+            // Allowed special characters : "~!@#$%^&*()-_=+|/,."';:{}[]<>?"
+            var exp = ".*[~!@#\$%\\^&*()\\-_=+\\|\\[{\\]};:'\",<.>/?].*"
+            var pattern = Pattern.compile(exp)
+            var matcher1 = pattern.matcher(username)
+            var matcher2 = pattern.matcher(pass)
+
+
             if (username == "" || pass == "" || name == ""){Toast.makeText(applicationContext,"username or name or password is empthy",Toast.LENGTH_SHORT).show() ;  check = false}
-            else if (username.length < 8){Toast.makeText(applicationContext,"Length want more than 8",Toast.LENGTH_SHORT).show() ; check=false}
+            else if (username.length < 5){Toast.makeText(applicationContext,"Length(Username) want more than 5",Toast.LENGTH_SHORT).show() ; check=false}
             else if (username == checkUser){ Toast.makeText(applicationContext,"Pleases Change Username",Toast.LENGTH_SHORT).show() ; check=false }
+            else if (pass.length < 8){ Toast.makeText(applicationContext,"Length(Password) want more than 5",Toast.LENGTH_SHORT).show() ; check=false }
             else if (pass != pass2){Toast.makeText(applicationContext,"Password Mismatch",Toast.LENGTH_SHORT).show() ; check=false}
+            else if (name == checkName ){Toast.makeText(applicationContext,"Pleases Change name",Toast.LENGTH_SHORT).show() ; check=false }
             else {check = true }
             Log.d("test","check : $checkUser  !! username : $username")
+            if (!matcher1.matches()) {
+                Toast.makeText(applicationContext,"(Username) No [.*[~!@#\$%\\^&*()\\-_=+\\|\\[{\\]};:'\",<.>/?].*]",Toast.LENGTH_SHORT).show() ; check = false
+                Log.d("gg","$matcher1")
+            }
+            if (!matcher2.matches()) {
+                Toast.makeText(applicationContext,"(Password) No [.*[~!@#\$%\\^&*()\\-_=+\\|\\[{\\]};:'\",<.>/?].*]",Toast.LENGTH_SHORT).show() ; check = false
+                Log.d("gg","$matcher2")
+            }
             //End check
 
             //set init id
@@ -142,10 +170,10 @@ class Create : AppCompatActivity() {
                 }
 
                 //Upload photo
-                if (filePath!=null){
+                if (fileUri!=null){
                     Toast.makeText(applicationContext,"Uploading",Toast.LENGTH_SHORT).show()
                     val imageRef = storageReference!!.child("${username}.jpg")
-                    imageRef.putFile(filePath!!)
+                    imageRef.putFile(fileUri!!)
                             .addOnSuccessListener {
                                 Toast.makeText(applicationContext,"File Upload...",Toast.LENGTH_SHORT).show()
                             }
@@ -171,6 +199,7 @@ class Create : AppCompatActivity() {
 
         //Cancel Btn
         CancelBtn.setOnClickListener {
+
             val intent = Intent(this,choose::class.java)
             startActivity(intent)
             finish()
@@ -179,47 +208,99 @@ class Create : AppCompatActivity() {
 
         //take & choose pic
         takePicBtn.setOnClickListener {
-            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            startActivityForResult(intent,REQUEST_IMAGE_CAPTURE)
+            askCameraPermission()
         }
         chooseBtn.setOnClickListener {
-            val intent=Intent()
-            intent.type = "image/*"
-            intent.action = Intent.ACTION_GET_CONTENT
-            startActivityForResult(Intent.createChooser(intent,"Select Pic"),IMAGE_REQUEST)
+            pickPhotoFromGallery()
         }
         //end take & choose pic
 
     }
 
+    //launch the camera to take photo via intent
+    private fun launchCamera() {
+        val values = ContentValues(1)
+        values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpg")
+        fileUri = contentResolver
+                .insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                        values)
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        if(intent.resolveActivity(packageManager) != null) {
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri)
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION
+                    or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+            startActivityForResult(intent,REQUEST_IMAGE_CAPTURE)
+        }
+    }
+
+    //ask for permission to take photo
+    fun askCameraPermission(){
+        Dexter.withActivity(this)
+                .withPermissions(
+                        Manifest.permission.CAMERA,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ).withListener(object : MultiplePermissionsListener {
+                    override fun onPermissionsChecked(report: MultiplePermissionsReport) {/* ... */
+                        if(report.areAllPermissionsGranted()){
+                            //once permissions are granted, launch the camera
+                            launchCamera()
+                        }else{
+                            Toast.makeText(this@Create, "All permissions need to be granted to take photo", Toast.LENGTH_LONG).show()
+                        }
+                    }
+
+                    override fun onPermissionRationaleShouldBeShown(permissions: List<PermissionRequest>, token: PermissionToken) {/* ... */
+                        //show alert dialog with permission options
+                        AlertDialog.Builder(this@Create)
+                                .setTitle(
+                                        "Permissions Error!")
+                                .setMessage(
+                                        "Please allow permissions to take photo with camera")
+                                .setNegativeButton(
+                                        android.R.string.cancel,
+                                        { dialog, _ ->
+                                            dialog.dismiss()
+                                            token?.cancelPermissionRequest()
+                                        })
+                                .setPositiveButton(android.R.string.ok,
+                                        { dialog, _ ->
+                                            dialog.dismiss()
+                                            token?.continuePermissionRequest()
+                                        })
+                                .setOnDismissListener({
+                                    token?.cancelPermissionRequest() })
+                                .show()
+                    }
+
+                }).check()
+
+    }
+
+    private fun pickPhotoFromGallery() {
+
+        val pickImageIntent = Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+
+        startActivityForResult(pickImageIntent,IMAGE_REQUEST)
+    }
+
     // Take Photo
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK){
-            val extras = data!!.extras
-            val photo = extras.get("data") as Bitmap
-            Log.d("Qq","$photo")
-            var phot =MediaStore.Images.Media.getContentUri(photo.toString())
-            //phot = phot.toString().split("/images/media")
-            filePath = phot
 
-            //photoImageView.setImageBitmap(photo)
-
-            imageView.setImageBitmap(photo)
+        if (resultCode == Activity.RESULT_OK
+                && requestCode == REQUEST_IMAGE_CAPTURE) {
+            //photo from camera
+            //display the photo on the imageview
+            imageView.setImageURI(fileUri)
+        }else if(resultCode == Activity.RESULT_OK
+                && requestCode == IMAGE_REQUEST){
+            //photo from gallery
+            fileUri = data?.data
+            imageView.setImageURI(fileUri)
+        } else {
+            super.onActivityResult(requestCode, resultCode, data)
         }
-        else if(requestCode == IMAGE_REQUEST && data != null
-                && resultCode == Activity.RESULT_OK && data.data !=null){
-            filePath=data.data
-            Log.d("Qa","pp :$filePath")
-            try {
-                val bitmap = MediaStore.Images.Media.getBitmap(contentResolver,filePath)
-                imageView.setImageBitmap(bitmap)
-            }catch (e:IOError){
-                e.printStackTrace()
-            }
-
-
-        }
+    }
 
 
     }
@@ -238,4 +319,5 @@ class Create : AppCompatActivity() {
 
 
 
-}
+
+
