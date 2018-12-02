@@ -53,7 +53,6 @@ class Create : AppCompatActivity() {
 
         storage = FirebaseStorage.getInstance()
         storageReference = storage!!.getReferenceFromUrl("gs://trysup2018.appspot.com")
-
        var database = FirebaseDatabase.getInstance().getReference("User")
         database.addValueEventListener(object  : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {}
@@ -95,7 +94,7 @@ class Create : AppCompatActivity() {
 
             val messageId = database.push().key
 
-            //check
+            //check validate
             // Pohibit " ' , . (เว้นวรรค)
             for (i in dataSnapshot!!.children){
                 var user = i.child("username").value.toString()
@@ -116,22 +115,25 @@ class Create : AppCompatActivity() {
 
 
             if (username == "" || pass == "" || name == ""){Toast.makeText(applicationContext,"username or name or password is empthy",Toast.LENGTH_SHORT).show() ;  check = false}
-            else if (username.length < 5){Toast.makeText(applicationContext,"Length(Username) want more than 5",Toast.LENGTH_SHORT).show() ; check=false}
+            else if (username.length < 5 || username.length >13 ){Toast.makeText(applicationContext,"Length(Username) want more than 5 but not more than 13",Toast.LENGTH_SHORT).show() ; check=false}
             else if (username == checkUser){ Toast.makeText(applicationContext,"Pleases Change Username",Toast.LENGTH_SHORT).show() ; check=false }
-            else if (pass.length < 8){ Toast.makeText(applicationContext,"Length(Password) want more than 5",Toast.LENGTH_SHORT).show() ; check=false }
+            else if (pass.length < 8 || pass.length >13){ Toast.makeText(applicationContext,"Length(Password) want more than 8 than 5 but not more than 13",Toast.LENGTH_SHORT).show() ; check=false }
             else if (pass != pass2){Toast.makeText(applicationContext,"Password Mismatch",Toast.LENGTH_SHORT).show() ; check=false}
             else if (name == checkName ){Toast.makeText(applicationContext,"Pleases Change name",Toast.LENGTH_SHORT).show() ; check=false }
-            else {check = true }
-            Log.d("test","check : $checkUser  !! username : $username")
-            if (!matcher1.matches()) {
+            else if (name.length >15 ){Toast.makeText(applicationContext,"Length(Name) not more than 15",Toast.LENGTH_SHORT).show() ; check=false }
+            else if (matcher1.matches()) {
                 Toast.makeText(applicationContext,"(Username) No [.*[~!@#\$%\\^&*()\\-_=+\\|\\[{\\]};:'\",<.>/?].*]",Toast.LENGTH_SHORT).show() ; check = false
                 Log.d("gg","$matcher1")
             }
-            if (!matcher2.matches()) {
+            else if (matcher2.matches()) {
                 Toast.makeText(applicationContext,"(Password) No [.*[~!@#\$%\\^&*()\\-_=+\\|\\[{\\]};:'\",<.>/?].*]",Toast.LENGTH_SHORT).show() ; check = false
                 Log.d("gg","$matcher2")
             }
-            //End check
+            else if (T_gender == ""){Toast.makeText(applicationContext,"Pleases Choose gender",Toast.LENGTH_SHORT).show() ; check=false }
+            else {check = true }
+            Log.d("test","check : $checkUser  !! username : $username")
+
+            //End check validate
 
             //set init id
             if (check==true) {
