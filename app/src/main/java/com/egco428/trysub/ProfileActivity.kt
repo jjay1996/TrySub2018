@@ -32,7 +32,7 @@ class ProfileActivity : AppCompatActivity() {
         setTitle("                               Try-Sub")
         //imageView.setImageResource(R.drawable.vatar)
 
-        userId = intent.getStringExtra("kayPath")
+        userId = intent.getStringExtra("keyPath")
 
         EditBtn.setOnClickListener {
             val intentToEditProfile = Intent(this,editProfileActivity::class.java)
@@ -50,7 +50,6 @@ class ProfileActivity : AppCompatActivity() {
 
             }
             override fun onDataChange(p0: DataSnapshot?) {
-                textView5.text = p0!!.child("picture").value.toString()
                 var picture = p0!!.child("picture").value.toString()
                 var name = p0!!.child("name").value.toString()
                 var gender = p0!!.child("gender").value.toString()
