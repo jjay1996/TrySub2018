@@ -41,7 +41,7 @@ class ConcludeScoreActivity : AppCompatActivity() {
                 if(!doOnce) {
                     doOnce = true
                     dataSnapshot = p0
-                    concludeScoreTextView.text = score.toString()
+                    if(playMinigame=="0") concludeScoreTextView.text = score.toString()
                     ConcludeScoreAndNowLevel(score, Nowlevel)
                 }
             }
@@ -54,9 +54,11 @@ class ConcludeScoreActivity : AppCompatActivity() {
             mininGameImage.visibility = View.INVISIBLE
 
             nextLevelBtn.visibility = View.INVISIBLE
-        }else if(playMinigame=="1"){
+        }else if(playMinigame!="0"){
             miniGametextView.visibility = View.INVISIBLE
             mininGameImage.visibility = View.INVISIBLE
+            var scoreFromMain = score.toString()+" + ${playMinigame}"
+            concludeScoreTextView.text = scoreFromMain
         }else {
             Log.d("check 123","get ${score}")
             miniGametextView.visibility = View.VISIBLE

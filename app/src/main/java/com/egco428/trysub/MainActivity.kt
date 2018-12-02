@@ -2,6 +2,7 @@ package com.egco428.trysub
 
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -26,7 +27,6 @@ import com.google.android.gms.tasks.OnSuccessListener
 class MainActivity : AppCompatActivity() {
 
     var fileUri: Uri? = null
-    lateinit var database: DatabaseReference
     private  var storage: FirebaseStorage? = null
     private var storageReference: StorageReference? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             //finish()
         }
+
         storage = FirebaseStorage.getInstance()
         storageReference = storage!!.getReferenceFromUrl("gs://trysup2018.appspot.com/poryou00.jpg")
         var localFile = File.createTempFile("images", "jpg");
@@ -48,8 +49,10 @@ class MainActivity : AppCompatActivity() {
         storageReference!!.getFile(localFile)
                 .addOnSuccessListener(OnSuccessListener<FileDownloadTask.TaskSnapshot> {
                     // Successfully downloaded data to local file
+                    val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+                    imageView4.setImageBitmap(bitmap)
                     Log.d("sda","success")
-                   // imageView4.setImageResource(image.jpg)
+                    // imageView4.setImageResource(image.jpg)
                     // ...
                 }).addOnFailureListener(OnFailureListener {
                     // Handle failed download
@@ -57,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                     // ...
                 })
 
-        Log.d("sda","${storageReference!!.getFile(localFile)}")
+        //Log.d("sda","${storageReference!!.getFile(localFile)}")
 
         }
 

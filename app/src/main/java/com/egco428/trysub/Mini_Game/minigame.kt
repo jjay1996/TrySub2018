@@ -60,7 +60,7 @@ class minigame : AppCompatActivity(),SensorEventListener {
 
         backToConcludeBtn.setOnClickListener {
             val intent = Intent(this@minigame,ConcludeScoreActivity::class.java)
-            if(totalScore != 0) intent.putExtra("playMinigame","1")
+            if(totalScore != 0) intent.putExtra("playMinigame",totalScore.toString())
             intent.putExtra("keyPath",userId) //รับมาจากหน้าแรกแต่ยังไม่เลือดค่า
             intent.putExtra("Score",score.toString())
             intent.putExtra("nLevel",Nowlevel.toString())
