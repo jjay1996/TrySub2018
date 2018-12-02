@@ -23,9 +23,9 @@ class MainActivity : AppCompatActivity() {
 
         setTitle("                               Try-Sub")
         startBtn.setOnClickListener {
-            //val t = Intent(this,PlayActivity::class.java)
-            val t = Intent(this,choose::class.java)
-            startActivity(t)
+            val intent = Intent(this,choose::class.java)
+            startActivity(intent)
+            finish()
         }
 
         //Log.d("check",objects.MyQuestion[0][0])

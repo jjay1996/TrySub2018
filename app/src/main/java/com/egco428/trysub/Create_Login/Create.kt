@@ -170,6 +170,8 @@ class Create : AppCompatActivity() {
 
         //Cancel Btn
         CancelBtn.setOnClickListener {
+            val intent = Intent(this,choose::class.java)
+            startActivity(intent)
             finish()
         }
         //end Cancel Btn
