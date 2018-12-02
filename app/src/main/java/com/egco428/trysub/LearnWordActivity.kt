@@ -1,6 +1,7 @@
 package com.egco428.trysub
 
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
@@ -10,8 +11,11 @@ import android.widget.LinearLayout
 import android.support.v4.view.ViewPager
 import android.text.Html
 import android.util.Log
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_learn_word.*
+import kotlinx.android.synthetic.main.slide_layout.*
 import java.text.FieldPosition
 import java.util.*
 
@@ -29,6 +33,13 @@ class LearnWordActivity : AppCompatActivity() {
 
         var nolevel = intent.getStringExtra("LevelLearn").toInt()
         //var nolevel = 9
+
+        LessonTextView.text = "Level ${nolevel+1}"
+        backTolistLessonBtn.setOnClickListener {
+            val intent = Intent(this@LearnWordActivity,SelectGameActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         mSlideViewPager = findViewById(R.id.slideViewPager) as ViewPager
         mDotLayout = findViewById(R.id.dotsLayout) as LinearLayout
@@ -56,7 +67,6 @@ class LearnWordActivity : AppCompatActivity() {
 
             }
         })
-
 
     }
 

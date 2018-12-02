@@ -115,14 +115,20 @@ class ConcludeScoreActivity : AppCompatActivity() {
         //เช็คunlock mission
         if(score>=8){
             if(Nowlevel<=8) {
-                Log.d("check FB","get <8")
-                val unlock = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/unlock_level")
-                unlock.setValue((Nowlevel + 2).toString())
+                Log.d("check FB","get <8 ${Nowlevel}")
+                Log.d("level : " ,dataSnapshot!!.child("user_mission").child("unlock_level").value.toString())
+                if ((Nowlevel+2) > dataSnapshot!!.child("user_mission").child("unlock_level").value.toString().toInt()){
+                    val unlock = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/unlock_level")
+                    unlock.setValue((Nowlevel + 2).toString())
+                }
             }
             if(Nowlevel==9){
-                Log.d("check FB","get ==9")
-                val unlock = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/unlock_level")
-                unlock.setValue((Nowlevel + 1).toString())
+                Log.d("check FB","get ==9 ${Nowlevel}")
+                if ((Nowlevel+1) > dataSnapshot!!.child("user_mission").child("unlock_level").value.toString().toInt()) {
+                    Log.d("level : " ,dataSnapshot!!.child("user_mission").child("unlock_level").value.toString())
+                    val unlock = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/unlock_level")
+                    unlock.setValue((Nowlevel + 1).toString())
+                }
             }
         }
     }
