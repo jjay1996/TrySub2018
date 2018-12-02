@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".QuestionAnswerActivity">
 
     <TextView
@@ -14,7 +15,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
-        android:textSize="24sp"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,10 +28,13 @@
         android:layout_height="104dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="serif-monospace"
         android:gravity="center"
         android:text="TextView"
-        android:textSize="24sp"
+        android:textColor="@android:color/background_light"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,8 +46,13 @@
         android:layout_height="51dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/choicebtn_white"
         android:text="Answer 1"
+        android:fontFamily="serif-monospace"
+        android:textColor="@android:color/background_dark"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionTextView" />
@@ -53,7 +64,12 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/choicebtn_white"
         android:text="Answer 2"
+        android:fontFamily="serif-monospace"
+        android:textColor="@android:color/background_dark"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/answ1btn" />
@@ -65,7 +81,12 @@
         android:layout_marginEnd="6dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/choicebtn_white"
         android:text="Answer 3"
+        android:fontFamily="serif-monospace"
+        android:textColor="@android:color/background_dark"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,5 +107,31 @@
         app:layout_constraintTop_toBottomOf="@+id/answ3btn"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/nextbtn" />
+
+    <LinearLayout
+        android:layout_width="319dp"
+        android:layout_height="313dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_card"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionTextView"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="319dp"
+        android:layout_height="101dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/round_card"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.277"
+        app:layout_constraintStart_toStartOf="@+id/questionTextView"
+        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -12,6 +12,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_play.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,9 +23,9 @@ class MainActivity : AppCompatActivity() {
 
         setTitle("                               Try-Sub")
         startBtn.setOnClickListener {
-            //val t = Intent(this,PlayActivity::class.java)
-            val t = Intent(this,choose::class.java)
-            startActivity(t)
+            val intent = Intent(this,choose::class.java)
+            startActivity(intent)
+            finish()
         }
 
         //Log.d("check",objects.MyQuestion[0][0])

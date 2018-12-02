@@ -71,17 +71,17 @@ class Create : AppCompatActivity() {
 
 
             //Choose gender
-        imageButton.setOnClickListener {
-            gender = 0 // Female
-            imageButton.setImageResource(R.drawable.c_female)
-            imageButton2.setImageResource(R.drawable.male)
-            T_gender = "female"
-        }
-        imageButton2.setOnClickListener {
+        imageView2.setOnClickListener {
             gender = 1 // male
-            imageButton2.setImageResource(R.drawable.c_male)
-            imageButton.setImageResource(R.drawable.female)
+            imageView2.setImageResource(R.drawable.c_male)
+            imageView3.setImageResource(R.drawable.female)
             T_gender = "male"
+        }
+        imageView3.setOnClickListener {
+            gender = 0 // Female
+            imageView3.setImageResource(R.drawable.c_female)
+            imageView2.setImageResource(R.drawable.male)
+            T_gender = "female"
         }
             //end Choose gender
 
@@ -113,8 +113,7 @@ class Create : AppCompatActivity() {
             var pattern = Pattern.compile(exp)
             var matcher1 = pattern.matcher(username)
             var matcher2 = pattern.matcher(pass)
-            if (!matcher1.matches()) { Toast.makeText(applicationContext,"(Username) No [.*[~!@#\$%\\^&*()\\-_=+\\|\\[{\\]};:'\",<.>/?].*]",Toast.LENGTH_SHORT).show() ; check = false }
-            if (!matcher2.matches()) { Toast.makeText(applicationContext,"(Password) No [.*[~!@#\$%\\^&*()\\-_=+\\|\\[{\\]};:'\",<.>/?].*]",Toast.LENGTH_SHORT).show() ; check = false }
+
 
             if (username == "" || pass == "" || name == ""){Toast.makeText(applicationContext,"username or name or password is empthy",Toast.LENGTH_SHORT).show() ;  check = false}
             else if (username.length < 5){Toast.makeText(applicationContext,"Length(Username) want more than 5",Toast.LENGTH_SHORT).show() ; check=false}
@@ -124,6 +123,14 @@ class Create : AppCompatActivity() {
             else if (name == checkName ){Toast.makeText(applicationContext,"Pleases Change name",Toast.LENGTH_SHORT).show() ; check=false }
             else {check = true }
             Log.d("test","check : $checkUser  !! username : $username")
+            if (!matcher1.matches()) {
+                Toast.makeText(applicationContext,"(Username) No [.*[~!@#\$%\\^&*()\\-_=+\\|\\[{\\]};:'\",<.>/?].*]",Toast.LENGTH_SHORT).show() ; check = false
+                Log.d("gg","$matcher1")
+            }
+            if (!matcher2.matches()) {
+                Toast.makeText(applicationContext,"(Password) No [.*[~!@#\$%\\^&*()\\-_=+\\|\\[{\\]};:'\",<.>/?].*]",Toast.LENGTH_SHORT).show() ; check = false
+                Log.d("gg","$matcher2")
+            }
             //End check
 
             //set init id
@@ -191,8 +198,10 @@ class Create : AppCompatActivity() {
 
         //Cancel Btn
         CancelBtn.setOnClickListener {
-            //imageView.setImageURI(T)
-            //finish()
+
+            val intent = Intent(this,choose::class.java)
+            startActivity(intent)
+            finish()
         }
         //end Cancel Btn
 

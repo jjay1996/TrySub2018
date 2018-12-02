@@ -1,57 +1,85 @@
 package com.egco428.trysub
 
-import android.gesture.GestureLibraries
+import android.content.Context
+import android.content.res.Configuration
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
-import android.os.Handler
+import android.widget.LinearLayout
+import android.support.v4.view.ViewPager
+import android.text.Html
+import android.util.Log
+import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_learn_word.*
+import java.text.FieldPosition
 import java.util.*
-import android.view.GestureDetector;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.widget.Toast;
-import java.lang.Math.abs
 
 
 class LearnWordActivity : AppCompatActivity() {
+    private var mDots: ArrayList<TextView>? = ArrayList()
+    private var mSlideViewPager: ViewPager? = null
+    private var mDotLayout: LinearLayout? = null
+    private var viewPager:ViewPager? = null
 
-    var x1: Float? = 0.toFloat()
-    var x2: Float? = 0.toFloat()
-    var velocityX1: Float? = 0.toFloat()
-    var velocityX2: Float? = 0.toFloat()
-    private var flingCount = 0
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        var action = event?.action
-        if (x1 == 0.toFloat()) {
-            x1 = event?.rawX
-        } else {
-            x2 = event?.rawX
-            var distanceX: Float? = x1!!-x2!!
-            var timeX: Float? = event?.downTime?.toFloat()
+    private var sliderAdapter: SliderAdapter? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_learn_word)
 
-            velocityX2 = velocityX1 //v2 = previous v1
-            velocityX1 = distanceX!!/timeX!!
+        var nolevel = intent.getStringExtra("LevelLearn").toInt()
+        //var nolevel = 9
 
-            println("velocity 1: "+velocityX1?.toString())
-            println("velocity 2: "+velocityX2?.toString()+"\n")
-            var velocityDelta: Float? = velocityX2!!-velocityX1!!
-            velocityX2 = 0.toFloat()
-            //println("velocity delta: "+abs(velocityDelta!!).toString())
-            if (velocityX1!! > 0.toFloat() && velocityX1!! == abs(velocityDelta!!)){ // fling left
-                this.flingCount++
-                println("fling left!  fling count is: "+this.flingCount)
-                return true
-            } else if (velocityX1!! < 0.toFloat() && abs(velocityX1!!) == velocityDelta!! && action == MotionEvent.ACTION_MOVE){ // fling right
-                this.flingCount++
-                println("fling right! fling count is: "+this.flingCount)
-                return true
-            } else if (distanceX!! == 0.toFloat() && action == MotionEvent.ACTION_UP && velocityX2==velocityDelta) { // tap or press
-                println("tap somewhere on the screen")
-                return true
+        mSlideViewPager = findViewById(R.id.slideViewPager) as ViewPager
+        mDotLayout = findViewById(R.id.dotsLayout) as LinearLayout
+
+        sliderAdapter = SliderAdapter(this, nolevel);
+
+        mSlideViewPager!!.adapter = sliderAdapter
+
+        addDotsIndicator(0)
+
+        //mSlideViewPager.addOnPageChangeListener(view)
+
+//
+        mSlideViewPager!!.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
             }
-            x1 = 0.toFloat()
-        }
-        println("touch event called itself")
-        return super.onTouchEvent(event)
+
+            override fun onPageSelected(position: Int) {
+                addDotsIndicator(position)
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+
+            }
+        })
+
+
     }
+
+    //จุดบอกหน้า
+    fun addDotsIndicator(position:Int) {
+
+        mDotLayout!!.removeAllViews()
+
+        for (i in 1..10) {
+            mDots!!.add(TextView(this))
+            mDots!![i - 1].setTextSize(36f)
+            mDots!![i - 1].setText(Html.fromHtml("&#8226"))
+            mDots!![i - 1].setTextColor(Color.GRAY)
+            mDotLayout!!.addView(mDots!![i - 1])
+        }
+
+        if (mDots!!.size > 0){
+            mDots!![position].setTextColor(Color.WHITE)
+        }
+    }
+
+
+
+
+
 }
