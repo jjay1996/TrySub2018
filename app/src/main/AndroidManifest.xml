@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.egco428.trysub">
+
     <uses-feature android:name="android.hardware.camera2" android:required="true"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon_appliction"
@@ -12,10 +16,11 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
-                
             </intent-filter>
         </activity>
+
         <activity android:name=".Create_Login.choose"
             android:screenOrientation="portrait"/>
         <activity android:name=".Create_Login.Create"
@@ -40,7 +45,7 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".SelectLearnActivity"
             android:screenOrientation="portrait"/>
-
+        <activity android:name=".editProfileActivity"></activity>
     </application>
 
 </manifest>

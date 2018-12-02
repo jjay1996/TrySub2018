@@ -4,8 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_dark"
+    android:background="@drawable/background"
     tools:context=".Mini_Game.minigame">
+
+    <ImageView
+        android:id="@+id/backToConcludeBtn"
+        android:layout_width="85dp"
+        android:layout_height="67dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="136dp"
+        android:background="@drawable/round_card"
+        android:paddingBottom="7dp"
+        android:paddingTop="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.015"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/concludeScoreTextView"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/back_white" />
 
     <ImageView
         android:id="@+id/miniDice1"
@@ -37,18 +55,21 @@
         android:id="@+id/miniShake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Shake"
+        android:layout_marginTop="60dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:padding="10dp"
+        android:text="SHAKE"
         android:textColor="@android:color/holo_orange_light"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/backToConcludeBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/miniDice1" />
+        app:layout_constraintTop_toBottomOf="@+id/miniDice1"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/miniTitle"
@@ -57,6 +78,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif-smallcaps"
         android:text="Mini Game"
         android:textAlignment="center"
         android:textColor="@android:color/holo_orange_dark"

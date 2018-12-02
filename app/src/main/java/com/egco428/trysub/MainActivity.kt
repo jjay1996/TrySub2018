@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         startBtn.setOnClickListener {
             val intent = Intent(this,choose::class.java)
             startActivity(intent)
-            finish()
+            //finish()
         }
 
         //Log.d("check",objects.MyQuestion[0][0])
