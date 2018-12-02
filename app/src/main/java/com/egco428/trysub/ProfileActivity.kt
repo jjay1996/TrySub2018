@@ -16,8 +16,9 @@ class ProfileActivity : AppCompatActivity() {
         //imageView.setImageResource(R.drawable.vatar)
 
         EditBtn.setOnClickListener {
-            val intentsecondActivity = Intent(this,PlayActivity::class.java)
-            startActivity(intentsecondActivity)
+            val intentToEditProfile = Intent(this,editProfileActivity::class.java)
+            startActivity(intentToEditProfile)
+            finish()
         }
 
         backFromProfileBtn.setOnClickListener {

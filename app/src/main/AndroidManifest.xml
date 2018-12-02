@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.egco428.trysub">
-    <uses-feature android:name="android.hardware.camera2" android:required="true"/>
+
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,8 +16,8 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
-                
             </intent-filter>
         </activity>
         <activity android:name=".Create_Login.choose" />
@@ -27,8 +31,8 @@
         <activity android:name=".Create_Login.login" />
         <activity android:name=".ConcludeScoreActivity" />
         <activity android:name=".LearnWordActivity" />
-        <activity android:name=".SelectLearnActivity"></activity>
-
+        <activity android:name=".SelectLearnActivity" />
+        <activity android:name=".editProfileActivity"></activity>
     </application>
 
 </manifest>

@@ -2,6 +2,7 @@ package com.egco428.trysub.Mini_Game
 
 import android.animation.Animator
 import android.content.Context
+import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -24,23 +25,48 @@ import kotlinx.android.synthetic.main.activity_minigame.*
 import java.sql.Time
 import java.util.*
 import android.widget.TextView
-
-
+import com.egco428.trysub.ConcludeScoreActivity
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.activity_conclude_score.*
 
 
 class minigame : AppCompatActivity(),SensorEventListener {
     private var sensorManager : SensorManager?=null
     private var stopShake = false
+    private var score = 0
+    private var Nowlevel = 0
+    private var userId:String? = null
+    private var dataSnapshot:DataSnapshot? = null
+
 
     private var animate1:Animation? = null
     private var animate2:Animation? = null
     private var animate3:Animation? = null
     private var animate4:Animation? = null
 
+    private var totalScore = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_minigame)
+
+        userId = intent.getStringExtra("keyPath") //รับมาจากหน้าแรกแต่ยังไม่เลือดค่า
+        score = intent.getStringExtra("Score").toInt()
+        Nowlevel = intent.getStringExtra("nLevel").toInt()
+
+        backToConcludeBtn.setOnClickListener {
+            val intent = Intent(this@minigame,ConcludeScoreActivity::class.java)
+            if(totalScore != 0) intent.putExtra("playMinigame","1")
+            intent.putExtra("keyPath",userId) //รับมาจากหน้าแรกแต่ยังไม่เลือดค่า
+            intent.putExtra("Score",score.toString())
+            intent.putExtra("nLevel",Nowlevel.toString())
+            startActivity(intent)
+            finish()
+        }
 
         //do animation
         animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
@@ -55,6 +81,19 @@ class minigame : AppCompatActivity(),SensorEventListener {
 
         //set variable for sensor accelerometer system
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+
+        var doOnce = false
+        var database = FirebaseDatabase.getInstance().getReference("User/${userId}")
+        database.addValueEventListener(object  : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+            }
+            override fun onDataChange(p0: DataSnapshot?) {
+                if(!doOnce) {
+                    doOnce = true
+                    dataSnapshot = p0
+                }
+            }
+        })
 
         object : Thread() {
             override fun run() {
@@ -106,13 +145,13 @@ class minigame : AppCompatActivity(),SensorEventListener {
             Log.d("test","ss")
             var anim1 = AnimationUtils.loadAnimation(this@minigame, R.anim.shakedice)
             var anim2 = AnimationUtils.loadAnimation(this@minigame, R.anim.shakedice)
-
             val animationListener = object : Animation.AnimationListener {
                 override fun onAnimationStart(animation: Animation) {}
 
                 override fun onAnimationEnd(animation: Animation) {
                     val value = randomDiceValue()
                     var res:Int = 1
+                    totalScore += value
 
                     if(value == 1) res = R.drawable.dice1
                     else if(value == 2) res = R.drawable.dice2
@@ -129,7 +168,8 @@ class minigame : AppCompatActivity(),SensorEventListener {
                         Log.d("test",value.toString())
                     }
                     stopShake = true
-
+                    miniShake.text = "Your Score = ${totalScore}"
+                    saveToFB()
                 }
 
                 override fun onAnimationRepeat(animation: Animation) {
@@ -142,11 +182,43 @@ class minigame : AppCompatActivity(),SensorEventListener {
 
             miniDice1!!.startAnimation(anim1)
             miniDice2!!.startAnimation(anim2)
-
-            //sensorManager!!.unregisterListener(this)
+            sensorManager!!.unregisterListener(this)
         }
     }
 
+    fun  saveToFB(){
+        if(totalScore > dataSnapshot!!.child("user_mission").child("mission").child("level${Nowlevel+1}").child("mini_score").value.toString().toInt()) {
+            var scoreToFB = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/mission/level${Nowlevel+1}/mini_score")
+            scoreToFB.setValue(totalScore.toString())
+
+            var total = score
+            total+=totalScore
+            var scoreToFB2 = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/mission/level${Nowlevel+1}/total")
+            scoreToFB2.setValue(total.toString())
+
+            var total_score = 0
+            var up_score = false
+            var database = FirebaseDatabase.getInstance().getReference("User/${userId}")
+            database.addValueEventListener(object  : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError?) {
+                }
+                override fun onDataChange(p0: DataSnapshot?) {
+                    var count = 0
+                    for (i in p0!!.child("user_mission").child("mission").children){
+                        total_score += i.child("total").value.toString().toInt()
+                        count++
+                        if(count==10 && !up_score){
+                            up_score = true
+                            var totalToFB = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/total_score")
+                            totalToFB.setValue(total_score.toString())
+                        }
+                    }
+
+                }
+            })
+
+        }
+    }
 
     override fun onPause() {
         super.onPause()
