@@ -45,23 +45,27 @@ class ConcludeScoreActivity : AppCompatActivity() {
         mininGameImage.setOnClickListener {
             val intent = Intent(this@ConcludeScoreActivity,minigame::class.java)
             startActivity(intent)
+            finish()
         }
 
         backToSelectLevelBtn.setOnClickListener {
             val intent = Intent(this@ConcludeScoreActivity,SelectGameActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         replayBtn.setOnClickListener {
             val intent = Intent(this@ConcludeScoreActivity,QuestionAnswerActivity::class.java)
             intent.putExtra("Level",Nowlevel.toString())
             startActivity(intent)
+            finish()
         }
 
         nextLevelBtn.setOnClickListener {
             val intent = Intent(this@ConcludeScoreActivity,QuestionAnswerActivity::class.java)
             intent.putExtra("Level",(Nowlevel+1).toString())
             startActivity(intent)
+            finish()
         }
     }
 

@@ -68,6 +68,7 @@ class QuestionAnswerActivity : AppCompatActivity() {
                     intentToSelectLevel.putExtra("Score", score.toString())
                     intentToSelectLevel.putExtra("nLevel",noLevel.toString())
                     startActivity(intentToSelectLevel)
+                    finish()
                 }else if(noQuestion<=9) {
                     updateQuestion(noQuestion)
                 }
@@ -112,6 +113,7 @@ class QuestionAnswerActivity : AppCompatActivity() {
                     intentToSelectLevel.putExtra("Score", score.toString())
                     intentToSelectLevel.putExtra("nLevel",noLevel.toString())
                     startActivity(intentToSelectLevel)
+                    finish()
                 }else if(noQuestion<=9) {
                     updateQuestion(noQuestion)
                 }
@@ -156,6 +158,7 @@ class QuestionAnswerActivity : AppCompatActivity() {
                     intentToSelectLevel.putExtra("Score", score.toString())
                     intentToSelectLevel.putExtra("nLevel",noLevel.toString())
                     startActivity(intentToSelectLevel)
+                    finish()
                 }else if(noQuestion<=9) {
                     updateQuestion(noQuestion)
                 }

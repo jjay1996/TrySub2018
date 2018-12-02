@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelectLearnActivity">
+
+    <Button
+        android:id="@+id/lv1Btn"
+        android:layout_width="91dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/learn_button_style"
+        android:fontFamily="serif-monospace"
+        android:lineSpacingExtra="30sp"
+        android:text="Lv1"
+        android:textColor="@android:color/background_light"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/lv3Btn"
+        android:layout_width="91dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/learn_button_style"
+        android:fontFamily="serif-monospace"
+        android:lineSpacingExtra="30sp"
+        android:text="Lv3"
+        android:textColor="@android:color/background_light"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lv1Btn" />
+
+    <Button
+        android:id="@+id/lv2Btn"
+        android:layout_width="91dp"
+        android:layout_height="74dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/learn_button_style"
+        android:fontFamily="serif-monospace"
+        android:lineSpacingExtra="30sp"
+        android:text="Lv2"
+        android:textColor="@android:color/background_light"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/lv4Btn"
+        android:layout_width="91dp"
+        android:layout_height="74dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/learn_button_style"
+        android:fontFamily="serif-monospace"
+        android:lineSpacingExtra="30sp"
+        android:text="Lv4"
+        android:textColor="@android:color/background_light"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lv2Btn" />
+
+    <Button
+        android:id="@+id/lv5Btn"
+        android:layout_width="91dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/learn_button_style"
+        android:fontFamily="serif-monospace"
+        android:lineSpacingExtra="30sp"
+        android:text="Lv5"
+        android:textColor="@android:color/background_light"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lv3Btn" />
+
+    <Button
+        android:id="@+id/lv6Btn"
+        android:layout_width="91dp"
+        android:layout_height="74dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/learn_button_style"
+        android:fontFamily="serif-monospace"
+        android:lineSpacingExtra="30sp"
+        android:text="Lv6"
+        android:textColor="@android:color/background_light"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lv4Btn" />
+
+    <Button
+        android:id="@+id/lv7Btn"
+        android:layout_width="91dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/learn_button_style"
+        android:fontFamily="serif-monospace"
+        android:lineSpacingExtra="30sp"
+        android:text="Lv7"
+        android:textColor="@android:color/background_light"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lv5Btn" />
+
+    <Button
+        android:id="@+id/lv8Btn"
+        android:layout_width="91dp"
+        android:layout_height="74dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/learn_button_style"
+        android:fontFamily="serif-monospace"
+        android:lineSpacingExtra="30sp"
+        android:text="Lv8"
+        android:textColor="@android:color/background_light"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lv6Btn" />
+
+    <Button
+        android:id="@+id/lv9Btn"
+        android:layout_width="91dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/learn_button_style"
+        android:fontFamily="serif-monospace"
+        android:lineSpacingExtra="30sp"
+        android:text="Lv9"
+        android:textColor="@android:color/background_light"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lv7Btn" />
+
+    <Button
+        android:id="@+id/lv10Btn"
+        android:layout_width="91dp"
+        android:layout_height="74dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/learn_button_style"
+        android:fontFamily="serif-monospace"
+        android:lineSpacingExtra="30sp"
+        android:text="Lv10"
+        android:textColor="@android:color/background_light"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lv8Btn" />
+</android.support.constraint.ConstraintLayout>
