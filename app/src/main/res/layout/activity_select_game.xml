@@ -196,5 +196,15 @@
         tools:layout_conversion_absoluteHeight="48dp"
         tools:layout_conversion_absoluteWidth="88dp" />
 
+    <ImageView
+        android:id="@+id/backToPlayBtn"
+        android:layout_width="41dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back_white" />
+
 
 </android.support.constraint.ConstraintLayout>

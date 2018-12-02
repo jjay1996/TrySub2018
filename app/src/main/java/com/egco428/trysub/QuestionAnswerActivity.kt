@@ -196,4 +196,8 @@ class QuestionAnswerActivity : AppCompatActivity() {
         answ2btn.isEnabled = true
         answ3btn.isEnabled = true
     }
+
+    override fun onBackPressed() {
+        // Do Here what ever you want do on back press;
+    }
 }

@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="103dp"
         android:textAlignment="center"
         android:textColor="@android:color/background_light"
         android:textSize="34sp" />
@@ -34,7 +34,9 @@
     <LinearLayout
         android:layout_width="288dp"
         android:layout_height="288dp"
-        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
         android:background="@drawable/round_card"
         android:orientation="vertical"></LinearLayout>
 
