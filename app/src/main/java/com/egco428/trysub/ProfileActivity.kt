@@ -35,7 +35,8 @@ class ProfileActivity : AppCompatActivity() {
         userId = intent.getStringExtra("keyPath")
 
         EditBtn.setOnClickListener {
-            val intentToEditProfile = Intent(this,editProfileActivity::class.java)
+            var intentToEditProfile = Intent(this,editProfileActivity::class.java)
+            intentToEditProfile.putExtra("keyPath",userId)
             startActivity(intentToEditProfile)
             finish()
         }
@@ -70,7 +71,7 @@ class ProfileActivity : AppCompatActivity() {
                 editText.text = name
 
                 if(gender == "1") imageView2.setImageResource(R.drawable.c_male)
-                else if(gender == "2") imageView2.setImageResource(R.drawable.c_female)
+                else if(gender == "0") imageView2.setImageResource(R.drawable.c_female)
             }
         })
 

@@ -44,7 +44,7 @@
             android:padding="10dp">
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/editProfileTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -71,7 +71,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/imageProfileEdit"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_margin="20dp"
@@ -82,7 +82,7 @@
                     app:srcCompat="@drawable/vatar" />
 
                 <Button
-                    android:id="@+id/takePicBtn"
+                    android:id="@+id/takePicBtnEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="78dp"
@@ -97,7 +97,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/createText" />
 
                 <Button
-                    android:id="@+id/chooseBtn"
+                    android:id="@+id/chooseBtnEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="65dp"
@@ -135,7 +135,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/takePicBtn" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/editName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -185,7 +185,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/maleSelect"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:layout_weight="1"
@@ -193,7 +193,7 @@
                     app:srcCompat="@drawable/male" />
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/femaleSelect"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:layout_weight="1"
@@ -223,7 +223,7 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <Button
-                    android:id="@+id/CancelBtn"
+                    android:id="@+id/CancelBtnEdit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
