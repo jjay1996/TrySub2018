@@ -2,16 +2,30 @@ package com.egco428.trysub
 
 import android.content.Context
 import android.graphics.Color
+import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.view.*
 import android.widget.BaseAdapter
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.activity_high_score.*
 import kotlinx.android.synthetic.main.row_high_score.view.*
+import kotlin.coroutines.experimental.*
+import java.sql.Array
+import kotlin.coroutines.experimental.coroutineContext
+import kotlin.coroutines.experimental.suspendCoroutine
 
 class HighScoreActivity : AppCompatActivity() {
+
+    private lateinit var userID:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,29 +34,58 @@ class HighScoreActivity : AppCompatActivity() {
         setTitle("                    Try-Sub")
         //supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        val listView = findViewById<ListView>(R.id.highscoreList)
+        userID = "User/-LScPrxbemODH7AsIJ86"
 
-//        val redColor = Color.parseColor("#FF0000")
-//        listView.setBackgroundColor(redColor)
-
-        listView.adapter = myCustomAdapter(this)
-        listView.setOnItemClickListener { adapterView, view, position, id ->
-            val item = adapterView.getItemAtPosition(position) as String
-            Toast.makeText(this, "${item} $position", Toast.LENGTH_SHORT).show()
+        backFromHSBtn.setOnClickListener  {
+            finish()
         }
+
+        var list :ArrayList<ArrayList<String>> = arrayListOf(arrayListOf("zzz","6"),arrayListOf("ss","2"),arrayListOf("ss","8"),arrayListOf("ss","10"))
+        var database = FirebaseDatabase.getInstance().getReference("User")
+        database.addValueEventListener(object  : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot?) {
+                for (i in p0!!.children){
+                    var listIn:ArrayList<String> = arrayListOf()
+                    listIn.add(i.child("name").value.toString())
+                    listIn.add(i.child("user_mission").child("total_score").value.toString())
+                    list.add(listIn)
+                }
+                var i = 1
+                var j: Int
+                while (i < list.size) {
+                    var key = arrayListOf(list[i][0],list[i][1])
+                    j = i - 1
+
+                    while (j >= 0 && list[j][1].toInt() < key[1].toInt()) {
+                        list[j+1] = list[j]
+                        j = j - 1
+
+                    }
+                    list[j+1] = key
+                    Log.d("test",list.toString())
+                    i++
+                }
+                val listView = findViewById<ListView>(R.id.highscoreList)
+                listView.adapter = myCustomAdapter(this@HighScoreActivity,list)
+            }
+        })
     }
 
-    private class myCustomAdapter(context: Context): BaseAdapter(){
+    private class myCustomAdapter(context: Context,listOut:ArrayList<ArrayList<String>>): BaseAdapter(){
         private val mContext: Context
-        private val names = arrayListOf<String>("Anakin","Yoda","Solo","Sky Walker","Wookie","George Lucas","CTPO","R2D2"
-                ,"Anakin","Yoda","Solo","Sky Walker","Wookie","George Lucas","CTPO","R2D2","Anakin","Yoda","Solo","Sky Walker"
-                ,"Wookie","George Lucas","CTPO","R2D2","Anakin","Yoda","Solo","Sky Walker","Wookie","George Lucas","CTPO","R2D2")
+        private var list :ArrayList<ArrayList<String>>
         init{
             mContext = context
+            list = listOut
+            Log.d("test","test = "+list.toString())
         }
 
         override fun getCount(): Int {
-            return names.size
+            return list.size
         }
 
         override fun getItemId(position: Int): Long {
@@ -50,28 +93,27 @@ class HighScoreActivity : AppCompatActivity() {
         }
 
         override fun getItem(position: Int): Any {
-            return names[position]
+            return list[position]
         }
 
         override fun getView(position: Int, convertView: View?, viewGroup: ViewGroup?): View {
-            val whiteColor = Color.parseColor("#FFFFFF")
-            val greyColor = Color.parseColor("#E0E0E0")
             val rowMain: View
             if(convertView == null){
                 val layoutInflator = LayoutInflater.from(viewGroup!!.context)
                 rowMain = layoutInflator.inflate(R.layout.row_high_score, viewGroup, false)
-                val viewHolder = ViewHolder(rowMain.testName)
+                val viewHolder = ViewHolder(rowMain.testName,rowMain.testHighScore)
                 rowMain.tag = viewHolder
             } else {
                 rowMain = convertView
             }
             val viewHolder = rowMain.tag as ViewHolder
-            viewHolder.nameText.text = names.get(position)
-
+            viewHolder.nameText.text = list.get(position).get(0)
+            viewHolder.totalScore.text = list.get(position).get(1)
             return rowMain
         }
 
-        private class ViewHolder(val nameText: TextView){
+
+        private class ViewHolder(val nameText: TextView ,val totalScore: TextView){
 
         }
     }
