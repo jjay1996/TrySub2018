@@ -91,24 +91,25 @@ class Create : AppCompatActivity() {
             pass =passCreTextpla.text.toString().trim()
             pass2 = passCreCheckTextpla.text.toString().trim()
             var checkName : String = ""
-
+            var checkU1 = 1
+            var checkU2 = 1
             val messageId = database.push().key
 
             //check validate
             // Pohibit " ' , . (เว้นวรรค)
             for (i in dataSnapshot!!.children){
                 var user = i.child("username").value.toString()
-                if (userCreate.text.toString().trim()== user ){
-                    checkUser= user
-                    checkName = i.child("name").value.toString()
-                    break
+
+                if (userCreate.text.toString().trim()== user || editText.text.toString().trim() == i.child("name").value.toString()){
+                    if (checkU1==1){checkUser= user ; checkU1++}
+                    if (checkU2==1){checkName = i.child("name").value.toString() ; checkU2++}
                 }
 
             }
 
             // Password should contain at least one special character
             // Allowed special characters : "~!@#$%^&*()-_=+|/,."';:{}[]<>?"
-            var exp = ".*[~!@#\$%\\^&*()\\-_=+\\|\\[{\\]};:'\",<.>/?].*"
+            var exp = ".*[~!@#\$%\\^&*()\\-_=+\\|\\[{\\]};:'\",<.>/? ].*"
             var pattern = Pattern.compile(exp)
             var matcher1 = pattern.matcher(username)
             var matcher2 = pattern.matcher(pass)
@@ -151,7 +152,8 @@ class Create : AppCompatActivity() {
                 sex.setValue("${gender}");
 
                 val picture = FirebaseDatabase.getInstance().getReference("User/$messageId/picture")
-                picture.setValue("${username}.jpg");
+                if(fileUri!=null){ picture.setValue("${username}.jpg");}
+                else {picture.setValue("null"); }
 
                 val id = FirebaseDatabase.getInstance().getReference("User/$messageId/id")
                 id.setValue("${messageId}");
