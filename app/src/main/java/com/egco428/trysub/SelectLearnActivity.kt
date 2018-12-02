@@ -11,6 +11,11 @@ class SelectLearnActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_learn)
 
+        //ปุ่มกลับไปหน้าSelect Lesson
+        backToPlayBtn1.setOnClickListener {
+            finish()
+        }
+
         lv1Btn.setOnClickListener {
             val intent = Intent(this@SelectLearnActivity,LearnWordActivity::class.java)
             intent.putExtra("LevelLearn","0")

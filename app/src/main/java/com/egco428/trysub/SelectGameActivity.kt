@@ -25,6 +25,10 @@ class SelectGameActivity : AppCompatActivity() {
 
         userId = intent.getStringExtra("keyPath")
 
+        backToPlayBtn.setOnClickListener {
+            finish()
+        }
+
         //ล็อคปุ่มไม่ให้กดและให้เป็นสีทำ
         level2Btn.isEnabled = false
         level2Btn.setBackgroundResource(R.drawable.choicebtn_gray_lock)

@@ -36,8 +36,8 @@ class LearnWordActivity : AppCompatActivity() {
 
         LessonTextView.text = "Level ${nolevel+1}"
         backTolistLessonBtn.setOnClickListener {
-            val intent = Intent(this@LearnWordActivity,SelectGameActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this@LearnWordActivity,SelectGameActivity::class.java)
+//            startActivity(intent)
             finish()
         }
 
