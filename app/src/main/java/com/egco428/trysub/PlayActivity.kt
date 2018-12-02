@@ -3,11 +3,13 @@ package com.egco428.trysub
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
 
 
 import android.support.v4.app.ActivityCompat.finishAffinity
 import android.support.v4.content.ContextCompat.startActivity
 import android.util.Log
+import com.egco428.trysub.Create_Login.choose
 import com.egco428.trysub.R.id.*
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -70,7 +72,9 @@ class PlayActivity : AppCompatActivity() {
         }
 
         exitAppBtn.setOnClickListener {
-            finishAffinity()
+            val intentToHome = Intent(this,MainActivity::class.java)
+            startActivity(intentToHome)
+            finish()
         }
     }
 }

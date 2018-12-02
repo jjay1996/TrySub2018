@@ -29,13 +29,13 @@ class choose : AppCompatActivity() {
     public fun login(view:View){
         val intent = Intent(this, login::class.java)
         startActivity(intent)
-        //finish()
+        finish()
     }
 
     public fun register(view:View){
         val intent = Intent(this, Create::class.java)
         startActivity(intent)
-        //finish()
+        finish()
     }
 
 

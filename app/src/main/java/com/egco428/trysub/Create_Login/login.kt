@@ -68,6 +68,12 @@ class login : AppCompatActivity() {
             }
         }
 
+        canBtn.setOnClickListener {
+            val intent = Intent(this,choose::class.java)
+            startActivity(intent)
+            finish()
+        }
+
 
     }
 }
