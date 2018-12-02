@@ -91,6 +91,7 @@ class ConcludeScoreActivity : AppCompatActivity() {
         replayBtn.setOnClickListener {
             val intent = Intent(this@ConcludeScoreActivity,QuestionAnswerActivity::class.java)
             intent.putExtra("Level",Nowlevel.toString())
+            intent.putExtra("keyPath",userId.toString())
             startActivity(intent)
             finish()
         }
@@ -104,14 +105,11 @@ class ConcludeScoreActivity : AppCompatActivity() {
     }
 
     fun ConcludeScoreAndNowLevel(score:Int,Nowlevel:Int){
-            //pushคะแนนขึ้นFireBase
-        Log.d("check","ok")
-
-        Log.d("check",dataSnapshot!!.toString())
-            if(score > dataSnapshot!!.child("user_mission").child("mission").child("level${Nowlevel+1}").child("score").value.toString().toInt()) {
-                var scoreToFB = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/mission/level${Nowlevel+1}/score")
-                scoreToFB.setValue(score.toString())
-            }
+        //pushคะแนนขึ้นFireBase
+        if(score > dataSnapshot!!.child("user_mission").child("mission").child("level${Nowlevel+1}").child("score").value.toString().toInt()) {
+            var scoreToFB = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/mission/level${Nowlevel+1}/score")
+            scoreToFB.setValue(score.toString())
+        }
 
 
         //เช็คunlock mission

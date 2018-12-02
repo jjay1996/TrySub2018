@@ -12,21 +12,28 @@
         android:layout_marginTop="153dp"
         android:textAlignment="center"
         android:textColor="@android:color/background_light"
-        android:textSize="30sp" />
+        android:textSize="34sp" />
 
     <TextView
         android:id="@+id/slide_desc"
-        android:layout_width="match_parent"
-        android:layout_height="68dp"
+        android:layout_width="234dp"
+        android:layout_height="69dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="184dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="182dp"
         android:autoText="false"
         android:contextClickable="false"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@android:color/background_light"
         android:textColorLink="@android:color/white"
-        android:textSize="30sp" />
+        android:textSize="34sp" />
+
+    <LinearLayout
+        android:layout_width="288dp"
+        android:layout_height="288dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/round_card"
+        android:orientation="vertical"></LinearLayout>
 
 </RelativeLayout>

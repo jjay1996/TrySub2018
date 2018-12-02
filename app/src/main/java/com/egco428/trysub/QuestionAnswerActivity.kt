@@ -31,11 +31,14 @@ class QuestionAnswerActivity : AppCompatActivity() {
         noQATextView.text = ("Question " + (noQuestion+1) + "Score :" + score)
         updateQuestion(noQuestion)
 
+        nextQuestionBtn.isEnabled = false
+
         //ปุ่มคำตอบ1
         answ1btn.setOnClickListener {
+            nextQuestionBtn.isEnabled = true
             if(answ1btn.text.toString() == objects.CorrectAnswer[noLevel][noQuestion]){
                 // ตอบถูก
-                answ1btn.setBackgroundColor(Color.GREEN)
+                answ1btn.setBackgroundResource(R.drawable.choicebtn_green)
                 score++
 
                 // ล็อคปุ่มไม่ให้กด
@@ -45,15 +48,15 @@ class QuestionAnswerActivity : AppCompatActivity() {
             }else{
                 // ตอบผิด
                 //แสดงchoiceผิดสีแดง
-                answ1btn.setBackgroundColor(Color.RED)
+                answ1btn.setBackgroundResource(R.drawable.choicebtn_red)
 
                 //แสดงchoiceถูกสีเขียว
                 if(answ1btn.text.toString() == objects.CorrectAnswer[noLevel][noQuestion]){
-                    answ1btn.setBackgroundColor(Color.GREEN)
+                    answ1btn.setBackgroundResource(R.drawable.choicebtn_green)
                 }else if(answ2btn.text.toString() == objects.CorrectAnswer[noLevel][noQuestion]){
-                    answ2btn.setBackgroundColor(Color.GREEN)
+                    answ2btn.setBackgroundResource(R.drawable.choicebtn_green)
                 }else if(answ3btn.text.toString() == objects.CorrectAnswer[noLevel][noQuestion]){
-                    answ3btn.setBackgroundColor(Color.GREEN)
+                    answ3btn.setBackgroundResource(R.drawable.choicebtn_green)
                 }
 
                 // ล็อคปุ่มไม่ให้กด
@@ -76,12 +79,14 @@ class QuestionAnswerActivity : AppCompatActivity() {
                     updateQuestion(noQuestion)
                 }
             }
+            nextQuestionBtn.isEnabled = true
         }
         //ปุ่มคำตอบ2
         answ2btn.setOnClickListener {
+            nextQuestionBtn.isEnabled = true
             if(answ2btn.text.toString() == objects.CorrectAnswer[noLevel][noQuestion]){
                 //ตอบถูก
-                answ2btn.setBackgroundColor(Color.GREEN)
+                answ2btn.setBackgroundResource(R.drawable.choicebtn_green)
                 score++
 
                 // ล็อคปุ่มไม่ให้กด
@@ -91,15 +96,15 @@ class QuestionAnswerActivity : AppCompatActivity() {
             }else {
                 //ตอบผิด
                 //แสดงchoiceผิดสีแดง
-                answ2btn.setBackgroundColor(Color.RED)
+                answ2btn.setBackgroundResource(R.drawable.choicebtn_red)
 
                 //แสดงchoiceถูกสีเขียว
                 if(answ1btn.text.toString() == objects.CorrectAnswer[noLevel][noQuestion]){
-                    answ1btn.setBackgroundColor(Color.GREEN)
+                    answ1btn.setBackgroundResource(R.drawable.choicebtn_green)
                 }else if(answ2btn.text.toString() == objects.CorrectAnswer[noLevel][noQuestion]){
-                    answ2btn.setBackgroundColor(Color.GREEN)
+                    answ2btn.setBackgroundResource(R.drawable.choicebtn_green)
                 }else if(answ3btn.text.toString() == objects.CorrectAnswer[noLevel][noQuestion]){
-                    answ3btn.setBackgroundColor(Color.GREEN)
+                    answ3btn.setBackgroundResource(R.drawable.choicebtn_green)
                 }
 
                 // ล็อคปุ่มไม่ให้กด
@@ -125,9 +130,10 @@ class QuestionAnswerActivity : AppCompatActivity() {
         }
         //ปุ่มคำตอบ3
         answ3btn.setOnClickListener {
+            nextQuestionBtn.isEnabled = true
             if(answ3btn.text.toString() == objects.CorrectAnswer[noLevel][noQuestion]){
                 //ตอบถูก
-                answ3btn.setBackgroundColor(Color.GREEN)
+                answ3btn.setBackgroundResource(R.drawable.choicebtn_green)
                 score++
 
                 // ล็อคปุ่มไม่ให้กด
@@ -137,15 +143,15 @@ class QuestionAnswerActivity : AppCompatActivity() {
             }else {
                 //ตอบผิด
                 //แสดงchoiceผิดสีแดง
-                answ3btn.setBackgroundColor(Color.RED)
+                answ3btn.setBackgroundResource(R.drawable.choicebtn_red)
 
                 //แสดงchoiceถูกสีเขียว
                 if(answ1btn.text.toString() == objects.CorrectAnswer[noLevel][noQuestion]){
-                    answ1btn.setBackgroundColor(Color.GREEN)
+                    answ1btn.setBackgroundResource(R.drawable.choicebtn_green)
                 }else if(answ2btn.text.toString() == objects.CorrectAnswer[noLevel][noQuestion]){
-                    answ2btn.setBackgroundColor(Color.GREEN)
+                    answ2btn.setBackgroundResource(R.drawable.choicebtn_green)
                 }else if(answ3btn.text.toString() == objects.CorrectAnswer[noLevel][noQuestion]){
-                    answ3btn.setBackgroundColor(Color.GREEN)
+                    answ3btn.setBackgroundResource(R.drawable.choicebtn_green)
                 }
 
                 // ล็อคปุ่มไม่ให้กด
@@ -180,11 +186,12 @@ class QuestionAnswerActivity : AppCompatActivity() {
         answ2btn.text = objects.MyChoice[noLevel][a][1].toString()
         answ3btn.text = objects.MyChoice[noLevel][a][2].toString()
 
-        answ1btn.setBackgroundColor(Color.LTGRAY)
-        answ2btn.setBackgroundColor(Color.LTGRAY)
-        answ3btn.setBackgroundColor(Color.LTGRAY)
+        answ1btn.setBackgroundResource(R.drawable.choicebtn_white)
+        answ2btn.setBackgroundResource(R.drawable.choicebtn_white)
+        answ3btn.setBackgroundResource(R.drawable.choicebtn_white)
+        nextQuestionBtn.isEnabled = false
 
-        // ล็อคปุ่มไม่ให้กด
+        // เข้ามากดได้3ปุ่ม
         answ1btn.isEnabled = true
         answ2btn.isEnabled = true
         answ3btn.isEnabled = true

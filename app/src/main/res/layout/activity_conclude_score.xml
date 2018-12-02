@@ -4,7 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".ConcludeScoreActivity">
+
+    <LinearLayout
+        android:layout_width="286dp"
+        android:layout_height="88dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/round_card"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12"></LinearLayout>
 
     <TextView
         android:id="@+id/textView11"
@@ -15,6 +28,7 @@
         android:layout_marginTop="28dp"
         android:text="Sumarize"
         android:textAlignment="center"
+        android:textColor="?attr/colorPrimary"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,6 +45,7 @@
         android:layout_marginTop="40dp"
         android:text="Your Score"
         android:textAlignment="center"
+        android:textColor="?attr/colorPrimary"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +61,9 @@
         android:layout_marginTop="48dp"
         android:text="TextView"
         android:textAlignment="center"
+        android:textColor="@android:color/background_light"
         android:textSize="40sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
@@ -58,6 +75,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="136dp"
+        android:background="@drawable/round_card"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/backToSelectLevelBtn"
         app:layout_constraintTop_toBottomOf="@+id/concludeScoreTextView"
@@ -72,6 +90,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="136dp"
+        android:background="@drawable/round_card"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.288"
@@ -87,6 +106,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="136dp"
+        android:background="@drawable/round_card"
         android:rotation="180"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -101,6 +121,7 @@
         android:layout_marginStart="44dp"
         android:layout_marginTop="64dp"
         android:text="Mini game"
+        android:textColor="?attr/colorBackgroundFloating"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
