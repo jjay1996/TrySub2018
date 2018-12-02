@@ -20,11 +20,9 @@ class login : AppCompatActivity() {
     var dataSnapshot:DataSnapshot? = null
     var keyPath:String? = ""
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
 
         var database = FirebaseDatabase.getInstance().getReference("User")
         database.addValueEventListener(object  : ValueEventListener {
@@ -58,7 +56,6 @@ class login : AppCompatActivity() {
                 Toast.makeText(applicationContext,"Username or Password failed",Toast.LENGTH_SHORT).show()
             }
 
-
             if (pass==true) {
                 val t = Intent(this,PlayActivity::class.java)
                 t.putExtra("keyPath",keyPath)
@@ -73,7 +70,5 @@ class login : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
-
     }
 }

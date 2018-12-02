@@ -40,15 +40,11 @@ class minigame : AppCompatActivity(),SensorEventListener {
     private var Nowlevel = 0
     private var userId:String? = null
     private var dataSnapshot:DataSnapshot? = null
-
-
     private var animate1:Animation? = null
     private var animate2:Animation? = null
     private var animate3:Animation? = null
     private var animate4:Animation? = null
-
     private var totalScore = 0
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -176,7 +172,6 @@ class minigame : AppCompatActivity(),SensorEventListener {
 
                 }
             }
-
             anim1.setAnimationListener(animationListener)
             anim2.setAnimationListener(animationListener)
 

@@ -49,11 +49,9 @@ class Create : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create)
 
-
-
         storage = FirebaseStorage.getInstance()
         storageReference = storage!!.getReferenceFromUrl("gs://trysup2018.appspot.com")
-       var database = FirebaseDatabase.getInstance().getReference("User")
+        var database = FirebaseDatabase.getInstance().getReference("User")
         database.addValueEventListener(object  : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {}
             override fun onDataChange(p0: DataSnapshot?) {
@@ -62,14 +60,7 @@ class Create : AppCompatActivity() {
             }
         })
 
-
-
-
-
-
-
-
-            //Choose gender
+        //Choose gender
         imageView2.setOnClickListener {
             gender = 1 // male
             imageView2.setImageResource(R.drawable.c_male)
@@ -82,7 +73,7 @@ class Create : AppCompatActivity() {
             imageView2.setImageResource(R.drawable.male)
             T_gender = "female"
         }
-            //end Choose gender
+        //end Choose gender
 
         // Confirm BTN
         confirmBtn.setOnClickListener {
@@ -104,7 +95,6 @@ class Create : AppCompatActivity() {
                     if (checkU1==1){checkUser= user ; checkU1++}
                     if (checkU2==1){checkName = i.child("name").value.toString() ; checkU2++}
                 }
-
             }
 
             // Password should contain at least one special character
@@ -133,7 +123,6 @@ class Create : AppCompatActivity() {
             else if (T_gender == ""){Toast.makeText(applicationContext,"Pleases Choose gender",Toast.LENGTH_SHORT).show() ; check=false }
             else {check = true }
             Log.d("test","check : $checkUser  !! username : $username")
-
             //End check validate
 
             //set init id
@@ -275,22 +264,16 @@ class Create : AppCompatActivity() {
                                     token?.cancelPermissionRequest() })
                                 .show()
                     }
-
                 }).check()
-
     }
 
     private fun pickPhotoFromGallery() {
-
-        val pickImageIntent = Intent(Intent.ACTION_PICK,
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-
+        val pickImageIntent = Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(pickImageIntent,IMAGE_REQUEST)
     }
 
     // Take Photo
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-
         if (resultCode == Activity.RESULT_OK
                 && requestCode == REQUEST_IMAGE_CAPTURE) {
             //photo from camera
@@ -305,19 +288,7 @@ class Create : AppCompatActivity() {
             super.onActivityResult(requestCode, resultCode, data)
         }
     }
-
-
-    }
-
-/*    fun createPhotoFile():File{
-        val storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        var image:File? = null
-
-        try {
-            image = File.createTempFile("image${System.currentTimeMillis()/1000}",".jpg",storageDir)
-        }catch (e:IOError){e.printStackTrace()}
-        return image!!
-    }*/
+}
 
 
 

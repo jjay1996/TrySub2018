@@ -7,7 +7,24 @@
     android:background="@drawable/background"
     tools:context=".Create_Login.choose">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Try Sub"
+        android:textColor="@color/colorPrimary"
+        android:textSize="80sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
+        android:id="@+id/choose_layout"
         android:layout_width="match_parent"
         android:layout_height="268dp"
         android:layout_marginBottom="50dp"
@@ -25,6 +42,7 @@
         app:layout_constraintVertical_bias="0.53">
 
         <LinearLayout
+            android:id="@+id/male_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
@@ -57,6 +75,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/female_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
@@ -87,21 +106,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="Try Sub"
-        android:textColor="@color/colorPrimary"
-        android:textSize="80sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

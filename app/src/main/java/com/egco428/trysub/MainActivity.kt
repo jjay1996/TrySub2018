@@ -18,56 +18,37 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_play.*
 import java.io.File
 import android.support.annotation.NonNull
+import android.view.animation.AnimationUtils
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.storage.FileDownloadTask
 import com.google.android.gms.tasks.OnSuccessListener
-
+import kotlinx.android.synthetic.main.activity_minigame.*
 
 
 class MainActivity : AppCompatActivity() {
 
-    var fileUri: Uri? = null
-    private  var storage: FirebaseStorage? = null
-    private var storageReference: StorageReference? = null
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setTitle("                               Try-Sub")
+        //do animation
+        //var animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
+        var animate2 = AnimationUtils.loadAnimation(this,R.anim.fromright)
+        var animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
+        var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
+        textView2!!.animation = animate3
+        imageView4!!.animation = animate2
+        startBtn!!.animation = animate4
+
+
         startBtn.setOnClickListener {
-            val intent = Intent(this,choose::class.java)
+            val intent = Intent(this, choose::class.java)
             startActivity(intent)
-            //finish()
+            finish()
         }
-
-        storage = FirebaseStorage.getInstance()
-        storageReference = storage!!.getReferenceFromUrl("gs://trysup2018.appspot.com/poryou00.jpg")
-        var localFile = File.createTempFile("images", "jpg");
-        //storageReference!!.getFile(localFile)
-
-        storageReference!!.getFile(localFile)
-                .addOnSuccessListener(OnSuccessListener<FileDownloadTask.TaskSnapshot> {
-                    // Successfully downloaded data to local file
-                    val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
-                    imageView4.setImageBitmap(bitmap)
-                    Log.d("sda","success")
-                    // imageView4.setImageResource(image.jpg)
-                    // ...
-                }).addOnFailureListener(OnFailureListener {
-                    // Handle failed download
-                    Log.d("sda","failed")
-                    // ...
-                })
-
-        //Log.d("sda","${storageReference!!.getFile(localFile)}")
-
-        }
-
-
-        //Log.d("check",objects.MyQuestion[0][0])
-
     }
+}
 
 
 
