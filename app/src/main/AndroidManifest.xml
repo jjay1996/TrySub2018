@@ -16,18 +16,30 @@
                 
             </intent-filter>
         </activity>
-        <activity android:name=".Create_Login.choose" />
-        <activity android:name=".Create_Login.Create" />
-        <activity android:name=".PlayActivity" />
-        <activity android:name=".HighScoreActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".SelectGameActivity" />
-        <activity android:name=".Mini_Game.minigame" />
-        <activity android:name=".QuestionAnswerActivity" />
-        <activity android:name=".Create_Login.login" />
-        <activity android:name=".ConcludeScoreActivity" />
-        <activity android:name=".LearnWordActivity" />
-        <activity android:name=".SelectLearnActivity"></activity>
+        <activity android:name=".Create_Login.choose"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Create_Login.Create"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".PlayActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HighScoreActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ProfileActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SelectGameActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Mini_Game.minigame"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".QuestionAnswerActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Create_Login.login"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ConcludeScoreActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LearnWordActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SelectLearnActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 

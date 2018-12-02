@@ -23,7 +23,5 @@ class ProfileActivity : AppCompatActivity() {
         backFromProfileBtn.setOnClickListener {
             finish()
         }
-
-
     }
 }
