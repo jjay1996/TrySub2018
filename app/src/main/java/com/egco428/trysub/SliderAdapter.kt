@@ -30,10 +30,6 @@ class SliderAdapter : PagerAdapter {
         slide_descs = objects.CorrectAnswer[a]
 
     }
-    //Arrays
-    //var slide_images = arrayOf(R.drawable.eat_icon, R.drawable.sleep_icon, R.drawable.code_icon)
-//    var slide_headings = arrayOf("Swag", "Swah", "Swahing on Sesilien ")
-//    var slide_descs = arrayOf("Pocodomäne der Superwohnmarkt", "Real, einmal hin alles drin.", "Wie? Wo? Was? Weiß Obi?!")
 
     override fun getCount(): Int {
         return slide_headings.size;
@@ -44,16 +40,13 @@ class SliderAdapter : PagerAdapter {
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        //return super.instantiateItem(container, position)
+        //สไลด์หน้าจอ
         layoutInflater = context!!.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        //layoutInflater = Context.LAYOUT_INFLATER_SERVICE as LayoutInflater
         val view = layoutInflater!!.inflate(R.layout.slide_layout, container, false)
 
-        //val slideImageView = view.findViewById(R.id.slide_image) as ImageView
         val slideHeading = view.findViewById(R.id.wordTextView) as TextView
         val slideDescription = view.findViewById(R.id.slide_desc) as TextView
 
-        //slideImageView.setImageResource(slide_images[position])
         slideHeading.text = slide_headings[position]
         slideDescription.text = slide_descs[position]
 
