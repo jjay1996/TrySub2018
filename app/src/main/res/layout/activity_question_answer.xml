@@ -106,7 +106,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/answ3btn"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/nextbtn" />
+        app:srcCompat="@drawable/back_white"
+        android:rotation="180"/>
 
     <LinearLayout
         android:layout_width="319dp"

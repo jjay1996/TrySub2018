@@ -25,15 +25,34 @@ class SelectGameActivity : AppCompatActivity() {
 
         userId = intent.getStringExtra("keyPath")
 
+        //ล็อคปุ่มไม่ให้กดและให้เป็นสีทำ
         level2Btn.isEnabled = false
+        level2Btn.setBackgroundResource(R.drawable.choicebtn_gray_lock)
+
         level3Btn.isEnabled = false
+        level3Btn.setBackgroundResource(R.drawable.choicebtn_gray_lock)
+
         level4Btn.isEnabled = false
+        level4Btn.setBackgroundResource(R.drawable.choicebtn_gray_lock)
+
         level5Btn.isEnabled = false
+        level5Btn.setBackgroundResource(R.drawable.choicebtn_gray_lock)
+
         level6Btn.isEnabled = false
+        level6Btn.setBackgroundResource(R.drawable.choicebtn_gray_lock)
+
         level7Btn.isEnabled = false
+        level7Btn.setBackgroundResource(R.drawable.choicebtn_gray_lock)
+
         level8Btn.isEnabled = false
+        level8Btn.setBackgroundResource(R.drawable.choicebtn_gray_lock)
+
         level9Btn.isEnabled = false
+        level9Btn.setBackgroundResource(R.drawable.choicebtn_gray_lock)
+
         level10Btn.isEnabled = false
+        level10Btn.setBackgroundResource(R.drawable.choicebtn_gray_lock)
+        //ล็อคปุ่มไม่ให้กดและให้เป็นสีทำ
 
         getdatafromFB()
         level1Btn.setOnClickListener {
@@ -127,30 +146,39 @@ class SelectGameActivity : AppCompatActivity() {
 
         if(unlock_level>=2){
             level2Btn.isEnabled = true
+            level2Btn.setBackgroundResource(R.drawable.learn_button_style)
         }
         if(unlock_level>=3){
             level3Btn.isEnabled = true
+            level3Btn.setBackgroundResource(R.drawable.learn_button_style)
         }
         if(unlock_level>=4){
             level4Btn.isEnabled = true
+            level4Btn.setBackgroundResource(R.drawable.learn_button_style)
         }
         if(unlock_level>=5){
             level5Btn.isEnabled = true
+            level5Btn.setBackgroundResource(R.drawable.learn_button_style)
         }
         if(unlock_level>=6){
             level6Btn.isEnabled = true
+            level6Btn.setBackgroundResource(R.drawable.learn_button_style)
         }
         if(unlock_level>=7){
             level7Btn.isEnabled = true
+            level7Btn.setBackgroundResource(R.drawable.learn_button_style)
         }
         if(unlock_level>=8){
             level8Btn.isEnabled = true
+            level8Btn.setBackgroundResource(R.drawable.learn_button_style)
         }
         if(unlock_level>=9){
             level9Btn.isEnabled = true
+            level9Btn.setBackgroundResource(R.drawable.learn_button_style)
         }
         if(unlock_level>=10){
             level10Btn.isEnabled = true
+            level10Btn.setBackgroundResource(R.drawable.learn_button_style)
         }
     }
 

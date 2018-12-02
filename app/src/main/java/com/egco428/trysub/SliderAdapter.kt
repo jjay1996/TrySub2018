@@ -10,6 +10,7 @@ import android.content.Context.LAYOUT_INFLATER_SERVICE
 import android.support.v4.content.ContextCompat.getSystemService
 import android.widget.ImageView
 import android.widget.RelativeLayout
+import kotlinx.android.synthetic.main.slide_layout.*
 
 
 class SliderAdapter : PagerAdapter {
@@ -17,17 +18,19 @@ class SliderAdapter : PagerAdapter {
     var objects:QuestionAnswer = QuestionAnswer()
     var context: Context? = null
     var layoutInflater: LayoutInflater? = null
-    var a:Int = 0
+    var nowlevel:Int = 0
     var slide_headings = arrayOf("")
     var slide_descs = arrayOf("")
 
     constructor(context: Context,level:Int){
 
         this.context = context
-        a = level
+        nowlevel = level
 
-        slide_headings = objects.MyQuestion[a]
-        slide_descs = objects.CorrectAnswer[a]
+        slide_headings = objects.MyQuestion[nowlevel]
+        slide_descs = objects.CorrectAnswer[nowlevel]
+
+
 
     }
 
@@ -40,6 +43,8 @@ class SliderAdapter : PagerAdapter {
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
+
+
         //สไลด์หน้าจอ
         layoutInflater = context!!.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view = layoutInflater!!.inflate(R.layout.slide_layout, container, false)

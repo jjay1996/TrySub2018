@@ -18,6 +18,9 @@ class ConcludeScoreActivity : AppCompatActivity() {
     var score = 0
     var Nowlevel = 0
     var userId:String? = null
+    var playMinigame = "0"
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conclude_score)
@@ -25,35 +28,24 @@ class ConcludeScoreActivity : AppCompatActivity() {
         userId = intent.getStringExtra("keyPath") //รับมาจากหน้าแรกแต่ยังไม่เลือดค่า
         score = intent.getStringExtra("Score").toInt()
         Nowlevel = intent.getStringExtra("nLevel").toInt()
-
+        if(intent.getStringExtra("playMinigame")!=null){
+            playMinigame = intent.getStringExtra("playMinigame")
+        }
         //get data from FireBase
+        var doOnce = false
         var database = FirebaseDatabase.getInstance().getReference("User/${userId}")
         database.addValueEventListener(object  : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
             }
             override fun onDataChange(p0: DataSnapshot?) {
-                dataSnapshot=p0
-
-
-                concludeScoreTextView.text = score.toString()
-                ConcludeScoreAndNowLevel(score,Nowlevel)
-
+                if(!doOnce) {
+                    doOnce = true
+                    dataSnapshot = p0
+                    concludeScoreTextView.text = score.toString()
+                    ConcludeScoreAndNowLevel(score, Nowlevel)
+                }
             }
         })
-
-
-
-//        score = intent.getStringExtra("Score").toInt()
-//        Nowlevel = intent.getStringExtra("nLevel").toInt()
-//        concludeScoreTextView.text = score.toString()
-
-//        for (i in dataSnapshot!!.children) {
-//            dataSnapshot=i
-//            if (userId == i.key.toString()){
-//                break
-//            }
-//        }
-//        ConcludeScoreAndNowLevel(score,Nowlevel)
 
         //คะแนนน้อยกว่า8ห้ามเล่นMiniGameกับกดปุ่่มnextLevelBtn
         if(score<8){
@@ -62,6 +54,9 @@ class ConcludeScoreActivity : AppCompatActivity() {
             mininGameImage.visibility = View.INVISIBLE
 
             nextLevelBtn.visibility = View.INVISIBLE
+        }else if(playMinigame=="1"){
+            miniGametextView.visibility = View.INVISIBLE
+            mininGameImage.visibility = View.INVISIBLE
         }else {
             Log.d("check 123","get ${score}")
             miniGametextView.visibility = View.VISIBLE
@@ -78,6 +73,9 @@ class ConcludeScoreActivity : AppCompatActivity() {
         //กดไปเล่น MiniGame
         mininGameImage.setOnClickListener {
             val intent = Intent(this@ConcludeScoreActivity,minigame::class.java)
+            intent.putExtra("keyPath",userId) //รับมาจากหน้าแรกแต่ยังไม่เลือดค่า
+            intent.putExtra("Score",score.toString())
+            intent.putExtra("nLevel",Nowlevel.toString())
             startActivity(intent)
             finish()
         }
@@ -109,22 +107,56 @@ class ConcludeScoreActivity : AppCompatActivity() {
         if(score > dataSnapshot!!.child("user_mission").child("mission").child("level${Nowlevel+1}").child("score").value.toString().toInt()) {
             var scoreToFB = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/mission/level${Nowlevel+1}/score")
             scoreToFB.setValue(score.toString())
+
+            var total = dataSnapshot!!.child("user_mission").child("mission").child("level${Nowlevel+1}").child("mini_score").value.toString().toInt()
+            total+=score
+            var scoreToFB2 = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/mission/level${Nowlevel+1}/total")
+            scoreToFB2.setValue(total.toString())
+
+            var total_score = 0
+            var up_score = false
+            var database = FirebaseDatabase.getInstance().getReference("User/${userId}")
+            database.addValueEventListener(object  : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError?) {
+                }
+                override fun onDataChange(p0: DataSnapshot?) {
+                    var count = 0
+                    for (i in p0!!.child("user_mission").child("mission").children){
+                        total_score += i.child("total").value.toString().toInt()
+                        count++
+                        if(count==10 && !up_score){
+                            up_score = true
+                            var totalToFB = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/total_score")
+                            totalToFB.setValue(total_score.toString())
+                        }
+                    }
+
+                }
+            })
+
         }
 
 
         //เช็คunlock mission
         if(score>=8){
             if(Nowlevel<=8) {
-                Log.d("check FB","get <8")
-                val unlock = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/unlock_level")
-                unlock.setValue((Nowlevel + 2).toString())
+                Log.d("check FB","get <8 ${Nowlevel}")
+                Log.d("level : " ,dataSnapshot!!.child("user_mission").child("unlock_level").value.toString())
+                if ((Nowlevel+2) > dataSnapshot!!.child("user_mission").child("unlock_level").value.toString().toInt()){
+                    val unlock = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/unlock_level")
+                    unlock.setValue((Nowlevel + 2).toString())
+                }
             }
             if(Nowlevel==9){
-                Log.d("check FB","get ==9")
-                val unlock = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/unlock_level")
-                unlock.setValue((Nowlevel + 1).toString())
+                Log.d("check FB","get ==9 ${Nowlevel}")
+                if ((Nowlevel+1) > dataSnapshot!!.child("user_mission").child("unlock_level").value.toString().toInt()) {
+                    Log.d("level : " ,dataSnapshot!!.child("user_mission").child("unlock_level").value.toString())
+                    val unlock = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/unlock_level")
+                    unlock.setValue((Nowlevel + 1).toString())
+                }
             }
         }
+
     }
 
 }

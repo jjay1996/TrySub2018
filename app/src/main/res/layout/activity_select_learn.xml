@@ -7,12 +7,27 @@
     android:background="@drawable/background"
     tools:context=".SelectLearnActivity">
 
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Select Lesson"
+        android:textColor="@android:color/background_light"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/lv1Btn"
         android:layout_width="91dp"
         android:layout_height="74dp"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/learn_button_style"
         android:fontFamily="serif-monospace"
         android:lineSpacingExtra="30sp"
@@ -21,7 +36,7 @@
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <Button
         android:id="@+id/lv3Btn"
@@ -44,7 +59,7 @@
         android:layout_width="91dp"
         android:layout_height="74dp"
         android:layout_marginEnd="68dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/learn_button_style"
         android:fontFamily="serif-monospace"
         android:lineSpacingExtra="30sp"
@@ -53,7 +68,7 @@
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <Button
         android:id="@+id/lv4Btn"

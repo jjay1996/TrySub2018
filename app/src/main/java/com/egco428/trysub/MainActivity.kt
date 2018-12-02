@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         startBtn.setOnClickListener {
             val intent = Intent(this,choose::class.java)
             startActivity(intent)
-            finish()
+            //finish()
         }
         storage = FirebaseStorage.getInstance()
         storageReference = storage!!.getReferenceFromUrl("gs://trysup2018.appspot.com/poryou00.jpg")

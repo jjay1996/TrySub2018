@@ -192,8 +192,9 @@ class Create : AppCompatActivity() {
                 //End Upload
 
                 //go home page
-                val t = Intent(this,PlayActivity::class.java)
-                startActivity(t)
+                val intent = Intent(this,PlayActivity::class.java)
+                intent.putExtra("keyPath",messageId.toString())
+                startActivity(intent)
                 finish()
             }
             //end set
