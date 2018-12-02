@@ -62,17 +62,17 @@ class Create : AppCompatActivity() {
 
 
             //Choose gender
-        imageButton.setOnClickListener {
-            gender = 0 // Female
-            imageButton.setImageResource(R.drawable.c_female)
-            imageButton2.setImageResource(R.drawable.male)
-            T_gender = "female"
-        }
-        imageButton2.setOnClickListener {
+        imageView2.setOnClickListener {
             gender = 1 // male
-            imageButton2.setImageResource(R.drawable.c_male)
-            imageButton.setImageResource(R.drawable.female)
+            imageView2.setImageResource(R.drawable.c_male)
+            imageView3.setImageResource(R.drawable.female)
             T_gender = "male"
+        }
+        imageView3.setOnClickListener {
+            gender = 0 // Female
+            imageView3.setImageResource(R.drawable.c_female)
+            imageView2.setImageResource(R.drawable.male)
+            T_gender = "female"
         }
             //end Choose gender
 

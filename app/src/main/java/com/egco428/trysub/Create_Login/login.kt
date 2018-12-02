@@ -68,6 +68,10 @@ class login : AppCompatActivity() {
             }
         }
 
+        canBtn.setOnClickListener {
+            finish()
+        }
+
 
     }
 }
