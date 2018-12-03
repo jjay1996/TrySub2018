@@ -99,6 +99,7 @@ class ConcludeScoreActivity : AppCompatActivity() {
         nextLevelBtn.setOnClickListener {
             val intent = Intent(this@ConcludeScoreActivity,QuestionAnswerActivity::class.java)
             intent.putExtra("Level",(Nowlevel+1).toString())
+            intent.putExtra("keyPath",userId.toString())
             startActivity(intent)
             finish()
         }

@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_play.*
 import java.io.File
 import android.support.annotation.NonNull
 import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.storage.FileDownloadTask
 import com.google.android.gms.tasks.OnSuccessListener
@@ -47,6 +48,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+/*
+        var storageReference = FirebaseStorage.getInstance().getReference().child("myimage");
+
+
+        var image = findViewById<ImageView>(R.id.imageView);
+
+        Glide.with(this /* context */)
+                .using(new FirebaseImageLoader())
+                .load(storageReference)
+                .into(image );*/
     }
 }
 

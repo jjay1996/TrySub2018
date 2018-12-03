@@ -88,7 +88,7 @@ class HighScoreActivity : AppCompatActivity() {
         init{
             mContext = context
             list = listOut
-            Log.d("test3",list.toString())
+            Log.d("test4",list.size.toString())
         }
 
         override fun getCount(): Int {
@@ -116,18 +116,28 @@ class HighScoreActivity : AppCompatActivity() {
             val viewHolder = rowMain.tag as ViewHolder
             viewHolder.nameText.text = list.get(position).get(0)
             viewHolder.totalScore.text = list.get(position).get(1)
-            //Log.d("test",list.get(position).toString())
+            Log.d("test6",list.get(position).toString())
 
-            var storage = FirebaseStorage.getInstance()
-            var storageReference = storage!!.getReferenceFromUrl("gs://trysup2018.appspot.com/${list.get(position).get(2)}")
-            var localFile = File.createTempFile("images", "jpg");
-            storageReference!!.getFile(localFile)
-                    .addOnSuccessListener(OnSuccessListener<FileDownloadTask.TaskSnapshot> {
-                        val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
-                        viewHolder.picture.setImageBitmap(bitmap)
-                    }).addOnFailureListener(OnFailureListener {
+            var checkOnce = false
+            if(list.get(position).get(2)!=="null" && !checkOnce) {
+                var storage = FirebaseStorage.getInstance()
+                var storageReference = storage!!.getReferenceFromUrl("gs://trysup2018.appspot.com/${list.get(position).get(2)}")
+                var localFile = File.createTempFile("images", "jpg");
+                storageReference!!.getFile(localFile)
+                        .addOnSuccessListener(OnSuccessListener<FileDownloadTask.TaskSnapshot> {
+                            if(!checkOnce){
+                                val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+                                viewHolder.picture.setImageBitmap(bitmap)
+                                checkOnce = true
+                                list[position][2] = "null"
 
-                    })
+                                Log.d("test5",list.get(position).get(2))
+                            }
+                        }).addOnFailureListener(OnFailureListener {
+
+                        })
+            }
+
             return rowMain
         }
 
