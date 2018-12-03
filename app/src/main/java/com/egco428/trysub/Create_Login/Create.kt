@@ -186,9 +186,7 @@ class Create : AppCompatActivity() {
                             .addOnSuccessListener {
                                 Toast.makeText(applicationContext,"File Upload...",Toast.LENGTH_SHORT).show()
                                 //go home page
-                                val intent = Intent(this,PlayActivity::class.java)
-                                intent.putExtra("keyPath",messageId.toString())
-                                startActivity(intent)
+
                                 finish()
                             }
                             .addOnFailureListener{
@@ -201,6 +199,10 @@ class Create : AppCompatActivity() {
                 }
                 //End Upload
 
+
+                val intent = Intent(this,PlayActivity::class.java)
+                intent.putExtra("keyPath",messageId.toString())
+                startActivity(intent)
 
             }
             //end set

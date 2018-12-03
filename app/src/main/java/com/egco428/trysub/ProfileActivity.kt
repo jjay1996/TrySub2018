@@ -50,6 +50,7 @@ class ProfileActivity : AppCompatActivity() {
         backFromProfileBtn!!.animation = animate1
         //End do animation
 
+        //go to edit profile page
         EditBtn.setOnClickListener {
             var intentToEditProfile = Intent(this,editProfileActivity::class.java)
             intentToEditProfile.putExtra("keyPath",userId)
@@ -57,10 +58,12 @@ class ProfileActivity : AppCompatActivity() {
             finish()
         }
 
+        //go to home page
         backFromProfileBtn.setOnClickListener {
             finish()
         }
 
+        //call firebase
         var database = FirebaseDatabase.getInstance().getReference("User/${userId}")
         database.addValueEventListener(object  : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
@@ -71,6 +74,7 @@ class ProfileActivity : AppCompatActivity() {
                 var name = p0!!.child("name").value.toString()
                 var gender = p0!!.child("gender").value.toString()
 
+                //set picture to ImageView
                 if(picture!="null"){
                     var storage = FirebaseStorage.getInstance()
                     var storageReference = storage!!.getReferenceFromUrl("gs://trysup2018.appspot.com/${picture}")
@@ -84,8 +88,10 @@ class ProfileActivity : AppCompatActivity() {
                             })
                 }
 
+                //set name to TextView
                 editText.text = name
 
+                //set gender to ImgaeView
                 if(gender == "1") imageView2.setImageResource(R.drawable.c_male)
                 else if(gender == "0") imageView2.setImageResource(R.drawable.c_female)
             }

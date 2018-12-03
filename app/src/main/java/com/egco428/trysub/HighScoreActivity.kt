@@ -13,10 +13,7 @@ import android.view.animation.AnimationUtils
 import android.widget.*
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.storage.FileDownloadTask
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_high_score.*
@@ -30,16 +27,11 @@ import kotlin.coroutines.experimental.suspendCoroutine
 
 class HighScoreActivity : AppCompatActivity() {
 
-    private lateinit var userID:String
+    private val database = FirebaseDatabase.getInstance().getReference("User")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_high_score)
-
-        setTitle("                    Try-Sub")
-        //supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-
-        userID = "User/-LScPrxbemODH7AsIJ86"
 
         //Do animation
         var animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
@@ -58,17 +50,19 @@ class HighScoreActivity : AppCompatActivity() {
         highscoreList!!.animation = animate4
         //End do animation
 
+        //back to home page
         backFromHSBtn.setOnClickListener  {
             finish()
         }
 
+        //set data from firebase
         var list :ArrayList<ArrayList<String>> = arrayListOf()
-        var database = FirebaseDatabase.getInstance().getReference("User")
-        database.addValueEventListener(object  : ValueEventListener {
+        database.addListenerForSingleValueEvent(object  : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
 
             }
 
+            //get data and sort data by score
             override fun onDataChange(p0: DataSnapshot?) {
                 for (i in p0!!.children){
                     var listIn:ArrayList<String> = arrayListOf()
@@ -77,7 +71,6 @@ class HighScoreActivity : AppCompatActivity() {
                     listIn.add(i.child("picture").value.toString())
                     list.add(listIn)
                 }
-                //Log.d("test1",list.toString())
                 var i = 1
                 var j: Int
                 while (i < list.size) {
@@ -90,12 +83,11 @@ class HighScoreActivity : AppCompatActivity() {
 
                     }
                     list[j+1] = key
-                    //Log.d("test",list.toString())
                     i++
                 }
-                //Log.d("test2",list.toString())
+
                 val listView = findViewById<ListView>(R.id.highscoreList)
-                listView.adapter = myCustomAdapter(this@HighScoreActivity,list)
+                listView.adapter = myCustomAdapter(this@HighScoreActivity,list)  // create class and set adapter for ListView
             }
         })
     }
@@ -106,7 +98,6 @@ class HighScoreActivity : AppCompatActivity() {
         init{
             mContext = context
             list = listOut
-            //Log.d("test4",list.size.toString())
         }
 
         override fun getCount(): Int {
@@ -121,7 +112,9 @@ class HighScoreActivity : AppCompatActivity() {
             return list[position]
         }
 
+        //call when item show on screen
         override fun getView(position: Int, convertView: View?, viewGroup: ViewGroup?): View {
+            //set class
             val rowMain: View
             if (convertView == null) {
                 val layoutInflator = LayoutInflater.from(viewGroup!!.context)
@@ -131,26 +124,23 @@ class HighScoreActivity : AppCompatActivity() {
             } else {
                 rowMain = convertView
             }
+
+            //set data to class ViewHolder
             val viewHolder = rowMain.tag as ViewHolder
             viewHolder.nameText.text = list.get(position).get(0)
             viewHolder.totalScore.text = list.get(position).get(1)
-            //Log.d("test6",list.get(position).toString())
 
-            var checkOnce = false
-            if(list.get(position).get(2)!=="null" && !checkOnce) {
+            //set Image
+            if(list.get(position).get(2)!=="null" ) {
+                //download Imgae
                 var storage = FirebaseStorage.getInstance()
                 var storageReference = storage!!.getReferenceFromUrl("gs://trysup2018.appspot.com/${list.get(position).get(2)}")
                 var localFile = File.createTempFile("images", "jpg");
                 storageReference!!.getFile(localFile)
                         .addOnSuccessListener(OnSuccessListener<FileDownloadTask.TaskSnapshot> {
-                            if(!checkOnce){
-                                val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
-                                viewHolder.picture.setImageBitmap(bitmap)
-                                checkOnce = true
-                                list[position][2] = "null"
-
-                                Log.d("test5",list.get(position).get(2))
-                            }
+                            //set Image
+                            val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+                            viewHolder.picture.setImageBitmap(bitmap)
                         }).addOnFailureListener(OnFailureListener {
 
                         })

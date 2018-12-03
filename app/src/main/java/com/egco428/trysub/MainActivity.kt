@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //do animation
-        var animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
+        //var animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
         var animate2 = AnimationUtils.loadAnimation(this,R.anim.fromright)
         var animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
         var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
@@ -44,26 +44,20 @@ class MainActivity : AppCompatActivity() {
         imageView4!!.animation = animate2
         startBtn!!.animation = animate4
 
+        //open music
+        var MediaPlayer: MediaPlayer? = null
+        MediaPlayer = android.media.MediaPlayer.create(this,R.raw.intro)
+        MediaPlayer!!.start()
+
+
+        //setting start button to go Choose page
         startBtn.setOnClickListener {
             val intent = Intent(this, choose::class.java)
             startActivity(intent)
+            MediaPlayer.stop() //stop music before finish intent
             finish()
         }
-/*
-        var storageReference = FirebaseStorage.getInstance().getReference().child("myimage");
-
-
-        var image = findViewById<ImageView>(R.id.imageView);
-
-        Glide.with(this /* context */)
-                .using(new FirebaseImageLoader())
-                .load(storageReference)
-                .into(image );*/
     }
-
-
-
-
 }
 
 

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Color
+import android.media.MediaPlayer
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
@@ -25,7 +26,6 @@ class LearnWordActivity : AppCompatActivity() {
     private var mDots: ArrayList<TextView>? = ArrayList()
     private var mSlideViewPager: ViewPager? = null
     private var mDotLayout: LinearLayout? = null
-    private var viewPager:ViewPager? = null
 
     private var sliderAdapter: SliderAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +36,7 @@ class LearnWordActivity : AppCompatActivity() {
         var animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
         var animate2 = AnimationUtils.loadAnimation(this,R.anim.fromright)
         var animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
-        var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
+        //var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
         //right
         slideViewPager!!.animation = animate2
         //left
@@ -45,59 +45,53 @@ class LearnWordActivity : AppCompatActivity() {
         LessonTextView!!.animation = animate3
         //End do animation
 
+        //get level that choose for leaning
         var nolevel = intent.getStringExtra("LevelLearn").toInt()
 
-        LessonTextView.text = "Level ${nolevel+1}"
+        LessonTextView.text = "Level ${nolevel+1}" //set level to TextView
         backTolistLessonBtn.setOnClickListener {
-//            val intent = Intent(this@LearnWordActivity,SelectGameActivity::class.java)
-//            startActivity(intent)
-            finish()
+            finish() //back to learn page (choose level)
         }
 
-        mSlideViewPager = findViewById(R.id.slideViewPager) as ViewPager
-        mDotLayout = findViewById(R.id.dotsLayout) as LinearLayout
+        mSlideViewPager = findViewById(R.id.slideViewPager) as ViewPager //set variable for slide layout
 
-        sliderAdapter = SliderAdapter(this, nolevel);
+        mDotLayout = findViewById(R.id.dotsLayout) as LinearLayout //set variable for dot layout (paging)
+        addDotsIndicator(0) //set init dot layout = 0
 
-        mSlideViewPager!!.adapter = sliderAdapter
-
-        addDotsIndicator(0)
-
-        //mSlideViewPager.addOnPageChangeListener(view)
-
-//
+        sliderAdapter = SliderAdapter(this, nolevel) //set value for adapter
+        mSlideViewPager!!.adapter = sliderAdapter //set adapter
+        //add listener for slide
         mSlideViewPager!!.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) { }
 
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-
-            }
-
+            //do when change page
             override fun onPageSelected(position: Int) {
-                addDotsIndicator(position)
-            }
+                //open music
+                var MediaPlayer: MediaPlayer? = null
+                MediaPlayer = android.media.MediaPlayer.create(this@LearnWordActivity,R.raw.flip) //set music
+                MediaPlayer!!.start()
 
-            override fun onPageScrollStateChanged(state: Int) {
-
+                addDotsIndicator(position) //call funtion
             }
+            override fun onPageScrollStateChanged(state: Int) { }
         })
 
     }
 
-    //จุดบอกหน้า
+    //จุดบอกหน้า (dot layout)
     fun addDotsIndicator(position:Int) {
+        mDotLayout!!.removeAllViews() //remove all dot
 
-        mDotLayout!!.removeAllViews()
-
+        //set all dot
         for (i in 1..10) {
             mDots!!.add(TextView(this))
             mDots!![i - 1].setTextSize(36f)
             mDots!![i - 1].setText(Html.fromHtml("&#8226"))
             mDots!![i - 1].setTextColor(Color.GRAY)
-            mDotLayout!!.addView(mDots!![i - 1])
+            mDotLayout!!.addView(mDots!![i - 1]) //set color gray dot for all dot
         }
-
         if (mDots!!.size > 0){
-            mDots!![position].setTextColor(Color.WHITE)
+            mDots!![position].setTextColor(Color.WHITE) //set color white dot = current page
         }
     }
 }

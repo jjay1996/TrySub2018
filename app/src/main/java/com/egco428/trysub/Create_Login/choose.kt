@@ -21,30 +21,20 @@ class choose : AppCompatActivity() {
         var animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
         var animate2 = AnimationUtils.loadAnimation(this,R.anim.fromright)
         var animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
-        var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
+        //var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
         textView!!.animation = animate3
-        //choose_layout!!.animation = animate4
         male_layout!!.animation = animate1
         female_layout!!.animation = animate2
-
-        createBtn.setOnClickListener {
-            val intent = Intent(this, Create::class.java)
-            startActivity(intent)
-            finish()
-        }
-        loginBtn.setOnClickListener {
-            val intent = Intent(this, login::class.java)
-            startActivity(intent)
-            finish()
-        }
     }
 
+    //go to register page
     fun login(view:View){
         val intent = Intent(this, login::class.java)
         startActivity(intent)
         finish()
     }
 
+    //go to login page
     fun register(view:View){
         val intent = Intent(this, Create::class.java)
         startActivity(intent)

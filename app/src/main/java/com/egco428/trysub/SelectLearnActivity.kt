@@ -17,17 +17,14 @@ class SelectLearnActivity : AppCompatActivity() {
         var animate2 = AnimationUtils.loadAnimation(this,R.anim.fromright)
         var animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
         var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
-
         //top
         textView14!!.animation = animate3
-
         //left
         lv1Btn!!.animation = animate1
         lv3Btn!!.animation = animate1
         lv5Btn!!.animation = animate1
         lv7Btn!!.animation = animate1
         lv9Btn!!.animation = animate1
-
         //right
         lv2Btn!!.animation = animate2
         lv4Btn!!.animation = animate2
@@ -41,65 +38,57 @@ class SelectLearnActivity : AppCompatActivity() {
             finish()
         }
 
+        ////////// go to level that choose for learning /////////////
+        //*** send different level to page ***//
         lv1Btn.setOnClickListener {
             val intent = Intent(this@SelectLearnActivity,LearnWordActivity::class.java)
             intent.putExtra("LevelLearn","0")
             startActivity(intent)
         }
-
         lv2Btn.setOnClickListener {
             val intent = Intent(this@SelectLearnActivity,LearnWordActivity::class.java)
             intent.putExtra("LevelLearn","1")
             startActivity(intent)
         }
-
         lv3Btn.setOnClickListener {
             val intent = Intent(this@SelectLearnActivity,LearnWordActivity::class.java)
             intent.putExtra("LevelLearn","2")
             startActivity(intent)
         }
-
         lv4Btn.setOnClickListener {
             val intent = Intent(this@SelectLearnActivity,LearnWordActivity::class.java)
             intent.putExtra("LevelLearn","3")
             startActivity(intent)
         }
-
         lv5Btn.setOnClickListener {
             val intent = Intent(this@SelectLearnActivity,LearnWordActivity::class.java)
             intent.putExtra("LevelLearn","4")
             startActivity(intent)
         }
-
         lv6Btn.setOnClickListener {
             val intent = Intent(this@SelectLearnActivity,LearnWordActivity::class.java)
             intent.putExtra("LevelLearn","5")
             startActivity(intent)
         }
-
         lv7Btn.setOnClickListener {
             val intent = Intent(this@SelectLearnActivity,LearnWordActivity::class.java)
             intent.putExtra("LevelLearn","6")
             startActivity(intent)
         }
-
         lv8Btn.setOnClickListener {
             val intent = Intent(this@SelectLearnActivity,LearnWordActivity::class.java)
             intent.putExtra("LevelLearn","7")
             startActivity(intent)
         }
-
         lv9Btn.setOnClickListener {
             val intent = Intent(this@SelectLearnActivity,LearnWordActivity::class.java)
             intent.putExtra("LevelLearn","8")
             startActivity(intent)
         }
-
         lv10Btn.setOnClickListener {
             val intent = Intent(this@SelectLearnActivity,LearnWordActivity::class.java)
             intent.putExtra("LevelLearn","9")
             startActivity(intent)
         }
-
     }
 }

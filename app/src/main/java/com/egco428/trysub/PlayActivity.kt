@@ -23,9 +23,7 @@ import kotlinx.android.synthetic.main.activity_play.*
 
 class PlayActivity : AppCompatActivity() {
 
-    //var MediaPlayer: MediaPlayer? = null
     var keyPath:String = ""
-    var dataSnapshot:DataSnapshot? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_play)
@@ -33,63 +31,47 @@ class PlayActivity : AppCompatActivity() {
         if(bundle!=null) {
             keyPath = bundle.getString("keyPath").toString()
         }
-        //Log.d(this.toString(),"keyPath : $keyPath")
-        setTitle("                               Try-Sub")
 
         //do animation
         var animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
         var animate2 = AnimationUtils.loadAnimation(this,R.anim.fromright)
-        var animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
-        var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
-
-        TrysubPlayTextView!!.animation = animate3
-        learnBtn!!.animation = animate4
-        startGameBtn!!.animation = animate4
-        profileBtn!!.animation = animate4
-        highScoreBtn!!.animation = animate4
-        exitAppBtn!!.animation = animate4
+        //var animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
+        //var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
+        TrysubPlayTextView!!.animation = animate2
+        learnBtn!!.animation = animate1
+        startGameBtn!!.animation = animate2
+        profileBtn!!.animation = animate1
+        highScoreBtn!!.animation = animate2
+        exitAppBtn!!.animation = animate1
         //End do animation
 
-
-        var database = FirebaseDatabase.getInstance().getReference("User")
-        database.addValueEventListener(object  : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError?) {}
-            override fun onDataChange(p0: DataSnapshot?) {
-                dataSnapshot = p0
-                for (i in dataSnapshot!!.children){
-                    dataSnapshot=i
-                    //Log.d("check old value","${dataSnapshot!!.child("name").value.toString()}")
-                    if (keyPath == i.key.toString()){
-                        textView10.text = dataSnapshot!!.child("name").value.toString()
-                        break
-                    }
-
-                }
-            }
-        })
-
+        //go to learn page
         learnBtn.setOnClickListener {
             val intenToLearn = Intent(this,SelectLearnActivity::class.java)
             startActivity(intenToLearn)
         }
 
+        //go to play game page
         startGameBtn.setOnClickListener {
             val intentToSelectGame = Intent(this,SelectGameActivity::class.java)
             intentToSelectGame.putExtra("keyPath",keyPath)
             startActivity(intentToSelectGame)
         }
 
+        //go to profile page
         profileBtn.setOnClickListener {
             val intentToProfile = Intent(this,ProfileActivity::class.java)
             intentToProfile.putExtra("keyPath",keyPath)
             startActivity(intentToProfile)
         }
 
+        //go to high_score page
         highScoreBtn.setOnClickListener {
             val intentToHighScore = Intent(this,HighScoreActivity::class.java)
             startActivity(intentToHighScore)
         }
 
+        //Logout and go to first page
         exitAppBtn.setOnClickListener {
             val intentToHome = Intent(this,MainActivity::class.java)
             startActivity(intentToHome)
@@ -108,18 +90,15 @@ class PlayActivity : AppCompatActivity() {
         //do animation
         var animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
         var animate2 = AnimationUtils.loadAnimation(this,R.anim.fromright)
-        var animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
-        var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
-
-        TrysubPlayTextView!!.animation = animate3
-        learnBtn!!.animation = animate4
-        startGameBtn!!.animation = animate4
-        profileBtn!!.animation = animate4
-        highScoreBtn!!.animation = animate4
-        exitAppBtn!!.animation = animate4
+        //var animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
+        //var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
+        TrysubPlayTextView!!.animation = animate2
+        learnBtn!!.animation = animate1
+        startGameBtn!!.animation = animate2
+        profileBtn!!.animation = animate1
+        highScoreBtn!!.animation = animate2
+        exitAppBtn!!.animation = animate1
         //End do animation
-
-
 
         super.onResume()
     }

@@ -116,7 +116,7 @@ class editProfileActivity : AppCompatActivity() {
             if (name == checkName ){Toast.makeText(applicationContext,"Pleases Change name",Toast.LENGTH_SHORT).show() ; check=false }
             else if (name!!.length >15 ){Toast.makeText(applicationContext,"Length(Name) not more than 15",Toast.LENGTH_SHORT).show() ; check=false }
 
-
+            picture = "${dataSnapshot!!.child(userId).child("username").value.toString()}.jpg"
 
             if(check) {
                 val genderr = FirebaseDatabase.getInstance().getReference("User/$userId/gender")
@@ -125,10 +125,13 @@ class editProfileActivity : AppCompatActivity() {
                 val namee = FirebaseDatabase.getInstance().getReference("User/$userId/name")
                 namee.setValue("${name}");
 
+                val picturee = FirebaseDatabase.getInstance().getReference("User/$userId/picture")
+                picturee.setValue("${picture}");
+
                 //Upload photo
                 if (fileUri != null) {
                     Toast.makeText(applicationContext, "Uploading", Toast.LENGTH_SHORT).show()
-                    val imageRef = storageReference!!.child("${dataSnapshot!!.child(userId).child("username").value.toString()}.jpg")
+                    val imageRef = storageReference!!.child(picture!!)
                     imageRef.putFile(fileUri!!)
                             .addOnSuccessListener {
                                 Toast.makeText(applicationContext, "File Upload...", Toast.LENGTH_SHORT).show()

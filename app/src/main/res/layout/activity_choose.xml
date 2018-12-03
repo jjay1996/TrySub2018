@@ -57,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_weight="1"
+                android:onClick="login"
                 app:srcCompat="@drawable/login"
                 tools:layout_editor_absoluteX="139dp"
                 tools:layout_editor_absoluteY="187dp" />
@@ -67,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
+                android:onClick="login"
                 android:text="Login"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -90,6 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_weight="1"
+                android:onClick="register"
                 app:srcCompat="@drawable/question" />
 
             <Button
@@ -98,6 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
+                android:onClick="register"
                 android:text="Register"
                 android:textSize="18sp"
                 android:textStyle="bold"

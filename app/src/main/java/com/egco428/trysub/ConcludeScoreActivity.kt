@@ -136,14 +136,18 @@ class ConcludeScoreActivity : AppCompatActivity() {
     fun ConcludeScoreAndNowLevel(score:Int,Nowlevel:Int){
         //pushคะแนนขึ้นFireBase
         if(score > dataSnapshot!!.child("user_mission").child("mission").child("level${Nowlevel+1}").child("score").value.toString().toInt()) {
+            //update score in this level
             var scoreToFB = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/mission/level${Nowlevel+1}/score")
             scoreToFB.setValue(score.toString())
 
+            //update total score(total = minigame + score) in this level
             var total = dataSnapshot!!.child("user_mission").child("mission").child("level${Nowlevel+1}").child("mini_score").value.toString().toInt()
             total+=score
             var scoreToFB2 = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/mission/level${Nowlevel+1}/total")
             scoreToFB2.setValue(total.toString())
 
+
+            //update total score for all level
             var total_score = 0
             var up_score = false
             var database = FirebaseDatabase.getInstance().getReference("User/${userId}")
@@ -152,9 +156,12 @@ class ConcludeScoreActivity : AppCompatActivity() {
                 }
                 override fun onDataChange(p0: DataSnapshot?) {
                     var count = 0
+                    //run in 10 level but in onDataChange it view more than 10. must check by variable
                     for (i in p0!!.child("user_mission").child("mission").children){
                         total_score += i.child("total").value.toString().toInt()
                         count++
+
+                        //can update score just Once
                         if(count==10 && !up_score){
                             up_score = true
                             var totalToFB = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/total_score")

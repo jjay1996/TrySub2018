@@ -24,31 +24,34 @@ class login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        //set value to variable from Firebase
         var database = FirebaseDatabase.getInstance().getReference("User")
         database.addValueEventListener(object  : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError?) {
-
-            }
-
+            override fun onCancelled(p0: DatabaseError?) { }
             override fun onDataChange(p0: DataSnapshot?) {
               dataSnapshot=p0
             }
         })
 
+        //validate username,password then intent to home page
         confBtn.setOnClickListener {
+            //เปรียบเทียบ username ที่ใส่กับบน Firebase
             for (i in dataSnapshot!!.children) {
                 username = i.child("username").value.toString()
-                password = i.child("password").value.toString()
-                keyPath = i.key.toString()
                 if (userLogin.text.toString() == username){
+                    password = i.child("password").value.toString() //set password that found
+                    keyPath = i.key.toString() //set keyPath that found
                     break
                 }
             }
 
+            //check Empty Input
             if (userLogin.text.toString().trim() == "" || passLogin.text.toString().trim() == ""){
                 pass = false
                 Toast.makeText(applicationContext,"Input is Emphty",Toast.LENGTH_SHORT).show()
             }
+
+            //เปรียบเทียบ password ที่ใส่กับบน Firebase
             if ( userLogin.text.toString() == username && passLogin.text.toString() == password){
                 pass = true
             }else{
@@ -56,18 +59,19 @@ class login : AppCompatActivity() {
                 Toast.makeText(applicationContext,"Username or Password failed",Toast.LENGTH_SHORT).show()
             }
 
+            //if validate be ok it will go to home page
             if (pass==true) {
-                val t = Intent(this,PlayActivity::class.java)
-                t.putExtra("keyPath",keyPath)
-                //Log.d(this.toString(),"keyPath : $keyPath")
-                startActivity(t)
+                val toHome = Intent(this,PlayActivity::class.java)
+                toHome.putExtra("keyPath",keyPath)
+                startActivity(toHome)
                 finish()
             }
         }
 
+        //back to choose page
         canBtn.setOnClickListener {
-            val intent = Intent(this,choose::class.java)
-            startActivity(intent)
+            val toChoose = Intent(this,choose::class.java)
+            startActivity(toChoose)
             finish()
         }
     }

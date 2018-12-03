@@ -52,11 +52,12 @@ class minigame : AppCompatActivity(),SensorEventListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_minigame)
 
+        //get data from intent
         userId = intent.getStringExtra("keyPath") //รับมาจากหน้าแรกแต่ยังไม่เลือดค่า
         score = intent.getStringExtra("Score").toInt()
         Nowlevel = intent.getStringExtra("nLevel").toInt()
 
-
+        //back to conclude page
         backToConcludeBtn.setOnClickListener {
             val intent = Intent(this@minigame,ConcludeScoreActivity::class.java)
             if(totalScore != 0) intent.putExtra("playMinigame",totalScore.toString())
@@ -81,6 +82,7 @@ class minigame : AppCompatActivity(),SensorEventListener {
         //set variable for sensor accelerometer system
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
+        //set data from firebase to variable
         var doOnce = false
         var database = FirebaseDatabase.getInstance().getReference("User/${userId}")
         database.addValueEventListener(object  : ValueEventListener {
@@ -94,6 +96,7 @@ class minigame : AppCompatActivity(),SensorEventListener {
             }
         })
 
+        //create thread for change color TextView all time
         object : Thread() {
             override fun run() {
                 try {
@@ -132,7 +135,6 @@ class minigame : AppCompatActivity(),SensorEventListener {
     }
 
     private fun getAccelerometer(event: SensorEvent?){
-
         val values : FloatArray = event!!.values
         var x = values[0]
         var y = values[1]
@@ -141,7 +143,6 @@ class minigame : AppCompatActivity(),SensorEventListener {
         //calculate accelerate for sensor detection
         var accel = ((x*x)+(y*y)+(z*z))/(SensorManager.GRAVITY_EARTH*SensorManager.GRAVITY_EARTH)
         if(accel>=8){
-            //Log.d("test","ss")
             var anim1 = AnimationUtils.loadAnimation(this@minigame, R.anim.shakedice)
             var anim2 = AnimationUtils.loadAnimation(this@minigame, R.anim.shakedice)
             MediaPlayer = android.media.MediaPlayer.create(this,R.raw.dice_sound)
@@ -150,6 +151,7 @@ class minigame : AppCompatActivity(),SensorEventListener {
                 override fun onAnimationStart(animation: Animation) {}
 
                 override fun onAnimationEnd(animation: Animation) {
+                    //when animation end change data to dice by random data
                     val value = randomDiceValue()
                     var res:Int = 1
                     totalScore += value
@@ -161,16 +163,16 @@ class minigame : AppCompatActivity(),SensorEventListener {
                     else if(value == 5) res = R.drawable.dice5
                     else if(value == 6) res = R.drawable.dice6
 
+                    //set image to dice
                     if (animation === anim1) {
                         miniDice1!!.setImageResource(res)
-                        //Log.d("test",value.toString())
                     } else if (animation === anim2) {
                         miniDice2!!.setImageResource(res)
-                        //Log.d("test",value.toString())
                     }
-                    stopShake = true
+
+                    stopShake = true //for stop change color of TextView in thread
                     miniShake.text = "Your Score = ${totalScore}"
-                    saveToFB()
+                    saveToFB() //call function
                 }
 
                 override fun onAnimationRepeat(animation: Animation) {
@@ -187,6 +189,7 @@ class minigame : AppCompatActivity(),SensorEventListener {
     }
 
     fun  saveToFB(){
+        //up date all score the same at conclude page
         if(totalScore > dataSnapshot!!.child("user_mission").child("mission").child("level${Nowlevel+1}").child("mini_score").value.toString().toInt()) {
             var scoreToFB = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/mission/level${Nowlevel+1}/mini_score")
             scoreToFB.setValue(totalScore.toString())
