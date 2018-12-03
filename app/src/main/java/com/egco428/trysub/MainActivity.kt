@@ -3,10 +3,12 @@ package com.egco428.trysub
 
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.media.MediaPlayer
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.provider.Settings
 import com.egco428.trysub.Mini_Game.minigame
 import android.util.Log
 import android.widget.Toast
@@ -42,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         imageView4!!.animation = animate2
         startBtn!!.animation = animate4
 
-
         startBtn.setOnClickListener {
             val intent = Intent(this, choose::class.java)
             startActivity(intent)
@@ -59,6 +60,10 @@ class MainActivity : AppCompatActivity() {
                 .load(storageReference)
                 .into(image );*/
     }
+
+
+
+
 }
 
 

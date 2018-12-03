@@ -1,6 +1,7 @@
 package com.egco428.trysub
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_conclude_score.*
 import kotlinx.android.synthetic.main.activity_login.*
 
 class ConcludeScoreActivity : AppCompatActivity() {
+    var MediaPlayer: MediaPlayer? = null
     var dataSnapshot:DataSnapshot? = null
     var score = 0
     var Nowlevel = 0
@@ -73,6 +75,9 @@ class ConcludeScoreActivity : AppCompatActivity() {
             //Log.d("check 123","get ${score}")
             miniGametextView.visibility = View.INVISIBLE
             mininGameImage.visibility = View.INVISIBLE
+            //fail sound
+            MediaPlayer = android.media.MediaPlayer.create(this,R.raw.fail_sound)
+            MediaPlayer!!.start()
 
             nextLevelBtn.visibility = View.INVISIBLE
         }else if(playMinigame!="0"){
@@ -84,7 +89,9 @@ class ConcludeScoreActivity : AppCompatActivity() {
             //Log.d("check 123","get ${score}")
             miniGametextView.visibility = View.VISIBLE
             mininGameImage.visibility = View.VISIBLE
-
+            //Wow sounf
+            MediaPlayer = android.media.MediaPlayer.create(this,R.raw.wow_sound)
+            MediaPlayer!!.start()
             nextLevelBtn.visibility = View.VISIBLE
         }
 

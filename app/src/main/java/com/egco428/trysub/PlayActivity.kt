@@ -1,6 +1,7 @@
 package com.egco428.trysub
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
@@ -21,6 +22,8 @@ import kotlinx.android.synthetic.main.activity_create.*
 import kotlinx.android.synthetic.main.activity_play.*
 
 class PlayActivity : AppCompatActivity() {
+
+    var MediaPlayer: MediaPlayer? = null
     var keyPath:String = ""
     var dataSnapshot:DataSnapshot? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +49,12 @@ class PlayActivity : AppCompatActivity() {
         highScoreBtn!!.animation = animate4
         exitAppBtn!!.animation = animate4
         //End do animation
+
+        //Music
+        MediaPlayer = android.media.MediaPlayer.create(this,R.raw.media_cookie)
+        MediaPlayer!!.start()
+        MediaPlayer!!.isLooping = true
+        //Music
 
         var database = FirebaseDatabase.getInstance().getReference("User")
         database.addValueEventListener(object  : ValueEventListener {
@@ -114,6 +123,7 @@ class PlayActivity : AppCompatActivity() {
         highScoreBtn!!.animation = animate4
         exitAppBtn!!.animation = animate4
         //End do animation
+
 
 
         super.onResume()

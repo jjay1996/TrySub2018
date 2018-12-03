@@ -2,6 +2,7 @@ package com.egco428.trysub
 
 import android.content.Intent
 import android.graphics.Color
+import android.media.MediaPlayer
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
@@ -15,7 +16,7 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 class QuestionAnswerActivity : AppCompatActivity() {
-
+    var MediaPlayer: MediaPlayer? = null
     var objects:QuestionAnswer = QuestionAnswer()
     var score:Int = 0 // คะแนน
     var noQuestion:Int = 0 // ข้อที่ทำอยู่
@@ -45,6 +46,10 @@ class QuestionAnswerActivity : AppCompatActivity() {
         //buttom
         nextQuestionBtn!!.animation = animate4
         //End do animation
+
+        MediaPlayer = android.media.MediaPlayer.create(this,R.raw.media_cookie)
+        MediaPlayer!!.start()
+        MediaPlayer!!.isLooping = true
 
         noQATextView.text = ("Question " + (noQuestion+1) + "Score :" + score)
         updateQuestion(noQuestion)
@@ -181,6 +186,7 @@ class QuestionAnswerActivity : AppCompatActivity() {
                 noQuestion++
                 if(noQuestion>9){
                     //ทำครบ10ข้อ
+                    MediaPlayer!!.stop()
                     Toast.makeText(this,"End Your score $score",Toast.LENGTH_SHORT).show()
                     val intentToConclude = Intent(this@QuestionAnswerActivity,ConcludeScoreActivity::class.java)
                     intentToConclude.putExtra("Score", score.toString())
@@ -218,4 +224,22 @@ class QuestionAnswerActivity : AppCompatActivity() {
     override fun onBackPressed() {
         // Do Here what ever you want do on back press;
     }
+
+    override fun onResume() {
+        //stop music
+        MediaPlayer!!.stop()
+//
+//        //playmusic
+//        MediaPlayer = android.media.MediaPlayer.create(this,R.raw.media_cookie)
+//        MediaPlayer!!.start()
+//        MediaPlayer!!.isLooping = true
+        super.onResume()
+    }
+
+    override fun onPause() {
+        //stop music
+        MediaPlayer!!.stop()
+        super.onPause()
+    }
+
 }

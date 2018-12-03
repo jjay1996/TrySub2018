@@ -296,6 +296,7 @@ class Create : AppCompatActivity() {
             //photo from camera
             //display the photo on the imageview
             imageView.setImageURI(fileUri)
+            imageView.rotationX = 90f
         }else if(resultCode == Activity.RESULT_OK
                 && requestCode == IMAGE_REQUEST){
             //photo from gallery

@@ -15,6 +15,7 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.media.MediaPlayer
 import android.os.Handler
 import android.os.SystemClock
 import android.util.Log
@@ -34,6 +35,7 @@ import kotlinx.android.synthetic.main.activity_conclude_score.*
 
 
 class minigame : AppCompatActivity(),SensorEventListener {
+    var MediaPlayer: MediaPlayer? = null
     private var sensorManager : SensorManager?=null
     private var stopShake = false
     private var score = 0
@@ -53,6 +55,9 @@ class minigame : AppCompatActivity(),SensorEventListener {
         userId = intent.getStringExtra("keyPath") //รับมาจากหน้าแรกแต่ยังไม่เลือดค่า
         score = intent.getStringExtra("Score").toInt()
         Nowlevel = intent.getStringExtra("nLevel").toInt()
+
+        MediaPlayer = android.media.MediaPlayer.create(this,R.raw.play_die)
+        MediaPlayer!!.start()
 
         backToConcludeBtn.setOnClickListener {
             val intent = Intent(this@minigame,ConcludeScoreActivity::class.java)
