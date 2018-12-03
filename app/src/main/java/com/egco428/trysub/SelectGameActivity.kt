@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.animation.AnimationUtils
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -25,9 +26,34 @@ class SelectGameActivity : AppCompatActivity() {
 
         userId = intent.getStringExtra("keyPath")
 
+        //Do animation
+        var animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
+        var animate2 = AnimationUtils.loadAnimation(this,R.anim.fromright)
+        var animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
+        var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
+
+        //top
+        textView3!!.animation = animate3
+
+        //left
+        level1Btn!!.animation = animate1
+        level3Btn!!.animation = animate1
+        level5Btn!!.animation = animate1
+        level7Btn!!.animation = animate1
+        level9Btn!!.animation = animate1
+
+        //right
+        level2Btn!!.animation = animate2
+        level4Btn!!.animation = animate2
+        level6Btn!!.animation = animate2
+        level8Btn!!.animation = animate2
+        level10Btn!!.animation = animate2
+        //End do animation
+
         backToPlayBtn.setOnClickListener {
             finish()
         }
+
 
         //ล็อคปุ่มไม่ให้กดและให้เป็นสีทำ
         level2Btn.isEnabled = false

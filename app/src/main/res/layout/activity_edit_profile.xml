@@ -113,7 +113,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/textView71"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -157,7 +157,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/takePicBtn" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/textView81"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"

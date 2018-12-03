@@ -123,6 +123,7 @@
         app:layout_constraintTop_toBottomOf="@+id/questionTextView"></LinearLayout>
 
     <LinearLayout
+        android:id="@+id/questionWordTextView"
         android:layout_width="319dp"
         android:layout_height="101dp"
         android:layout_marginEnd="8dp"

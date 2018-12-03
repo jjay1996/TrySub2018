@@ -8,19 +8,20 @@
     tools:context=".ConcludeScoreActivity">
 
     <LinearLayout
-        android:layout_width="286dp"
-        android:layout_height="88dp"
+        android:layout_width="283dp"
+        android:layout_height="97dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/round_card"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12"></LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/textView122"></LinearLayout>
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/textView111"
         android:layout_width="211dp"
         android:layout_height="58dp"
         android:layout_marginEnd="8dp"
@@ -37,7 +38,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/textView122"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -50,7 +51,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/textView111" />
 
     <TextView
         android:id="@+id/concludeScoreTextView"
@@ -66,7 +67,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/textView122" />
 
     <ImageView
         android:id="@+id/replayBtn"

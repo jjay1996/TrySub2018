@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.animation.AnimationUtils
 import com.egco428.trysub.Mini_Game.minigame
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -31,6 +32,26 @@ class ConcludeScoreActivity : AppCompatActivity() {
         if(intent.getStringExtra("playMinigame")!=null){
             playMinigame = intent.getStringExtra("playMinigame")
         }
+
+        //Do animation
+        var animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
+        var animate2 = AnimationUtils.loadAnimation(this,R.anim.fromright)
+        var animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
+        var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
+        //right
+        mininGameImage!!.animation = animate2
+        nextLevelBtn!!.animation = animate2
+        //left
+        textView122!!.animation = animate1
+        concludeScoreTextView!!.animation = animate1
+        miniGametextView!!.animation = animate1
+        backToSelectLevelBtn!!.animation = animate1
+        //top
+        textView111!!.animation = animate3
+        //buttom
+        replayBtn!!.animation = animate4
+        //End do animation
+
         //get data from FireBase
         var doOnce = false
         var database = FirebaseDatabase.getInstance().getReference("User/${userId}")
@@ -49,7 +70,7 @@ class ConcludeScoreActivity : AppCompatActivity() {
 
         //คะแนนน้อยกว่า8ห้ามเล่นMiniGameกับกดปุ่่มnextLevelBtn
         if(score<8){
-            Log.d("check 123","get ${score}")
+            //Log.d("check 123","get ${score}")
             miniGametextView.visibility = View.INVISIBLE
             mininGameImage.visibility = View.INVISIBLE
 
@@ -60,7 +81,7 @@ class ConcludeScoreActivity : AppCompatActivity() {
             var scoreFromMain = score.toString()+" + ${playMinigame}"
             concludeScoreTextView.text = scoreFromMain
         }else {
-            Log.d("check 123","get ${score}")
+            //Log.d("check 123","get ${score}")
             miniGametextView.visibility = View.VISIBLE
             mininGameImage.visibility = View.VISIBLE
 
@@ -143,17 +164,17 @@ class ConcludeScoreActivity : AppCompatActivity() {
         //เช็คunlock mission
         if(score>=8){
             if(Nowlevel<=8) {
-                Log.d("check FB","get <8 ${Nowlevel}")
-                Log.d("level : " ,dataSnapshot!!.child("user_mission").child("unlock_level").value.toString())
+                //Log.d("check FB","get <8 ${Nowlevel}")
+                //Log.d("level : " ,dataSnapshot!!.child("user_mission").child("unlock_level").value.toString())
                 if ((Nowlevel+2) > dataSnapshot!!.child("user_mission").child("unlock_level").value.toString().toInt()){
                     val unlock = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/unlock_level")
                     unlock.setValue((Nowlevel + 2).toString())
                 }
             }
             if(Nowlevel==9){
-                Log.d("check FB","get ==9 ${Nowlevel}")
+                //Log.d("check FB","get ==9 ${Nowlevel}")
                 if ((Nowlevel+1) > dataSnapshot!!.child("user_mission").child("unlock_level").value.toString().toInt()) {
-                    Log.d("level : " ,dataSnapshot!!.child("user_mission").child("unlock_level").value.toString())
+                    //Log.d("level : " ,dataSnapshot!!.child("user_mission").child("unlock_level").value.toString())
                     val unlock = FirebaseDatabase.getInstance().getReference("User/$userId/user_mission/unlock_level")
                     unlock.setValue((Nowlevel + 1).toString())
                 }

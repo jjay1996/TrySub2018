@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.*
+import android.view.animation.AnimationUtils
 import android.widget.*
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
@@ -40,6 +41,23 @@ class HighScoreActivity : AppCompatActivity() {
 
         userID = "User/-LScPrxbemODH7AsIJ86"
 
+        //Do animation
+        var animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
+        var animate2 = AnimationUtils.loadAnimation(this,R.anim.fromright)
+        var animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
+        var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
+        //right
+        title4!!.animation = animate2
+        //left
+        backFromHSBtn!!.animation = animate1
+        title2!!.animation = animate1
+        title1!!.animation = animate1
+        //top
+        textView4!!.animation = animate3
+        //buttom
+        highscoreList!!.animation = animate4
+        //End do animation
+
         backFromHSBtn.setOnClickListener  {
             finish()
         }
@@ -59,7 +77,7 @@ class HighScoreActivity : AppCompatActivity() {
                     listIn.add(i.child("picture").value.toString())
                     list.add(listIn)
                 }
-                Log.d("test1",list.toString())
+                //Log.d("test1",list.toString())
                 var i = 1
                 var j: Int
                 while (i < list.size) {
@@ -75,7 +93,7 @@ class HighScoreActivity : AppCompatActivity() {
                     //Log.d("test",list.toString())
                     i++
                 }
-                Log.d("test2",list.toString())
+                //Log.d("test2",list.toString())
                 val listView = findViewById<ListView>(R.id.highscoreList)
                 listView.adapter = myCustomAdapter(this@HighScoreActivity,list)
             }
@@ -88,7 +106,7 @@ class HighScoreActivity : AppCompatActivity() {
         init{
             mContext = context
             list = listOut
-            Log.d("test4",list.size.toString())
+            //Log.d("test4",list.size.toString())
         }
 
         override fun getCount(): Int {
@@ -116,7 +134,7 @@ class HighScoreActivity : AppCompatActivity() {
             val viewHolder = rowMain.tag as ViewHolder
             viewHolder.nameText.text = list.get(position).get(0)
             viewHolder.totalScore.text = list.get(position).get(1)
-            Log.d("test6",list.get(position).toString())
+            //Log.d("test6",list.get(position).toString())
 
             var checkOnce = false
             if(list.get(position).get(2)!=="null" && !checkOnce) {

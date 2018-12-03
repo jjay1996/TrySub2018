@@ -5,7 +5,7 @@ import java.lang.reflect.Array
 class QuestionAnswer {
 
     public var MyQuestion = arrayOf(
-            //ข้อ1
+            //LV1
             arrayOf(
                 //ข้อ1
                 "1. Ant",
@@ -28,7 +28,7 @@ class QuestionAnswer {
                 //ข้อ10
                 "10. Zoo"
             ),
-            //ข้อ2
+            //LV2
             arrayOf(
                     //ข้อ1
                     "1. Answer",
@@ -51,7 +51,7 @@ class QuestionAnswer {
                     //ข้อ10
                     "10. Table"
             ),
-            //ข้อ3
+            //LV3
             arrayOf(
                     //ข้อ1
                     "1. Air",
@@ -74,7 +74,7 @@ class QuestionAnswer {
                     //ข้อ10
                     "10. Together"
             ),
-            //ข้อ4
+            //LV4
             arrayOf(
                     //ข้อ1
                     "1. Build",
@@ -97,7 +97,7 @@ class QuestionAnswer {
                     //ข้อ10
                     "10. Product"
             ),
-            //ข้อ5
+            //LV5
             arrayOf(
                     //ข้อ1
                     "1. About",
@@ -120,7 +120,7 @@ class QuestionAnswer {
                     //ข้อ10
                     "10. Medicine"
             ),
-            //ข้อ6
+            //LV6
             arrayOf(
                     //ข้อ1
                     "1. Assist",
@@ -143,7 +143,7 @@ class QuestionAnswer {
                     //ข้อ10
                     "10. Massage"
             ),
-            //ข้อ7
+            //LV7
             arrayOf(
                     //ข้อ1
                     "1. complicate",
@@ -167,7 +167,7 @@ class QuestionAnswer {
                     "10. investigate"
 
             ),
-            //ข้อ8
+            //LV8
             arrayOf(
                     //ข้อ1
                     "1. Evaluate",
@@ -190,7 +190,7 @@ class QuestionAnswer {
                     //ข้อ10
                     "10. Scandal"
             ),
-            //ข้อ9
+            //LV9
             arrayOf(
                     //ข้อ1
                     "1. Rectangle",
@@ -213,7 +213,7 @@ class QuestionAnswer {
                     //ข้อ10
                     "10. Suppress"
             ),
-            //ข้อ10
+            //LV10
             arrayOf(
                     //ข้อ1
                     "1. Rational",
@@ -239,7 +239,7 @@ class QuestionAnswer {
     )
 
   public val MyChoice = arrayOf(
-          //ข้อ1
+          //LV1
           arrayOf(
                   arrayOf("มด","ปาก","ฟัน"), //1
                   arrayOf("แขน","มด","ผึ้ง"), //2
@@ -252,7 +252,7 @@ class QuestionAnswer {
                   arrayOf("สีฟ้า","สีแดง","สีเหลือง"), //9
                   arrayOf("สวนสัตว์","บ้าน","โรงแรม") //10
           ),
-          //ข้อ2
+          //LV2
           arrayOf(
                   arrayOf("ความหลัง","คำตอบ","ความลับ"), //1
                   arrayOf("กลับ","ไปข้างหน้า","พรุ่งนี้"), //2
@@ -265,7 +265,7 @@ class QuestionAnswer {
                   arrayOf("ไม่พร้อม","ผู้หญิง","พร้อม"), //9
                   arrayOf("เก้าอี้","ปิงปอง","โต๊ะ") //10
           ),
-          //ข้อ3
+          //LV3
           arrayOf(
                   arrayOf("อากาศ","น้ำ","ดิน"), //1
                   arrayOf("แย่","เตียง","ดีที่สุด"), //2
@@ -278,7 +278,7 @@ class QuestionAnswer {
                   arrayOf("อะไร","กับ","ปราศจาก"), //9
                   arrayOf("ด้วยกัน","สอง","ถึง") //10
           ),
-          //ข้อ4
+          //LV4
           arrayOf(
                   arrayOf("พอแล้ว","สร้าง","นก"), //1
                   arrayOf("เกิด","ดิฟท์รถ","แตกต่าง"), //2
@@ -291,7 +291,7 @@ class QuestionAnswer {
                   arrayOf("รูปแบบ","ต่อสู้","ส่วนประกอบ"), //9
                   arrayOf("มืออาชีพ","ผู้เชี่ยวชาญ","ผลผลิต") //10
           ),
-          //ข้อ5
+          //LV5
           arrayOf(
                   arrayOf("เครื่องบิน","เกี่ยวกับ","จัดการ"), //1
                   arrayOf("เกลียด","หมวก","มี"), //2
@@ -304,7 +304,7 @@ class QuestionAnswer {
                   arrayOf("ทันที","รูปภาพ","อิ่ม"), //9
                   arrayOf("กล้อง","ปาณกลาง","ยา") //10
           ),
-          //ข้อ6
+          //LV6
           arrayOf(
                   arrayOf("ช่วยเหลือ","ต่อสู้","ส่วนเกิน"), //1
                   arrayOf("ชีวิทยา","ประวัติบุคคล","กราฟชีวิต"), //2
@@ -318,7 +318,7 @@ class QuestionAnswer {
                   arrayOf("ข้อความ","นวด","มาสตราส")//10
 
           ),
-          //ข้อ7
+          //LV7
           arrayOf(
                   arrayOf("สมบูรณ์","ผ่าน","ซับซ้อน"), //1
                   arrayOf("ร่วมมือ","จระเข้","คอมพิวเตอร์"), //2
@@ -331,7 +331,7 @@ class QuestionAnswer {
                   arrayOf("ขวางกั้น","ยอมรับ","ไม่มั่นคง"), //9
                   arrayOf("สืบสวน","ไม่มั่นคง","ลังเล") //10
           ),
-          //ข้อ8
+          //LV8
           arrayOf(
                   arrayOf("ช้าง","ประเมิน","พิสูจน์"), //1
                   arrayOf("เหนื่อยล้า","ความกลัว","ธง"), //2
@@ -344,7 +344,7 @@ class QuestionAnswer {
                   arrayOf("อารมณ์ขัน","นิ่งเฉย","เกรี้ยวกราด"), //9
                   arrayOf("อื้อฉาว","ตำแหน่ง","ตรวจสอบ") //10
           ),
-          //ข้อ9arrayOf
+          //LV9
           arrayOf(
                   arrayOf("วงกลม","สามเหลี่ยม","สี่เหลี่ยมผืนผ้า"), //1
                   arrayOf("ยิ่งใหญ่","เล็กน้อย","ยึกครอง"), //2
@@ -357,7 +357,7 @@ class QuestionAnswer {
                   arrayOf("ล้อมรอบ","พุ่งนี้","สำรวจ"), //9
                   arrayOf("เซอร์ไพซ์","ระงับ","กด") //10
           ),
-          //ข้อ10
+          //LV10
           arrayOf(
                   arrayOf("ความมีเหตุผล","งี่เง่า","โวยวาย"), //1
                   arrayOf("10.2","โสเภณี","1.2"), //2
@@ -373,6 +373,7 @@ class QuestionAnswer {
   )
 
     public val CorrectAnswer = arrayOf(
+            //LV1
             arrayOf(
                 //ข้อ1
                 "มด",
@@ -395,7 +396,7 @@ class QuestionAnswer {
                 //ข้อ10
                 "สวนสัตว์"
             ),
-            //ข้อ2
+            //LV2
             arrayOf(
                     //ข้อ1
                     "คำตอบ",
@@ -418,7 +419,7 @@ class QuestionAnswer {
                     //ข้อ10
                     "โต๊ะ"
             ),
-            //ข้อ3
+            //LV3
             arrayOf(
                     //ข้อ1
                     "อากาศ",
@@ -441,7 +442,7 @@ class QuestionAnswer {
                     //ข้อ10
                     "ด้วยกัน"
             ),
-            //ข้อ4
+            //LV4
             arrayOf(
                     //ข้อ1
                     "สร้าง",
@@ -464,7 +465,7 @@ class QuestionAnswer {
                     //ข้อ10
                     "ผลผลิต"
             ),
-            //ข้อ5
+            //LV5
             arrayOf(
                     //ข้อ1
                     "เกี่ยวกับ",
@@ -487,7 +488,7 @@ class QuestionAnswer {
                     //ข้อ10
                     "ยา"
             ),
-            //ข้อ6
+            //LV6
             arrayOf(
                     //ข้อ1
                     "ช่วยเหลือ",
@@ -510,7 +511,7 @@ class QuestionAnswer {
                     //ข้อ10
                     "นวด"
             ),
-            //ข้อ7
+            //LV7
             arrayOf(
                     //ข้อ1
                     "ซับซ้อน",
@@ -533,7 +534,7 @@ class QuestionAnswer {
                     //ข้อ10
                     "สืบสวน"
             ),
-            //ข้อ8
+            //LV8
             arrayOf(
                     //ข้อ1
                     "ประเมิน",
@@ -556,7 +557,7 @@ class QuestionAnswer {
                     //ข้อ10
                     "1ื้อฉาว"
             ),
-            //ข้อ9
+            //LV9
             arrayOf(
                     //ข้อ1
                     "สี่เหลี่ยมผืนผ้า",
@@ -579,7 +580,7 @@ class QuestionAnswer {
                     //ข้อ10
                     "ระงับ"
             ),
-            //ข้อ10
+            //LV10
             arrayOf(
                     //ข้อ1
                     "ความมีเหตุผล",

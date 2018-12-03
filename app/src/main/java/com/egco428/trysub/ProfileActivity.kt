@@ -4,8 +4,7 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.content.ContextCompat.startActivity
-import android.util.Log
+import android.view.animation.AnimationUtils
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.database.DataSnapshot
@@ -14,9 +13,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FileDownloadTask
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_play.*
 import kotlinx.android.synthetic.main.activity_profile.*
 import java.io.File
 
@@ -33,6 +29,26 @@ class ProfileActivity : AppCompatActivity() {
         //imageView.setImageResource(R.drawable.vatar)
 
         userId = intent.getStringExtra("keyPath")
+
+        //Do animation
+        var animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
+        var animate2 = AnimationUtils.loadAnimation(this,R.anim.fromright)
+        var animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
+        var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
+
+        //top
+        createText!!.animation = animate3
+        //right
+        textView5!!.animation = animate2
+        imageView!!.animation = animate2
+        textView7!!.animation = animate2
+        editText!!.animation = animate2
+        textView8!!.animation = animate2
+        imageView2!!.animation = animate2
+        EditBtn!!.animation = animate2
+        //left
+        backFromProfileBtn!!.animation = animate1
+        //End do animation
 
         EditBtn.setOnClickListener {
             var intentToEditProfile = Intent(this,editProfileActivity::class.java)

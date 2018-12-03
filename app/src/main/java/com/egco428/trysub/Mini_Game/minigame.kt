@@ -138,7 +138,7 @@ class minigame : AppCompatActivity(),SensorEventListener {
         //calculate accelerate for sensor detection
         var accel = ((x*x)+(y*y)+(z*z))/(SensorManager.GRAVITY_EARTH*SensorManager.GRAVITY_EARTH)
         if(accel>=2){
-            Log.d("test","ss")
+            //Log.d("test","ss")
             var anim1 = AnimationUtils.loadAnimation(this@minigame, R.anim.shakedice)
             var anim2 = AnimationUtils.loadAnimation(this@minigame, R.anim.shakedice)
             val animationListener = object : Animation.AnimationListener {
@@ -158,10 +158,10 @@ class minigame : AppCompatActivity(),SensorEventListener {
 
                     if (animation === anim1) {
                         miniDice1!!.setImageResource(res)
-                        Log.d("test",value.toString())
+                        //Log.d("test",value.toString())
                     } else if (animation === anim2) {
                         miniDice2!!.setImageResource(res)
-                        Log.d("test",value.toString())
+                        //Log.d("test",value.toString())
                     }
                     stopShake = true
                     miniShake.text = "Your Score = ${totalScore}"

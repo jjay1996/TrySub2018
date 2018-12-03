@@ -12,6 +12,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v7.app.AlertDialog
 import android.util.Log
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
@@ -49,7 +50,26 @@ class editProfileActivity : AppCompatActivity() {
 
         userId = intent.getStringExtra("keyPath")
 
-
+        //Do animation
+        var animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
+        var animate2 = AnimationUtils.loadAnimation(this,R.anim.fromright)
+        var animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
+        var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
+        //right
+        editProfileTitle!!.animation = animate2
+        imageProfileEdit!!.animation = animate2
+        takePicBtnEdit!!.animation = animate2
+        chooseBtnEdit!!.animation = animate2
+        textView71!!.animation = animate2
+        editName!!.animation = animate2
+        textView81!!.animation = animate2
+        femaleSelect!!.animation = animate2
+        //left
+        maleSelect!!.animation = animate1
+        //buttom
+        saveBtn!!.animation = animate4
+        CancelBtnEdit!!.animation = animate4
+        //End do animation
 
         var checkOnce = false
         storage = FirebaseStorage.getInstance()

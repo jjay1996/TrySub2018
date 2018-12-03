@@ -105,24 +105,40 @@ class Create : AppCompatActivity() {
             var matcher2 = pattern.matcher(pass)
 
 
-            if (username == "" || pass == "" || name == ""){Toast.makeText(applicationContext,"username or name or password is empthy",Toast.LENGTH_SHORT).show() ;  check = false}
-            else if (username.length < 5 || username.length >13 ){Toast.makeText(applicationContext,"Length(Username) want more than 5 but not more than 13",Toast.LENGTH_SHORT).show() ; check=false}
-            else if (username == checkUser){ Toast.makeText(applicationContext,"Pleases Change Username",Toast.LENGTH_SHORT).show() ; check=false }
-            else if (pass.length < 8 || pass.length >13){ Toast.makeText(applicationContext,"Length(Password) want more than 8 than 5 but not more than 13",Toast.LENGTH_SHORT).show() ; check=false }
-            else if (pass != pass2){Toast.makeText(applicationContext,"Password Mismatch",Toast.LENGTH_SHORT).show() ; check=false}
-            else if (name == checkName ){Toast.makeText(applicationContext,"Pleases Change name",Toast.LENGTH_SHORT).show() ; check=false }
-            else if (name.length >15 ){Toast.makeText(applicationContext,"Length(Name) not more than 15",Toast.LENGTH_SHORT).show() ; check=false }
+            if (username == "" || pass == "" || name == ""){
+                Toast.makeText(applicationContext,"username or name or password is empthy",Toast.LENGTH_SHORT).show() ;  check = false
+            }
+            else if (username.length < 5 || username.length >13 ){
+                Toast.makeText(applicationContext,"Length(Username) want more than 5 but not more than 13",Toast.LENGTH_SHORT).show() ; check=false
+            }
+            else if (username == checkUser){
+                Toast.makeText(applicationContext,"Pleases Change Username",Toast.LENGTH_SHORT).show() ; check=false
+            }
+            else if (pass.length < 8 || pass.length >13){
+                Toast.makeText(applicationContext,"Length(Password) want more than 8 than 5 but not more than 13",Toast.LENGTH_SHORT).show() ; check=false
+            }
+            else if (pass != pass2){
+                Toast.makeText(applicationContext,"Password Mismatch",Toast.LENGTH_SHORT).show() ; check=false
+            }
+            else if (name == checkName ){
+                Toast.makeText(applicationContext,"Pleases Change name",Toast.LENGTH_SHORT).show() ; check=false }
+            else if (name.length >15 ){Toast.makeText(applicationContext,"Length(Name) not more than 15",Toast.LENGTH_SHORT).show() ; check=false
+            }
             else if (matcher1.matches()) {
                 Toast.makeText(applicationContext,"(Username) No [.*[~!@#\$%\\^&*()\\-_=+\\|\\[{\\]};:'\",<.>/?].*]",Toast.LENGTH_SHORT).show() ; check = false
-                Log.d("gg","$matcher1")
+                //Log.d("gg","$matcher1")
             }
             else if (matcher2.matches()) {
                 Toast.makeText(applicationContext,"(Password) No [.*[~!@#\$%\\^&*()\\-_=+\\|\\[{\\]};:'\",<.>/?].*]",Toast.LENGTH_SHORT).show() ; check = false
-                Log.d("gg","$matcher2")
+                //Log.d("gg","$matcher2")
             }
-            else if (T_gender == ""){Toast.makeText(applicationContext,"Pleases Choose gender",Toast.LENGTH_SHORT).show() ; check=false }
-            else {check = true }
-            Log.d("test","check : $checkUser  !! username : $username")
+            else if (T_gender == ""){
+                Toast.makeText(applicationContext,"Pleases Choose gender",Toast.LENGTH_SHORT).show() ; check=false
+            }
+            else {
+                check = true
+            }
+            //Log.d("test","check : $checkUser  !! username : $username")
             //End check validate
 
             //set init id
@@ -169,6 +185,11 @@ class Create : AppCompatActivity() {
                     imageRef.putFile(fileUri!!)
                             .addOnSuccessListener {
                                 Toast.makeText(applicationContext,"File Upload...",Toast.LENGTH_SHORT).show()
+                                //go home page
+                                val intent = Intent(this,PlayActivity::class.java)
+                                intent.putExtra("keyPath",messageId.toString())
+                                startActivity(intent)
+                                finish()
                             }
                             .addOnFailureListener{
                                 Toast.makeText(applicationContext,"Failed...",Toast.LENGTH_SHORT).show()
@@ -180,11 +201,7 @@ class Create : AppCompatActivity() {
                 }
                 //End Upload
 
-                //go home page
-                val intent = Intent(this,PlayActivity::class.java)
-                intent.putExtra("keyPath",messageId.toString())
-                startActivity(intent)
-                finish()
+
             }
             //end set
 

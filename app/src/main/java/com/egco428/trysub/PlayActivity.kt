@@ -9,6 +9,7 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityCompat.finishAffinity
 import android.support.v4.content.ContextCompat.startActivity
 import android.util.Log
+import android.view.animation.AnimationUtils
 import com.egco428.trysub.Create_Login.choose
 import com.egco428.trysub.R.id.*
 import com.google.firebase.database.DataSnapshot
@@ -29,8 +30,22 @@ class PlayActivity : AppCompatActivity() {
         if(bundle!=null) {
             keyPath = bundle.getString("keyPath").toString()
         }
-        Log.d(this.toString(),"keyPath : $keyPath")
+        //Log.d(this.toString(),"keyPath : $keyPath")
         setTitle("                               Try-Sub")
+
+        //do animation
+        var animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
+        var animate2 = AnimationUtils.loadAnimation(this,R.anim.fromright)
+        var animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
+        var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
+
+        TrysubPlayTextView!!.animation = animate3
+        learnBtn!!.animation = animate4
+        startGameBtn!!.animation = animate4
+        profileBtn!!.animation = animate4
+        highScoreBtn!!.animation = animate4
+        exitAppBtn!!.animation = animate4
+        //End do animation
 
         var database = FirebaseDatabase.getInstance().getReference("User")
         database.addValueEventListener(object  : ValueEventListener {
@@ -39,7 +54,7 @@ class PlayActivity : AppCompatActivity() {
                 dataSnapshot = p0
                 for (i in dataSnapshot!!.children){
                     dataSnapshot=i
-                    Log.d("check old value","${dataSnapshot!!.child("name").value.toString()}")
+                    //Log.d("check old value","${dataSnapshot!!.child("name").value.toString()}")
                     if (keyPath == i.key.toString()){
                         textView10.text = dataSnapshot!!.child("name").value.toString()
                         break

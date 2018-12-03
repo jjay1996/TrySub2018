@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.support.v4.view.ViewPager
 import android.text.Html
 import android.util.Log
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -31,8 +32,20 @@ class LearnWordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learn_word)
 
+        //Do animation
+        var animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
+        var animate2 = AnimationUtils.loadAnimation(this,R.anim.fromright)
+        var animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
+        var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
+        //right
+        slideViewPager!!.animation = animate2
+        //left
+        backTolistLessonBtn!!.animation = animate1
+        //top
+        LessonTextView!!.animation = animate3
+        //End do animation
+
         var nolevel = intent.getStringExtra("LevelLearn").toInt()
-        //var nolevel = 9
 
         LessonTextView.text = "Level ${nolevel+1}"
         backTolistLessonBtn.setOnClickListener {

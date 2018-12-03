@@ -59,7 +59,7 @@ class login : AppCompatActivity() {
             if (pass==true) {
                 val t = Intent(this,PlayActivity::class.java)
                 t.putExtra("keyPath",keyPath)
-                Log.d(this.toString(),"keyPath : $keyPath")
+                //Log.d(this.toString(),"keyPath : $keyPath")
                 startActivity(t)
                 finish()
             }

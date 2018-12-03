@@ -9,15 +9,15 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="216dp"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginEnd="23dp"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:text="Select Mission"
         android:textAlignment="center"
         android:textColor="@android:color/background_light"
-        android:textSize="30sp"
+        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.075"
@@ -201,7 +201,7 @@
         android:layout_width="41dp"
         android:layout_height="34dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/back_white" />

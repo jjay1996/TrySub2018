@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
 import android.util.TimeUtils
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_question_answer.*
@@ -27,6 +28,23 @@ class QuestionAnswerActivity : AppCompatActivity() {
 
         noLevel = intent.getStringExtra("Level").toInt()
         userId = intent.getStringExtra("keyPath")
+
+        //Do animation
+        var animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
+        var animate2 = AnimationUtils.loadAnimation(this,R.anim.fromright)
+        var animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
+        var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
+        //right
+        answ1btn!!.animation = animate2
+        answ2btn!!.animation = animate2
+        answ3btn!!.animation = animate2
+        //left
+        questionWordTextView!!.animation = animate1
+        //top
+        noQATextView!!.animation = animate3
+        //buttom
+        nextQuestionBtn!!.animation = animate4
+        //End do animation
 
         noQATextView.text = ("Question " + (noQuestion+1) + "Score :" + score)
         updateQuestion(noQuestion)

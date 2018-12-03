@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //do animation
-        //var animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
+        var animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
         var animate2 = AnimationUtils.loadAnimation(this,R.anim.fromright)
         var animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
         var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
