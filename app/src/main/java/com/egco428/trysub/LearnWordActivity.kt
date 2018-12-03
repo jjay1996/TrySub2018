@@ -100,9 +100,4 @@ class LearnWordActivity : AppCompatActivity() {
             mDots!![position].setTextColor(Color.WHITE)
         }
     }
-
-
-
-
-
 }

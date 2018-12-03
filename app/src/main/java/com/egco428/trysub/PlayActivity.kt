@@ -92,4 +92,30 @@ class PlayActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    override fun onResume() {
+        //clear animation
+        learnBtn!!.clearAnimation()
+        startGameBtn!!.clearAnimation()
+        profileBtn!!.clearAnimation()
+        highScoreBtn!!.clearAnimation()
+        exitAppBtn!!.clearAnimation()
+
+        //do animation
+        var animate1 = AnimationUtils.loadAnimation(this,R.anim.fromleft)
+        var animate2 = AnimationUtils.loadAnimation(this,R.anim.fromright)
+        var animate3 = AnimationUtils.loadAnimation(this,R.anim.fromtop)
+        var animate4 = AnimationUtils.loadAnimation(this,R.anim.frombuttom)
+
+        TrysubPlayTextView!!.animation = animate3
+        learnBtn!!.animation = animate4
+        startGameBtn!!.animation = animate4
+        profileBtn!!.animation = animate4
+        highScoreBtn!!.animation = animate4
+        exitAppBtn!!.animation = animate4
+        //End do animation
+
+
+        super.onResume()
+    }
 }
