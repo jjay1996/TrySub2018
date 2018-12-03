@@ -186,7 +186,7 @@ class QuestionAnswerActivity : AppCompatActivity() {
                 noQuestion++
                 if(noQuestion>9){
                     //ทำครบ10ข้อ
-                    MediaPlayer!!.stop()
+                    MediaPlayer!!.pause()
                     Toast.makeText(this,"End Your score $score",Toast.LENGTH_SHORT).show()
                     val intentToConclude = Intent(this@QuestionAnswerActivity,ConcludeScoreActivity::class.java)
                     intentToConclude.putExtra("Score", score.toString())
@@ -221,22 +221,21 @@ class QuestionAnswerActivity : AppCompatActivity() {
         answ3btn.isEnabled = true
     }
 
-    override fun onBackPressed() {
-        // Do Here what ever you want do on back press;
-    }
-
-    override fun onResume() {
+     override fun onResume() {
         //stop music
         MediaPlayer!!.stop()
-//
-//        //playmusic
-//        MediaPlayer = android.media.MediaPlayer.create(this,R.raw.media_cookie)
-//        MediaPlayer!!.start()
-//        MediaPlayer!!.isLooping = true
+
+        Log.d("check","onResume")
+
+        //playmusic
+        MediaPlayer = android.media.MediaPlayer.create(this,R.raw.media_cookie)
+        MediaPlayer!!.start()
+        MediaPlayer!!.isLooping = true
         super.onResume()
     }
 
     override fun onPause() {
+        Log.d("check","onPause")
         //stop music
         MediaPlayer!!.stop()
         super.onPause()

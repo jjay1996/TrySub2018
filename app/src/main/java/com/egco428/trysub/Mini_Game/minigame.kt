@@ -56,8 +56,6 @@ class minigame : AppCompatActivity(),SensorEventListener {
         score = intent.getStringExtra("Score").toInt()
         Nowlevel = intent.getStringExtra("nLevel").toInt()
 
-        MediaPlayer = android.media.MediaPlayer.create(this,R.raw.play_die)
-        MediaPlayer!!.start()
 
         backToConcludeBtn.setOnClickListener {
             val intent = Intent(this@minigame,ConcludeScoreActivity::class.java)
@@ -142,10 +140,12 @@ class minigame : AppCompatActivity(),SensorEventListener {
 
         //calculate accelerate for sensor detection
         var accel = ((x*x)+(y*y)+(z*z))/(SensorManager.GRAVITY_EARTH*SensorManager.GRAVITY_EARTH)
-        if(accel>=2){
+        if(accel>=8){
             //Log.d("test","ss")
             var anim1 = AnimationUtils.loadAnimation(this@minigame, R.anim.shakedice)
             var anim2 = AnimationUtils.loadAnimation(this@minigame, R.anim.shakedice)
+            MediaPlayer = android.media.MediaPlayer.create(this,R.raw.dice_sound)
+            MediaPlayer!!.start()
             val animationListener = object : Animation.AnimationListener {
                 override fun onAnimationStart(animation: Animation) {}
 

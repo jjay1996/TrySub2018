@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_play.*
 
 class PlayActivity : AppCompatActivity() {
 
-    var MediaPlayer: MediaPlayer? = null
+    //var MediaPlayer: MediaPlayer? = null
     var keyPath:String = ""
     var dataSnapshot:DataSnapshot? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,11 +50,6 @@ class PlayActivity : AppCompatActivity() {
         exitAppBtn!!.animation = animate4
         //End do animation
 
-        //Music
-        MediaPlayer = android.media.MediaPlayer.create(this,R.raw.media_cookie)
-        MediaPlayer!!.start()
-        MediaPlayer!!.isLooping = true
-        //Music
 
         var database = FirebaseDatabase.getInstance().getReference("User")
         database.addValueEventListener(object  : ValueEventListener {
