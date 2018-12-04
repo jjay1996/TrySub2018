@@ -73,7 +73,7 @@ class editProfileActivity : AppCompatActivity() {
 
         var checkOnce = false
         storage = FirebaseStorage.getInstance()
-        storageReference = storage!!.getReferenceFromUrl("gs://trysup2018.appspot.com")
+        storageReference = storage!!.getReferenceFromUrl("gs://trysub-7d847.appspot.com")
         database = FirebaseDatabase.getInstance().getReference("User")
         database.addValueEventListener(object  : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {}
@@ -173,7 +173,7 @@ class editProfileActivity : AppCompatActivity() {
 
                 if(picture!="null"){
                     var storage = FirebaseStorage.getInstance()
-                    var storageReference = storage!!.getReferenceFromUrl("gs://trysup2018.appspot.com/${picture}")
+                    var storageReference = storage!!.getReferenceFromUrl("gs://trysub-7d847.appspot.com/${picture}")
                     var localFile = File.createTempFile("images", "jpg");
                     storageReference!!.getFile(localFile)
                             .addOnSuccessListener(OnSuccessListener<FileDownloadTask.TaskSnapshot> {

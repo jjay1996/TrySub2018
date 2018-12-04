@@ -77,7 +77,7 @@ class ProfileActivity : AppCompatActivity() {
                 //set picture to ImageView
                 if(picture!="null"){
                     var storage = FirebaseStorage.getInstance()
-                    var storageReference = storage!!.getReferenceFromUrl("gs://trysup2018.appspot.com/${picture}")
+                    var storageReference = storage!!.getReferenceFromUrl("gs://trysub-7d847.appspot.com/${picture}")
                     var localFile = File.createTempFile("images", "jpg");
                     storageReference!!.getFile(localFile)
                             .addOnSuccessListener(OnSuccessListener<FileDownloadTask.TaskSnapshot> {

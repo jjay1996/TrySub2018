@@ -50,7 +50,7 @@ class Create : AppCompatActivity() {
         setContentView(R.layout.activity_create)
 
         storage = FirebaseStorage.getInstance()
-        storageReference = storage!!.getReferenceFromUrl("gs://trysup2018.appspot.com")
+        storageReference = storage!!.getReferenceFromUrl("gs://trysub-7d847.appspot.com")
         var database = FirebaseDatabase.getInstance().getReference("User")
         database.addValueEventListener(object  : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {}

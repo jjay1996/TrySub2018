@@ -134,7 +134,7 @@ class HighScoreActivity : AppCompatActivity() {
             if(list.get(position).get(2)!=="null" ) {
                 //download Imgae
                 var storage = FirebaseStorage.getInstance()
-                var storageReference = storage!!.getReferenceFromUrl("gs://trysup2018.appspot.com/${list.get(position).get(2)}")
+                var storageReference = storage!!.getReferenceFromUrl("gs://trysub-7d847.appspot.com/${list.get(position).get(2)}")
                 var localFile = File.createTempFile("images", "jpg");
                 storageReference!!.getFile(localFile)
                         .addOnSuccessListener(OnSuccessListener<FileDownloadTask.TaskSnapshot> {
